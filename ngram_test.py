@@ -8,16 +8,22 @@ def modelRandomTesting(test_data, model, nwords=10000, n=2):
     # n: ngram length
     positive_count = 0
     selected_words = random.sample(xrange(len(test_data)), nwords)
+    trials=[]
     for i in xrange(nwords):
+        print i
         ngram_begin = []
+        trial = []
         for j in xrange(n - 1):
             index = selected_words[i] + j
             ngram_begin.append(test_data[index])
+            trial.append(test_data[index])
         prediction = model(ngram_begin)
         truth = test_data[i + n - 1]
+        trial.append([truth, prediction])
+        trials.append(tuple(trial))
         if truth == prediction:
             positive_count += 1
-    success_rate = positive_count / nwords
+    success_rate = float(positive_count) / nwords
     print "Success rate:", success_rate
-    return success_rate
+    return trials
 
