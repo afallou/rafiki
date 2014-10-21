@@ -65,4 +65,14 @@ def makeLanguageModels(path,n):
 
     return ngramFindNextWord
 
+def createTestList(path):
+    text_list = []
+    with open(path, 'r') as f:
+        for l in f:
+            ws = words(cleanLine(l))
+            word_list = [x[0] for x in sliding(ws, 1)]
+            for word in word_list:
+                text_list.append(word)
+    return text_list
+
 
