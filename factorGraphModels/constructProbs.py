@@ -2,16 +2,22 @@ import re
 import token
 import tokenize
 import io
+from exception import NotImplementedError
 
+class MatchProbs:
+    def getProb(self, state, emission):
+        raise NotImplementedError('not implemented')
 
 
 class ImmutableNormalizingDict:
   """
     Warning: incomplete dict interface! May fix later
+
+    This is overkill, thought I needed it but turns out I don't, may refactor later
   """
-  def __init__(self, python_dict, sum_fn=sum):
+  def __init__(self, python_dict):
     self.store = python_dict
-    self.summed = sum_fn(self.store.values())
+    self.summed = float(sum(self.store.values()))
 
   def __getitem__(self, key):
     return self.store[key] / self.summed
@@ -21,6 +27,19 @@ class ImmutableNormalizingDict:
 
   def __str__(self):
     return str(self.store)
+
+class TransitionProbs:
+    def __init__(self, transProb, lambda_val=0.7):
+        self.transProb = transProb
+        self.startProb = {s0:sum(self.transProb[s0][transition].summed for transition in self.transProb[s0]) for s0 in self.transProb}
+        self.startProb = [state:float(self.startProb[state])/sum(self.startProb.values()) for state in self.startProb]
+        self.lambda_val = lambda_val
+
+    def getProb(self, s0, sep, s1):
+        return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb[s0] * (1- self.lambda_val)
+
+    def getStartProb(self, s0):
+        return self.startProb[s0]
 
 """
     Return:
@@ -69,7 +88,7 @@ class TransitionProbsBuilder:
         for key1 in self.transProb:
             for key2 in self.transProb[key1]:
                 self.transProb[key1][key2] = ImmutableNormalizingDict(self.transProb[key1][key2])
-        return self.transProb 
+        return TransitionProbs(self.transProb)
 
 
     
