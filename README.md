@@ -1,4 +1,8 @@
 rafiki
 ======
 
-Grammar learning on code
+Smarter autocomplete using factor graph models and ML
+
+try 
+
+python HMMModel.py --help
