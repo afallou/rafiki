@@ -2,11 +2,12 @@ import re
 import token
 import tokenize
 import io
-from exception import NotImplementedError
+from exceptions import NotImplementedError
 
 class MatchProbs:
     def getProb(self, state, emission):
-        raise NotImplementedError('not implemented')
+        # TODO
+        pass
 
 
 class ImmutableNormalizingDict:
@@ -32,7 +33,7 @@ class TransitionProbs:
     def __init__(self, transProb, lambda_val=0.7):
         self.transProb = transProb
         self.startProb = {s0:sum(self.transProb[s0][transition].summed for transition in self.transProb[s0]) for s0 in self.transProb}
-        self.startProb = [state:float(self.startProb[state])/sum(self.startProb.values()) for state in self.startProb]
+        self.startProb = {state:float(self.startProb[state])/sum(self.startProb.values()) for state in self.startProb}
         self.lambda_val = lambda_val
 
     def getProb(self, s0, sep, s1):
