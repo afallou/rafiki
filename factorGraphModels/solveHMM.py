@@ -1,11 +1,11 @@
 """
-    Gets the highest probability weighting for the HMM
-    
+    Gets the highest probability assignment for the HMM.
+
     Args:
         obs: list of observations
         states: list of states
         start_p: mapping from state -> prob of starting in that state
-        trans_p: trans_[a_0][a_1] gives you the prob of moving from state a_0 to a_1
+        trans_p: trans_p[a_0][sep][a_1] gives you the prob of moving from state a_0 to a_1 given separator sep between them
         emit_p: emit_p[obs][state] gives you the prob of emiting obs from state 
 
     Returns:
