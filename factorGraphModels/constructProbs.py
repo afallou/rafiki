@@ -4,6 +4,59 @@ import tokenize
 import io
 from exceptions import NotImplementedError
 
+# Features
+def getNumSharedConsonants(tok1, tok2):
+    charClassFn = lambda l: l not in vowels
+    return getNumSharedCharClass(tok1, tok2, charClassFn)
+
+def getNumSharedCapitals(tok1, tok2):
+    charClassFn = lambda l: l.isupper()
+    return getNumSharedCharClass(tok1, tok2, charClassFn)
+
+def getNumSharedNonLetters(tok1, tok2):
+    charClassFn = lambda l: not l.isalpha()
+    return getNumSharedCharClass(tok1, tok2, charClassFn)
+
+def getNumSharedLetters(tok1, tok2):
+    charClassFn = lambda l: l.isalpha()
+    return getNumSharedCharClass(tok1, tok2, charClassFn)
+
+def getNumSharedOrderedLetters(tok1, tok2):
+    counts = [[-1 for _ in xrange(len(tok2))] for _ in xrange(len(tok1))]
+    orderedLettersRecurse(tok1, tok2, counts)
+    
+def orderedLettersRecurse(tok1, tok2, counts):
+    if len(tok1) == 0 or len(tok2) == 0:
+        return 0
+    else:
+        count1 = Counter(tok1)
+        count2 = Counter(tok2)
+        shared_letters_count = sum([min(count1, count2) for c in count1])
+        if shared_letters_count == 0:
+            return 0
+        else:
+            max_shared = 0
+            for i in xrange(len(tok1)):
+                for j in xrange(len(tok2)):
+                    if tok1[i] == tok2[j]:
+                        if counts[i][j] < 0:
+                            counts[i][j] = orderedLettersRecurse(tok1[i+1:], tok2[j+1:], counts)
+                        max_shared = max(1 + counts[i][j], max_shared)
+            return max_shared
+
+
+def getPercentageSharedCapitals(tok1, tok2):
+    return 1. * getNumSharedCapitals(tok1, tok2) / len(tok1)
+
+def getPercentageSharedConsonants(tok1, tok2):
+    return 1. * getNumSharedConsonants(tok1, tok2) / len(tok1)
+
+def getPercentageSharedLetters(tok1, tok2):
+    return 1. * getNumSharedLetters(tok1, tok2) / len(tok1)
+
+def getOtherPercentageSharedLetters(tok1, tok2):
+    return 1. * getNumSharedLetters(tok1, tok2) / len(tok2)
+
 class MatchProbs:
     def getProb(self, state, emission):
         # TODO
@@ -44,7 +97,7 @@ class TransitionProbs:
 
 """
     Return:
-        transProb such that transProb[w0][sep][w1] gives you the count 
+        transProb such that transProb[w0][sep][w1] gives you the count
 """
 class TransitionProbsBuilder:
     # we're going to treat every thing other than name, string, number as a separator
@@ -55,7 +108,7 @@ class TransitionProbsBuilder:
     def updateTransitionProbs(self, dirpath):
         with open(dirpath,'r') as f:
             content=f.read()
-            g = tokenize.generate_tokens(io.BytesIO(content).readline) 
+            g = tokenize.generate_tokens(io.BytesIO(content).readline)
             prev_non_sep_tok = None
             prev_sep = None # this is the separator that comes after prev_non_sep_tok
             for toknum, tokval, _, _, _  in g:
@@ -77,7 +130,7 @@ class TransitionProbsBuilder:
                             self.transProb[prev_non_sep_tok] = {prev_sep: {tokval: 1}}
                     prev_non_sep_tok = tokval
                     prev_sep = None
-                elif toknum != token.NAME and toknum != token.NUMBER and toknum != token.STRING: # we see a token that is a separator 
+                elif toknum != token.NAME and toknum != token.NUMBER and toknum != token.STRING: # we see a token that is a separator
                     if prev_non_sep_tok != None:
                         if prev_sep is None:
                             prev_sep = tokval
@@ -92,4 +145,4 @@ class TransitionProbsBuilder:
         return TransitionProbs(self.transProb)
 
 
-    
+
