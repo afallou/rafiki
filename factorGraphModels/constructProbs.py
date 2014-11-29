@@ -3,11 +3,87 @@ import token
 import tokenize
 import io
 from exceptions import NotImplementedError
+import sys
+from sklearn import linear_model
+import random
+
+vowels = set(['a','e','i','o','u'])
+
+def abbrRemoveVowels(token):
+    ''.join([l for l in token if l not in vowels]);
+
+def getNumSharedCharClass(tok1, tok2, charClassFn):
+    tok1Consonants = Counter([l for l in tok1 if charClassFn(l)])
+    tok2Consonants = Counter([l for l in tok2 if charClassFn(l)])
+    return sum([min(tok1Consonants[c],tok2Consonants[c]) for c in tok1Consonants])
+
+
+class MatchProbsBuilder:
+    def __init__(self):
+        self.allNames = set()
+        self.logreg = linear_model.LogisticRegression()
+        self.last_seen_in_file = {}
+        self.X = []
+        self.Y = []
+
+    def updateMatchProbsTrainingData(self, dirpath, abbrFn):
+        def getClosestDistance(lineno, linenoList):
+            lastlineno = None
+            for l in linenoList:
+                if l > lineno:
+                    assert(lastlineno is not None)
+                    return abs(lineno-lastlineno)
+                else: 
+                    lastlineno = l 
+
+        with open(dirpath,'r') as f:
+            content=f.read()
+            g = tokenize.generate_tokens(io.BytesIO(content).readline)
+            self.last_seen_in_file[dirpath] = {}
+            for toknum, tokval, startloc, endloc, lineno in g:
+                if toknum == token.NAME:
+                    if tokval not in self.last_seen_in_file[dirpath]:
+                        self.last_seen_in_file[tokval] = {}
+                    last_seen_in_file_for_tokval = last_seen_in_file[dirpath][tokval]
+
+                    abbrToken = abbrFn(tokval)
+                    feature_vec = getFeatureVec(tokval, abbr, self.last_seen_in_file)
+                    last_seen_in_file_for_tokval.append(lineno) # order important
+                    self.allNames.append(tokval)
+                    self.X.append(feature_vec)
+                    self.Y.append(1)
+
+                    randomName = random.choice(self.allNames)
+                    while random == tokval:
+                        randomName = random.choice(self.allNames)
+
+                    feature_vec = getFeatureVec(random, abbr, self.last_seen_in_file)
+                    self.X.append(feature_vec)
+                    self.Y.append(0)
+
+    def build(self):
+        self.logreg.fit(self.X, self.Y)
+        return MatchProbs(self.logreg, self.last_seen_in_file)
+        
+
+def getFeatureVector(name, abbr, last_seen_in_file):
+    return [getNumSharedConsonants(abbrToken, tokval), 
+            # others 
+            (1 if tokval in self.last_seen_in_file[dirpath] else 0),
+            getClosestDistance(lineno,self.last_seen_in_file_for_tokval) if tokval in self.last_seen_in_file[dirpath] else sys.maxint] # TODO
+
 
 class MatchProbs:
-    def getProb(self, state, emission):
-        # TODO
-        pass
+    def __init__(self, logreg, last_seen_in_file):
+        self.logreg = logreg 
+        # last_seen_in_file is a map from filename => {name:[lineno1, lineno2, ...]}
+        self.last_seen_in_file = last_seen_in_file
+
+    def getProb(self, name, abbr):
+        feature_vec = getFeatureVec(name, abbr, self.last_seen_in_file)
+        print self.classes_
+        return self.logreg.predict_proba([feature_vec])[0][0] # TODO check order in self.classes_
+
 
 
 class ImmutableNormalizingDict:
@@ -88,6 +164,9 @@ class TransitionProbsBuilder:
         # replace all the innermost dicts with ImmutableNormalizingDicts
         for key1 in self.transProb:
             for key2 in self.transProb[key1]:
+		print key1
+		print key2
+		print self.transProb[key1][key2]
                 self.transProb[key1][key2] = ImmutableNormalizingDict(self.transProb[key1][key2])
         return TransitionProbs(self.transProb)
 
