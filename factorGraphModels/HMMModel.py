@@ -1,6 +1,6 @@
 import argparse
 import sys, os, io
-from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, abbrRemoveVowels, getSeparatorAndToken
+from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken, vowels
 import itertools
 import tokenize
 
@@ -12,6 +12,9 @@ def getDirpaths(root, keep_fn=lambda x: True):
 	flattened = list(itertools.chain(*filepaths))
 	print(flattened)
 	return filter(keep_fn, flattened)
+
+def abbrRemoveVowels(token):
+    return ''.join([l for l in token if l not in vowels])
 
 def main():
 	parser = argparse.ArgumentParser()
@@ -26,12 +29,12 @@ def main():
 
 	args = parser.parse_args()
 	dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
-	percentTest = float(args.percentage)
+	percentage = float(args.percentage)
 	transProbBuilder = TransitionProbsBuilder(percentage)
-	matchProbBuilder = MatchProbsBuilder(abbrFn, percentage)
+	matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
 	for dirpath in dirpaths:
 		transProbBuilder.updateTransitionProbs(dirpath)
-		matchProbBuilder.updateMatchProbsTrainingData(dirpath, abbrRemoveVowels)
+		matchProbBuilder.updateMatchProbsTrainingData(dirpath)
 
 	transProb = transProbBuilder.build()
 	matchProb = matchProbBuilder.build()
@@ -42,15 +45,12 @@ def main():
 			totalLineCount = sum(1 for line in f)
 			f.seek(0)
 			startTestLine = int(totalLineCount * (1 - percentTest))
-			lineCount = 0
-
-			for line in f:
-				if lineCount >= startTestLine:
-					g = tokenize.generate_tokens(io.BytesIO(line).readline)
-					observations = [token for (separator, token) in getSeparatorAndToken(g)]
-					separators = [separator for (separator, token) in getSeparatorAndToken(g)]
-					correctedLine = viterbi(observations, matchProb.allStates, transProb, matchProb, separators[1:])
-				lineCount += 1
+			
+			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
+			observations = [token for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
+			separators = [separator for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
+			matchProb.setDirpath(dirpath)
+			correctedLine = viterbi(observations, matchProb.allStates, transProb, matchProb, separators[1:])
 	
 
 if __name__ == "__main__":

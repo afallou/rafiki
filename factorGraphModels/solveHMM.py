@@ -12,23 +12,26 @@
 """
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
     assert(len(obs) == 1 + len(transitions_per_timestep))
-    V = [{}]
+    timesteps = len(obs)
+    V = [{} for t in range(timesteps)]
     path = {}
  
     # Initialize base cases (t == 0)
-    for y in states:
+    for state in states:
         V[0][y] = trans_p.getStartProb(y) * emit_p.getProb(y,obs[0])
-        path[y] = [y]
+        path[state] = [y]
  
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
-        V.append({})
         newpath = {}
  
-        for y in states:
-            (prob, state) = max((V[t-1][y0] * trans_p.getProb(y0, transitions_per_timestep[t], y) * emit_p.getProb(y,obs[t]), y0) for y0 in states)
-            V[t][y] = prob
-            newpath[y] = path[state] + [y]
+        for state in states:
+            (prob, old_state) = max(
+                [(V[t-1][prev_state] 
+                    * trans_p.getProb(prev_state, transitions_per_timestep[t], state) 
+                    * emit_p.getProb(state,obs[t]), prev_state) for prev_state in states], key=lambda x:x[0])
+            V[t][state] = prob
+            newpath[state] = path[old_state] + [state]
  
         # Don't need to remember the old paths
         path = newpath
@@ -36,6 +39,6 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
     if len(obs) != 1:
         n = t
         
-    print_dptable(V)
-    (prob, state) = max((V[n][y], y) for y in states)
+    print(V)
+    (prob, state) = max((V[n][state], state) for state in states, key=lambda x:x[0])
     return (prob, path[state])

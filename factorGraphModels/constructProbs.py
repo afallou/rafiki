@@ -6,6 +6,7 @@ from exceptions import NotImplementedError
 import sys
 from sklearn import linear_model
 import random
+from collections import Counter
 
 vowels = set(['a','e','i','o','u'])
 
@@ -26,7 +27,48 @@ class MatchProbsBuilder:
         self.Y = []
 
     def updateMatchProbsTrainingData(self, dirpath):
-        def getClosestDistance(lineno, linenoList):
+        with open(dirpath,'r') as f:
+            totalLineCount = sum(1 for line in f)
+            f.seek(0)
+            stopTrainLine = int(totalLineCount * (1 - float(self.percentTest)))
+            g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
+            self.last_seen_in_file[dirpath] = {}
+            for toknum, tokval, startloc, _, _ in g:
+                lineno, _ = startloc
+                print 'lineno', lineno
+                print 'stopTrainLine', stopTrainLine
+                print self.X
+                print self.Y
+                if lineno >= stopTrainLine:
+                    return 
+                if toknum == token.NAME:
+                    if tokval not in self.last_seen_in_file[dirpath]:
+                        self.last_seen_in_file[dirpath][tokval] = []
+                    last_seen_in_file_for_tokval = self.last_seen_in_file[dirpath][tokval]
+
+                abbrToken = self.abbrFn(tokval)
+                feature_vec = getFeatureVector(tokval, abbrToken, lineno, self.last_seen_in_file[dirpath])
+                last_seen_in_file_for_tokval.append(lineno) # order important
+                self.allNames.add(tokval)
+                self.X.append(feature_vec)
+                self.Y.append(1)
+
+                randomName = random.sample(self.allNames, 1)
+                while random == tokval:
+                    randomName = random.sample(self.allNames, 1)
+
+                feature_vec = getFeatureVector(random, abbrToken, lineno, self.last_seen_in_file[dirpath])
+                self.X.append(feature_vec)
+                self.Y.append(0)
+
+    def build(self):
+        print 'labels', self.Y
+        self.logreg.fit(self.X, self.Y)
+        return MatchProbs(self.logreg, self.last_seen_in_file)
+        
+
+def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
+    def getClosestDistance(lineno, linenoList):
             lastlineno = None
             for l in linenoList:
                 if l > lineno:
@@ -34,44 +76,6 @@ class MatchProbsBuilder:
                     return abs(lineno-lastlineno)
                 else: 
                     lastlineno = l 
-
-        with open(dirpath,'r') as f:
-            totalLineCount = sum(1 for line in f)
-            f.seek(0)
-            stopTrainLine = int(totalLineCount * (1 - float(self.percentTest)))
-            lineCount = 0
-            for line in f:
-                if lineCount < stopTrainLine:
-                    g = tokenize.generate_tokens(io.BytesIO(line).readline)
-                    self.last_seen_in_file[dirpath] = {}
-                    for toknum, tokval, startloc, endloc, lineno in g:
-                        if toknum == token.NAME:
-                            if tokval not in self.last_seen_in_file[dirpath]:
-                                self.last_seen_in_file[tokval] = {}
-                            last_seen_in_file_for_tokval = last_seen_in_file[dirpath][tokval]
-
-                            abbrToken = self.abbrFn(tokval)
-                            feature_vec = getFeatureVec(tokval, abbr, self.last_seen_in_file)
-                            last_seen_in_file_for_tokval.append(lineno) # order important
-                            self.allNames.append(tokval)
-                            self.X.append(feature_vec)
-                            self.Y.append(1)
-
-                            randomName = random.choice(self.allNames)
-                            while random == tokval:
-                                randomName = random.choice(self.allNames)
-
-                            feature_vec = getFeatureVec(random, abbr, self.last_seen_in_file)
-                            self.X.append(feature_vec)
-                            self.Y.append(0)
-                lineCount += 1
-
-    def build(self):
-        self.logreg.fit(self.X, self.Y)
-        return MatchProbs(self.logreg, self.last_seen_in_file)
-        
-
-def getFeatureVector(name, abbr, last_seen_in_file):
     return [getNumSharedConsonants(abbr, name), 
             getNumSharedCapitals(abbr, name),
             getNumSharedNonLetters(abbr, name),
@@ -82,8 +86,8 @@ def getFeatureVector(name, abbr, last_seen_in_file):
             getPercentageSharedConsonants(abbr, name),
             getPercentageSharedLetters(abbr, name),
             getOtherPercentageSharedLetters(abbr, name),
-            (1 if tokval in self.last_seen_in_file[dirpath] else 0),
-            getClosestDistance(lineno,self.last_seen_in_file_for_tokval) if tokval in self.last_seen_in_file[dirpath] else sys.maxint] # TODO
+            (1 if name in last_seen_in_file else 0),
+            getClosestDistance(abbr_lineno,last_seen_in_file[name]) if name in last_seen_in_file else sys.maxint] # TODO
 
 
 # Features
@@ -113,7 +117,7 @@ def orderedLettersRecurse(tok1, tok2, counts):
     else:
         count1 = Counter(tok1)
         count2 = Counter(tok2)
-        shared_letters_count = sum([min(count1, count2) for c in count1])
+        shared_letters_count = sum([min(count1[c], count2[c]) for c in count1])
         if shared_letters_count == 0:
             return 0
         else:
@@ -144,9 +148,22 @@ class MatchProbs:
         self.logreg = logreg 
         # last_seen_in_file is a map from filename => {name:[lineno1, lineno2, ...]}
         self.last_seen_in_file = last_seen_in_file
+        self.dirpath = None
+        self.lineno = None
+
+    def setDirpath(self, dirpath):
+        self.dirpath = dirpath
+
+    def setLineNo(self, lineno):
+        self.lineno = lineno
 
     def getProb(self, name, abbr):
-        feature_vec = getFeatureVec(name, abbr, self.last_seen_in_file)
+        """
+            name: a string 
+            abbr: a MaybeName (TODO: what if this is not a name?)
+        """
+        assert(self.dirpath is not None and self.lineno is not None)
+        feature_vec = getFeatureVector(name, abbr.getName(), abbr.lineno, self.last_seen_in_file[self.dirpath])
         print self.classes_
         return self.logreg.predict_proba([feature_vec])[0][0] # TODO check order in self.classes_
 
@@ -185,20 +202,29 @@ class TransitionProbs:
         return self.startProb[s0]
 
 class MaybeName:
-    def __init__(self,isName, name=None):
+    def __init__(self,isName, lineno, name=None):
         assert((name is None and not isName) or (name is not None and isName))
         self.isName = isName
         self.name = name
+        self.lineno = lineno
 
     def getName(self):
         assert(isName)
         return self.name
 
 SPACE = ' '
-def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
+def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yields (separator, MaybeName)
     at_beginning = True
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
-    for toknum, tokval, _, _, _  in token_gen:
+    for toknum, tokval, startloc, _, _  in token_gen:
+        lineno, _ = startloc
+        if train:
+            if lineno >= testTrainLine:
+                return
+        else:
+            if lineno < testTrainLine:
+                return
+
         print 'tokval: %s' % (tokval)
         print 'toknum',toknum
         # we see a token that is not a separator
@@ -207,12 +233,12 @@ def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
         if toknum == token.NAME:
             if not at_beginning and prev_sep is None:
                 prev_sep = SPACE
-            yield (prev_sep, MaybeName(True, tokval))
+            yield (prev_sep, MaybeName(True, lineno, tokval))
             prev_sep = None
         elif toknum == token.NUMBER or toknum == token.STRING:
             if not at_beginning and prev_sep is None:
                 prev_sep = SPACE 
-            yield(prev_sep, MaybeName(False))
+            yield(prev_sep, MaybeName(False, lineno))
             prev_sep = None
         elif at_beginning:
             continue
@@ -241,34 +267,26 @@ class TransitionProbsBuilder:
             totalLineCount = sum(1 for line in f)
             f.seek(0)
             stopTrainLine = int(totalLineCount * (1 - float(self.percentTest)))
-            lineCount = 0
-            for line in f:
-                if lineCount >= stopTrainLine:
-                    break
-                g = tokenize.generate_tokens(io.BytesIO(line).readline)
-                print '======'
-                print line
-                print '======'
-                prev_non_sep_tok = None
-                for prev_sep, maybe_name  in getSeparatorAndToken(g):
-                    print 'prev_non_sep_tok:', (prev_non_sep_tok)
-                    print 'prev_sep', prev_sep
-                    assert((prev_non_sep_tok is None and prev_sep is None) or (prev_non_sep_tok is not None and prev_sep is not None))
-                    if prev_non_sep_tok is not None and prev_sep is not None:
-                        if prev_non_sep_tok in self.transProb:
-                            if prev_sep in self.transProb[prev_non_sep_tok]:
-                                if maybe_name in self.transProb[prev_non_sep_tok][prev_sep]:
-                                    self.transProb[prev_non_sep_tok][prev_sep][maybe_name] += 1
-                                else:
-                                    self.transProb[prev_non_sep_tok][prev_sep][maybe_name] = 1
+            g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
+            prev_non_sep_tok = None
+            for prev_sep, maybe_name  in getSeparatorAndToken(g, stopTrainLine):
+                print 'prev_non_sep_tok:', (prev_non_sep_tok)
+                print 'prev_sep', prev_sep
+                assert((prev_non_sep_tok is None and prev_sep is None) or (prev_non_sep_tok is not None and prev_sep is not None))
+                if prev_non_sep_tok is not None and prev_sep is not None:
+                    if prev_non_sep_tok in self.transProb:
+                        if prev_sep in self.transProb[prev_non_sep_tok]:
+                            if maybe_name in self.transProb[prev_non_sep_tok][prev_sep]:
+                                self.transProb[prev_non_sep_tok][prev_sep][maybe_name] += 1
                             else:
-                                self.transProb[prev_non_sep_tok][prev_sep] = {maybe_name: 1}
-
+                                self.transProb[prev_non_sep_tok][prev_sep][maybe_name] = 1
                         else:
-                            self.transProb[prev_non_sep_tok] = {prev_sep: {maybe_name: 1}}
-                    
-                    prev_non_sep_tok = maybe_name
-                lineCount += 1
+                            self.transProb[prev_non_sep_tok][prev_sep] = {maybe_name: 1}
+
+                    else:
+                        self.transProb[prev_non_sep_tok] = {prev_sep: {maybe_name: 1}}
+                
+                prev_non_sep_tok = maybe_name
 
     def build(self):
         # replace all the innermost dicts with ImmutableNormalizingDicts
