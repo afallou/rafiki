@@ -11,6 +11,7 @@
         a tuple with the probability of the assignment and the assignment
 """
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
+    assert(len(obs) == 1 + len(transitions_per_timestep))
     V = [{}]
     path = {}
  
