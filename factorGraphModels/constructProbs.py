@@ -19,14 +19,16 @@ def getNumSharedCharClass(tok1, tok2, charClassFn):
 
 
 class MatchProbsBuilder:
-    def __init__(self):
+    # TODO: percentage
+    def __init__(self, abbrFn, percentage=0.2):
         self.allNames = set()
+        self.abbrFn = abbrFn
         self.logreg = linear_model.LogisticRegression()
         self.last_seen_in_file = {}
         self.X = []
         self.Y = []
 
-    def updateMatchProbsTrainingData(self, dirpath, abbrFn):
+    def updateMatchProbsTrainingData(self, dirpath):
         def getClosestDistance(lineno, linenoList):
             lastlineno = None
             for l in linenoList:
@@ -37,29 +39,35 @@ class MatchProbsBuilder:
                     lastlineno = l 
 
         with open(dirpath,'r') as f:
-            content=f.read()
-            g = tokenize.generate_tokens(io.BytesIO(content).readline)
-            self.last_seen_in_file[dirpath] = {}
-            for toknum, tokval, startloc, endloc, lineno in g:
-                if toknum == token.NAME:
-                    if tokval not in self.last_seen_in_file[dirpath]:
-                        self.last_seen_in_file[tokval] = {}
-                    last_seen_in_file_for_tokval = last_seen_in_file[dirpath][tokval]
+            totalLineCount = sum(1 for line in f)
+            f.seek(0)
+            stopTrainLine = int(totalLineCount * (1 - percentTest))
+            lineCount = 0
+            for line in f:
+                if lineCount < stopTrainLine:
+                    g = tokenize.generate_tokens(io.BytesIO(line).readline)
+                    self.last_seen_in_file[dirpath] = {}
+                    for toknum, tokval, startloc, endloc, lineno in g:
+                        if toknum == token.NAME:
+                            if tokval not in self.last_seen_in_file[dirpath]:
+                                self.last_seen_in_file[tokval] = {}
+                            last_seen_in_file_for_tokval = last_seen_in_file[dirpath][tokval]
 
-                    abbrToken = abbrFn(tokval)
-                    feature_vec = getFeatureVec(tokval, abbr, self.last_seen_in_file)
-                    last_seen_in_file_for_tokval.append(lineno) # order important
-                    self.allNames.append(tokval)
-                    self.X.append(feature_vec)
-                    self.Y.append(1)
+                            abbrToken = self.abbrFn(tokval)
+                            feature_vec = getFeatureVec(tokval, abbr, self.last_seen_in_file)
+                            last_seen_in_file_for_tokval.append(lineno) # order important
+                            self.allNames.append(tokval)
+                            self.X.append(feature_vec)
+                            self.Y.append(1)
 
-                    randomName = random.choice(self.allNames)
-                    while random == tokval:
-                        randomName = random.choice(self.allNames)
+                            randomName = random.choice(self.allNames)
+                            while random == tokval:
+                                randomName = random.choice(self.allNames)
 
-                    feature_vec = getFeatureVec(random, abbr, self.last_seen_in_file)
-                    self.X.append(feature_vec)
-                    self.Y.append(0)
+                            feature_vec = getFeatureVec(random, abbr, self.last_seen_in_file)
+                            self.X.append(feature_vec)
+                            self.Y.append(0)
+                lineCount += 1
 
     def build(self):
         self.logreg.fit(self.X, self.Y)
@@ -217,7 +225,8 @@ def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
 class TransitionProbsBuilder:
     # we're going to treat every thing other than name, string, number as a separator
 
-    def __init__(self):
+    # TODO: percentage
+    def __init__(self, percentage=0.2):
         self.transProb = {}
 
     def updateTransitionProbs(self, dirpath):
