@@ -19,9 +19,9 @@ def getNumSharedCharClass(tok1, tok2, charClassFn):
 
 
 class MatchProbsBuilder:
-    # TODO: percentage
     def __init__(self, abbrFn, percentage=0.2):
         self.allNames = set()
+        self.percentTest = percentage
         self.abbrFn = abbrFn
         self.logreg = linear_model.LogisticRegression()
         self.last_seen_in_file = {}
@@ -41,7 +41,7 @@ class MatchProbsBuilder:
         with open(dirpath,'r') as f:
             totalLineCount = sum(1 for line in f)
             f.seek(0)
-            stopTrainLine = int(totalLineCount * (1 - percentTest))
+            stopTrainLine = int(totalLineCount * (1 - float(self.percentTest)))
             lineCount = 0
             for line in f:
                 if lineCount < stopTrainLine:
@@ -225,9 +225,9 @@ def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
 class TransitionProbsBuilder:
     # we're going to treat every thing other than name, string, number as a separator
 
-    # TODO: percentage
     def __init__(self, percentage=0.2):
         self.transProb = {}
+        self.percentTest = percentage
 
     def updateTransitionProbs(self, dirpath):
         with open(dirpath,'r') as f:
