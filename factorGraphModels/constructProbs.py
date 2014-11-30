@@ -118,12 +118,6 @@ class TransitionProbs:
         for s0 in self.transProb:
             self.startProb[s0] = self.startProb[s0]/sum(self.startProb.values())
 
-        print 'startProb'
-        print self.startProb
-
-       # for s0 in self.transProb:
-
-        #self.startProb = {state:float(sum(self.transProb[state][transition].values() for transition in self.transProb[state]))/sum(self.startProb.values()) for state in self.startProb}
         self.lambda_val = lambda_val
 
     def getProb(self, s0, sep, s1):

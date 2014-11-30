@@ -44,19 +44,21 @@ def main():
 	for dirpath in dirpaths:
 		with open(dirpath, 'r') as f:
 			totalLineCount = sum(1 for line in f)
+			print totalLineCount
 			f.seek(0)
 			startTestLine = int(totalLineCount * (1 - percentage))
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 
-			for lineno in range(startTestLine, totalLineCount):
+			for lineno in range(startTestLine, totalLineCount+1): # line 1 is a line
+				print 'lineno: ', lineno
 				# TODO: if slow, the next line is wasteful since we get a new generator every time
-				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, 7, train=False)]
+				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)]
 				observations = [token for (separator, token) in sep_tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+				print observations
 				print correctedLine
-	
 
 if __name__ == "__main__":
 	main()

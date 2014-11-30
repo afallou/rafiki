@@ -10,8 +10,13 @@
     Returns:
         a tuple with the probability of the assignment and the assignment
 """
-def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
-    print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
+def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False):
+    if verbose:
+        print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
+
+    if len(obs) == 0 and len(transitions_per_timestep)==0: 
+        return (0,[])
+
     assert(len(obs) == 1 + len(transitions_per_timestep))
     timesteps = len(obs)
     V = [{} for t in range(timesteps)]
@@ -43,7 +48,10 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
     n = 0           # if only one element is observed max is sought in the initialization values
     if len(obs) != 1:
         n = t
-        
-    print(V)
+
+    if verbose:
+        print 'viterbi dp table'
+        print(V)
+
     (prob, state) = max( ((V[n][state], state) for state in states), key=lambda x:x[0])
     return (prob, path[state])

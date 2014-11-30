@@ -56,7 +56,6 @@ def orderedLettersRecurse(tok1, tok2, counts):
                         max_shared = max(1 + counts[i][j], max_shared)
             return max_shared
 
-
 def getPercentageSharedCapitals(tok1, tok2):
     return 1. * getNumSharedCapitals(tok1, tok2) / len(tok1) if len(tok1) > 0 else 0
 
