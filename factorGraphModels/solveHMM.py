@@ -27,10 +27,14 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
         newpath = {}
 
         for state in states:
+            for prev_state in states:
+                print 'transition', trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state)
+                print 'emit',emit_p.getProb(state, obs[t]) 
             (prob, old_state) = max(
                 [(V[t-1][prev_state] 
                     * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) 
                     * emit_p.getProb(state,obs[t]), prev_state) for prev_state in states], key=lambda x:x[0])
+            print 'proba======',prob
             V[t][state] = prob
             newpath[state] = path[old_state] + [state]
  

@@ -35,10 +35,6 @@ class MatchProbsBuilder:
             self.last_seen_in_file[dirpath] = {}
             for toknum, tokval, startloc, _, _ in g:
                 lineno, _ = startloc
-                print 'lineno', lineno
-                print 'stopTrainLine', stopTrainLine
-                print self.X
-                print self.Y
                 if lineno >= stopTrainLine:
                     return 
 
@@ -63,7 +59,6 @@ class MatchProbsBuilder:
                     self.Y.append(0)
 
     def build(self):
-        print 'labels', self.Y, 'X:', self.X
         self.logreg.fit(self.X, self.Y)
         return MatchProbs(self.logreg, self.last_seen_in_file)
         
@@ -71,7 +66,6 @@ class MatchProbsBuilder:
 def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
     def getClosestDistance(lineno, linenoList):
         return lineno - max(linenoList)
-    print 'name:', name
     MAX_NUM_LINES = 30
     return [getNumSharedConsonants(abbr, name), 
             getNumSharedCapitals(abbr, name),
@@ -147,7 +141,7 @@ class MatchProbs:
         self.last_seen_in_file = last_seen_in_file
         self.dirpath = None
         self.lineno = None
-
+        # print 'coeffs', self.logreg.coef_
     def setDirpath(self, dirpath):
         self.dirpath = dirpath
 
@@ -158,8 +152,8 @@ class MatchProbs:
         """
         assert(self.dirpath is not None)
         feature_vec = getFeatureVector(name, abbr.getName(), abbr.lineno, self.last_seen_in_file[self.dirpath])
-        print self.logreg.classes_
-        return self.logreg.predict_proba([feature_vec])[0][0] # TODO check order in self.classes_
+        # print self.logreg.classes_
+        return self.logreg.predict_proba([feature_vec])[0][1] # TODO check order in self.classes_
 
 
 
@@ -190,7 +184,7 @@ class TransitionProbs:
         self.lambda_val = lambda_val
 
     def getProb(self, s0, sep, s1):
-        print "s0==", s0, "==sep==", sep, "==s1==", s1, "=="
+        # print "s0==", s0, "==sep==", sep, "==s1==", s1, "=="
         try:
             return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
         except KeyError:
@@ -226,8 +220,6 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
             if lineno != testTrainLine:
                 continue
 
-        print 'tokval: %s' % (tokval)
-        print 'toknum',toknum
         # we see a token that is not a separator
         if toknum == tokenize.COMMENT:
             continue
@@ -271,8 +263,6 @@ class TransitionProbsBuilder:
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             prev_non_sep_tok = None
             for prev_sep, maybe_name  in getSeparatorAndToken(g, stopTrainLine):
-                print 'prev_non_sep_tok:', (prev_non_sep_tok)
-                print 'prev_sep', prev_sep
                 assert((prev_non_sep_tok is None and prev_sep is None) or (prev_non_sep_tok is not None and prev_sep is not None))
                 if prev_non_sep_tok is not None and prev_sep is not None:
                     if prev_non_sep_tok in self.transProb:
@@ -293,9 +283,6 @@ class TransitionProbsBuilder:
         # replace all the innermost dicts with ImmutableNormalizingDicts
         for key1 in self.transProb:
             for key2 in self.transProb[key1]:
-		print key1
-		print key2
-		print self.transProb[key1][key2]
                 self.transProb[key1][key2] = ImmutableNormalizingDict(self.transProb[key1][key2])
         return TransitionProbs(self.transProb)
 
