@@ -67,8 +67,16 @@ class MatchProbsBuilder:
         
 
 def getFeatureVector(name, abbr, last_seen_in_file):
-    return [getNumSharedConsonants(abbrToken, tokval), 
-            # others 
+    return [getNumSharedConsonants(abbr, name), 
+            getNumSharedCapitals(abbr, name),
+            getNumSharedNonLetters(abbr, name),
+            getNumSharedLetters(abbr, name),
+            getNumSharedOrderedLetters(abbr, name),
+            getNumSharedOrderedLetters(abbr, name),
+            getPercentageSharedCapitals(abbr, name),
+            getPercentageSharedConsonants(abbr, name),
+            getPercentageSharedLetters(abbr, name),
+            getOtherPercentageSharedLetters(abbr, name),
             (1 if tokval in self.last_seen_in_file[dirpath] else 0),
             getClosestDistance(lineno,self.last_seen_in_file_for_tokval) if tokval in self.last_seen_in_file[dirpath] else sys.maxint] # TODO
 
