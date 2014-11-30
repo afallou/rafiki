@@ -9,9 +9,6 @@ import random
 
 vowels = set(['a','e','i','o','u'])
 
-def abbrRemoveVowels(token):
-    ''.join([l for l in token if l not in vowels]);
-
 def getNumSharedCharClass(tok1, tok2, charClassFn):
     tok1Consonants = Counter([l for l in tok1 if charClassFn(l)])
     tok2Consonants = Counter([l for l in tok2 if charClassFn(l)])
@@ -197,26 +194,36 @@ class MaybeName:
         assert(isName)
         return self.name
 
-
+SPACE = ' '
 def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
-    prev_non_sep_tok = None
+    at_beginning = True
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
-    for toknum, tokval, _, _, _  in g:
+    for toknum, tokval, _, _, _  in token_gen:
+        print 'tokval: %s' % (tokval)
+        print 'toknum',toknum
         # we see a token that is not a separator
         if toknum == tokenize.COMMENT:
             continue
         if toknum == token.NAME:
-            prev_non_sep_tok = MaybeName(True, tokval)
-            yield (prev_sep, prev_non_sep_tok)
+            if not at_beginning and prev_sep is None:
+                prev_sep = SPACE
+            yield (prev_sep, MaybeName(True, tokval))
+            prev_sep = None
         elif toknum == token.NUMBER or toknum == token.STRING:
-            prev_non_sep_tok = MaybeName(False)
-            yield(prev_sep, prev_non_sep_tok)
-        else: # we see a token that is a separator
-            if prev_non_sep_tok != None: # we're not at the beginning of the line
-                if prev_sep is None:
-                    prev_sep = tokval
-                else:
-                    prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator 
+            if not at_beginning and prev_sep is None:
+                prev_sep = SPACE 
+            yield(prev_sep, MaybeName(False))
+            prev_sep = None
+        elif at_beginning:
+            continue
+        else:  
+            if prev_sep is None:
+                prev_sep = tokval
+            else:
+                prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator 
+        at_beginning = False
+
+
 
 """
     Return:
@@ -239,10 +246,15 @@ class TransitionProbsBuilder:
                 if lineCount >= stopTrainLine:
                     break
                 g = tokenize.generate_tokens(io.BytesIO(line).readline)
+                print '======'
+                print line
+                print '======'
                 prev_non_sep_tok = None
                 for prev_sep, maybe_name  in getSeparatorAndToken(g):
-                    assert((prev_non_sep_tok is None and sep is None) or (prev_non_sep_tok is not None and sep is not None))
-                    if prev_non_sep_tok is not None and sep is not None:
+                    print 'prev_non_sep_tok:', (prev_non_sep_tok)
+                    print 'prev_sep', prev_sep
+                    assert((prev_non_sep_tok is None and prev_sep is None) or (prev_non_sep_tok is not None and prev_sep is not None))
+                    if prev_non_sep_tok is not None and prev_sep is not None:
                         if prev_non_sep_tok in self.transProb:
                             if prev_sep in self.transProb[prev_non_sep_tok]:
                                 if maybe_name in self.transProb[prev_non_sep_tok][prev_sep]:
