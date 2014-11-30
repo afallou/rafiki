@@ -19,8 +19,14 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
  
     # Initialize base cases (t == 0)
     for state in states:
+        print 'emit from state'
+        print emit_p.getProb(state,obs[0])
+        print 'start in state'
+        print trans_p.getStartProb(state)
         V[0][state] = trans_p.getStartProb(state) * emit_p.getProb(state,obs[0])
         path[state] = [state]
+    # print 'start with a?' + Maybestr(trans_p.transProb['a'])
+    print 'initializing V: ' + str(V)
  
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
@@ -28,13 +34,13 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
 
         for state in states:
             for prev_state in states:
-                print 'transition', trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state)
-                print 'emit',emit_p.getProb(state, obs[t]) 
-            (prob, old_state) = max(
+                print 'transition' + str(trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state))
+                print 'emit'+str(emit_p.getProb(state, obs[t]))
+                (prob, old_state) = max(
                 [(V[t-1][prev_state] 
                     * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) 
                     * emit_p.getProb(state,obs[t]), prev_state) for prev_state in states], key=lambda x:x[0])
-            print 'proba======',prob
+            # print 'proba======',prob
             V[t][state] = prob
             newpath[state] = path[old_state] + [state]
  
