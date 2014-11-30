@@ -180,8 +180,8 @@ class TransitionProbs:
         return self.startProb[s0]
 
 class MaybeName:
-    def __init__(self,isName, name='',):
-        assert((name=='' and not isName) or (name!='' and isName))
+    def __init__(self,isName, name=None):
+        assert((name is None and not isName) or (name is not None and isName))
         self.isName = isName
         self.name = name
 
@@ -189,23 +189,26 @@ class MaybeName:
         assert(isName)
         return self.name
 
-"""
+
 def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
+    prev_non_sep_tok = None
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
     for toknum, tokval, _, _, _  in g:
         # we see a token that is not a separator
         if toknum == tokenize.COMMENT:
             continue
         if toknum == token.NAME:
-            return (prev_sep, MaybeName())
-
-        elif toknum != token.NAME and toknum != token.NUMBER and toknum != token.STRING: # we see a token that is a separator
-            if prev_non_sep_tok != None:
+            prev_non_sep_tok = MaybeName(True, tokval)
+            yield (prev_sep, prev_non_sep_tok)
+        elif toknum == token.NUMBER or toknum == token.STRING:
+            prev_non_sep_tok = MaybeName(False)
+            yield(prev_sep, prev_non_sep_tok)
+        else: # we see a token that is a separator
+            if prev_non_sep_tok != None: # we're not at the beginning of the line
                 if prev_sep is None:
                     prev_sep = tokval
                 else:
-                    prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator
-"""
+                    prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator 
 
 """
     Return:
