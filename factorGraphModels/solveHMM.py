@@ -11,6 +11,7 @@
         a tuple with the probability of the assignment and the assignment
 """
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
+    print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
     assert(len(obs) == 1 + len(transitions_per_timestep))
     timesteps = len(obs)
     V = [{} for t in range(timesteps)]
@@ -18,8 +19,8 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
  
     # Initialize base cases (t == 0)
     for state in states:
-        V[0][y] = trans_p.getStartProb(y) * emit_p.getProb(y,obs[0])
-        path[state] = [y]
+        V[0][state] = trans_p.getStartProb(state) * emit_p.getProb(state,obs[0])
+        path[state] = [state]
  
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
@@ -40,5 +41,5 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep):
         n = t
         
     print(V)
-    (prob, state) = max((V[n][state], state) for state in states, key=lambda x:x[0])
+    (prob, state) = max( ((V[n][state], state) for state in states), key=lambda x:x[0])
     return (prob, path[state])

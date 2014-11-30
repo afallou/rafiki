@@ -41,13 +41,14 @@ class MatchProbsBuilder:
                 print self.Y
                 if lineno >= stopTrainLine:
                     return 
+
+                abbrToken = self.abbrFn(tokval)
+                feature_vec = getFeatureVector(tokval, abbrToken, lineno, self.last_seen_in_file[dirpath])
+
                 if toknum == token.NAME:
                     if tokval not in self.last_seen_in_file[dirpath]:
                         self.last_seen_in_file[dirpath][tokval] = []
                     last_seen_in_file_for_tokval = self.last_seen_in_file[dirpath][tokval]
-
-                abbrToken = self.abbrFn(tokval)
-                feature_vec = getFeatureVector(tokval, abbrToken, lineno, self.last_seen_in_file[dirpath])
                 last_seen_in_file_for_tokval.append(lineno) # order important
                 self.allNames.add(tokval)
                 self.X.append(feature_vec)
@@ -57,25 +58,21 @@ class MatchProbsBuilder:
                 while random == tokval:
                     randomName = random.sample(self.allNames, 1)
 
-                feature_vec = getFeatureVector(random, abbrToken, lineno, self.last_seen_in_file[dirpath])
+                feature_vec = getFeatureVector(randomName[0], abbrToken, lineno, self.last_seen_in_file[dirpath])
                 self.X.append(feature_vec)
                 self.Y.append(0)
 
     def build(self):
-        print 'labels', self.Y
+        print 'labels', self.Y, 'X:', self.X
         self.logreg.fit(self.X, self.Y)
         return MatchProbs(self.logreg, self.last_seen_in_file)
         
 
 def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
     def getClosestDistance(lineno, linenoList):
-            lastlineno = None
-            for l in linenoList:
-                if l > lineno:
-                    assert(lastlineno is not None)
-                    return abs(lineno-lastlineno)
-                else: 
-                    lastlineno = l 
+        return lineno - max(linenoList)
+    print 'name:', name
+    MAX_NUM_LINES = 30
     return [getNumSharedConsonants(abbr, name), 
             getNumSharedCapitals(abbr, name),
             getNumSharedNonLetters(abbr, name),
@@ -87,7 +84,7 @@ def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
             getPercentageSharedLetters(abbr, name),
             getOtherPercentageSharedLetters(abbr, name),
             (1 if name in last_seen_in_file else 0),
-            getClosestDistance(abbr_lineno,last_seen_in_file[name]) if name in last_seen_in_file else sys.maxint] # TODO
+            getClosestDistance(abbr_lineno,last_seen_in_file[name]) if name in last_seen_in_file else MAX_NUM_LINES] # TODO
 
 
 # Features
@@ -109,7 +106,7 @@ def getNumSharedLetters(tok1, tok2):
 
 def getNumSharedOrderedLetters(tok1, tok2):
     counts = [[-1 for _ in xrange(len(tok2))] for _ in xrange(len(tok1))]
-    orderedLettersRecurse(tok1, tok2, counts)
+    return orderedLettersRecurse(tok1, tok2, counts)
     
 def orderedLettersRecurse(tok1, tok2, counts):
     if len(tok1) == 0 or len(tok2) == 0:
@@ -132,16 +129,16 @@ def orderedLettersRecurse(tok1, tok2, counts):
 
 
 def getPercentageSharedCapitals(tok1, tok2):
-    return 1. * getNumSharedCapitals(tok1, tok2) / len(tok1)
+    return 1. * getNumSharedCapitals(tok1, tok2) / len(tok1) if len(tok1) > 0 else 0
 
 def getPercentageSharedConsonants(tok1, tok2):
-    return 1. * getNumSharedConsonants(tok1, tok2) / len(tok1)
+    return 1. * getNumSharedConsonants(tok1, tok2) / len(tok1) if len(tok1) > 0 else 0
 
 def getPercentageSharedLetters(tok1, tok2):
-    return 1. * getNumSharedLetters(tok1, tok2) / len(tok1)
+    return 1. * getNumSharedLetters(tok1, tok2) / len(tok1) if len(tok1) > 0 else 0
 
 def getOtherPercentageSharedLetters(tok1, tok2):
-    return 1. * getNumSharedLetters(tok1, tok2) / len(tok2)
+    return 1. * getNumSharedLetters(tok1, tok2) / len(tok2) if len(tok2) > 0 else 0
 
 class MatchProbs:
     def __init__(self, logreg, last_seen_in_file):
@@ -223,7 +220,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
                 return
         else:
             if lineno < testTrainLine:
-                return
+                continue
 
         print 'tokval: %s' % (tokval)
         print 'toknum',toknum

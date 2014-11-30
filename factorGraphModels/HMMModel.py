@@ -3,6 +3,7 @@ import sys, os, io
 from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken, vowels
 import itertools
 import tokenize
+from solveHMM import viterbi
 
 """
 	Return a list of filenames 
@@ -44,13 +45,14 @@ def main():
 		with open(dirpath, 'r') as f:
 			totalLineCount = sum(1 for line in f)
 			f.seek(0)
-			startTestLine = int(totalLineCount * (1 - percentTest))
+			startTestLine = int(totalLineCount * (1 - percentage))
 			
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
-			observations = [token for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
-			separators = [separator for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
+			sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
+			observations = [token for (separator, token) in sep_tokens]
+			separators = [separator for (separator, token) in sep_tokens]
 			matchProb.setDirpath(dirpath)
-			correctedLine = viterbi(observations, matchProb.allStates, transProb, matchProb, separators[1:])
+			correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 	
 
 if __name__ == "__main__":
