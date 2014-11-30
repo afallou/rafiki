@@ -50,6 +50,7 @@ def main():
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 			sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
 			observations = [token for (separator, token) in sep_tokens]
+			print "observations", observations
 			separators = [separator for (separator, token) in sep_tokens]
 			matchProb.setDirpath(dirpath)
 			correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])

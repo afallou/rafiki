@@ -151,17 +151,14 @@ class MatchProbs:
     def setDirpath(self, dirpath):
         self.dirpath = dirpath
 
-    def setLineNo(self, lineno):
-        self.lineno = lineno
-
     def getProb(self, name, abbr):
         """
             name: a string 
             abbr: a MaybeName (TODO: what if this is not a name?)
         """
-        assert(self.dirpath is not None and self.lineno is not None)
+        assert(self.dirpath is not None)
         feature_vec = getFeatureVector(name, abbr.getName(), abbr.lineno, self.last_seen_in_file[self.dirpath])
-        print self.classes_
+        print self.logreg.classes_
         return self.logreg.predict_proba([feature_vec])[0][0] # TODO check order in self.classes_
 
 
@@ -193,10 +190,11 @@ class TransitionProbs:
         self.lambda_val = lambda_val
 
     def getProb(self, s0, sep, s1):
-        return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb[s0] * (1- self.lambda_val)
+        print "s0==", s0, "==sep==", sep, "==s1==", s1, "=="
+        return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
 
     def getStartProb(self, s0):
-        return self.startProb[s0]
+        return self.startProb.get(s0, 0)
 
 class MaybeName:
     def __init__(self,isName, lineno, name=None):
@@ -206,8 +204,11 @@ class MaybeName:
         self.lineno = lineno
 
     def getName(self):
-        assert(isName)
+        assert(self.isName)
         return self.name
+
+    def __repr__(self):
+        return self.name if self.isName else 'CONSTANT'
 
 SPACE = ' '
 def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yields (separator, MaybeName)
@@ -219,7 +220,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
             if lineno >= testTrainLine:
                 return
         else:
-            if lineno < testTrainLine:
+            if lineno != testTrainLine:
                 continue
 
         print 'tokval: %s' % (tokval)
