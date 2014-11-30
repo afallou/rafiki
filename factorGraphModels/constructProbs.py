@@ -180,7 +180,7 @@ class TransitionProbs:
         return self.startProb[s0]
 
 class MaybeName:
-    def __init__(self,name='',isName=True):
+    def __init__(self,isName, name='',):
         assert((name=='' and not isName) or (name!='' and isName))
         self.isName = isName
         self.name = name
@@ -188,6 +188,7 @@ class MaybeName:
     def getName(self):
         assert(isName)
         return self.name
+
 """
 def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
@@ -196,7 +197,7 @@ def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
         if toknum == tokenize.COMMENT:
             continue
         if toknum == token.NAME:
-            if prev_non_sep_tok != None and prev_sep != None:
+            return (prev_sep, MaybeName())
 
         elif toknum != token.NAME and toknum != token.NUMBER and toknum != token.STRING: # we see a token that is a separator
             if prev_non_sep_tok != None:
@@ -205,6 +206,7 @@ def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
                 else:
                     prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator
 """
+
 """
     Return:
         transProb such that transProb[w0][sep][w1] gives you the count
