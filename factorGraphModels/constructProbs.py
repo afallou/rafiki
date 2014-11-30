@@ -49,18 +49,18 @@ class MatchProbsBuilder:
                     if tokval not in self.last_seen_in_file[dirpath]:
                         self.last_seen_in_file[dirpath][tokval] = []
                     last_seen_in_file_for_tokval = self.last_seen_in_file[dirpath][tokval]
-                last_seen_in_file_for_tokval.append(lineno) # order important
-                self.allNames.add(tokval)
-                self.X.append(feature_vec)
-                self.Y.append(1)
+                    last_seen_in_file_for_tokval.append(lineno) # order important
+                    self.allNames.add(tokval)
+                    self.X.append(feature_vec)
+                    self.Y.append(1)
 
-                randomName = random.sample(self.allNames, 1)
-                while random == tokval:
                     randomName = random.sample(self.allNames, 1)
+                    while random == tokval:
+                        randomName = random.sample(self.allNames, 1)
 
-                feature_vec = getFeatureVector(randomName[0], abbrToken, lineno, self.last_seen_in_file[dirpath])
-                self.X.append(feature_vec)
-                self.Y.append(0)
+                    feature_vec = getFeatureVector(randomName[0], abbrToken, lineno, self.last_seen_in_file[dirpath])
+                    self.X.append(feature_vec)
+                    self.Y.append(0)
 
     def build(self):
         print 'labels', self.Y, 'X:', self.X
@@ -191,7 +191,10 @@ class TransitionProbs:
 
     def getProb(self, s0, sep, s1):
         print "s0==", s0, "==sep==", sep, "==s1==", s1, "=="
-        return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
+        try:
+            return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
+        except KeyError:
+            return 0
 
     def getStartProb(self, s0):
         return self.startProb.get(s0, 0)

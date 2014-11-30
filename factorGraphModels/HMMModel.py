@@ -45,12 +45,13 @@ def main():
 		with open(dirpath, 'r') as f:
 			totalLineCount = sum(1 for line in f)
 			f.seek(0)
-			startTestLine = int(totalLineCount * (1 - percentage))
+			startTestLine = int(totalLineCount * (1 - percentage)) + 1
 			
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 			sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
 			observations = [token for (separator, token) in sep_tokens]
 			print "observations", observations
+			print "allNames", matchProbBuilder.allNames
 			separators = [separator for (separator, token) in sep_tokens]
 			matchProb.setDirpath(dirpath)
 			correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
