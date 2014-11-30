@@ -1,6 +1,7 @@
 import argparse
 import sys, os, io
-from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken, vowels
+from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken
+from extract_features import vowels
 import itertools
 import tokenize
 from solveHMM import viterbi
@@ -41,24 +42,20 @@ def main():
 	matchProb = matchProbBuilder.build()
 
 	for dirpath in dirpaths:
-
 		with open(dirpath, 'r') as f:
 			totalLineCount = sum(1 for line in f)
 			f.seek(0)
-			startTestLine = int(totalLineCount * (1 - percentage)) + 1
-			startTestLine = 7
-			
+			startTestLine = int(totalLineCount * (1 - percentage))
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
-			sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, startTestLine, train=False)]
-			observations = [token for (separator, token) in sep_tokens]
-			print "observations"+str(observations)
 
-			print "allNames", matchProbBuilder.allNames
-			separators = [separator for (separator, token) in sep_tokens]
-			print "separators"+str(separators)
-			matchProb.setDirpath(dirpath)
-			correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
-			print correctedLine
+			for lineno in range(startTestLine, totalLineCount):
+				# TODO: if slow, the next line is wasteful since we get a new generator every time
+				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, 7, train=False)]
+				observations = [token for (separator, token) in sep_tokens]
+				separators = [separator for (separator, token) in sep_tokens]
+				matchProb.setDirpath(dirpath)
+				correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+				print correctedLine
 	
 
 if __name__ == "__main__":
