@@ -179,6 +179,32 @@ class TransitionProbs:
     def getStartProb(self, s0):
         return self.startProb[s0]
 
+class MaybeName:
+    def __init__(self,name='',isName=True):
+        assert((name=='' and not isName) or (name!='' and isName))
+        self.isName = isName
+        self.name = name
+
+    def getName(self):
+        assert(isName)
+        return self.name
+"""
+def getSeparatorAndToken(token_gen): # generator, yields (separator, MaybeName)
+    prev_sep = None # this is the separator that comes after prev_non_sep_tok
+    for toknum, tokval, _, _, _  in g:
+        # we see a token that is not a separator
+        if toknum == tokenize.COMMENT:
+            continue
+        if toknum == token.NAME:
+            if prev_non_sep_tok != None and prev_sep != None:
+
+        elif toknum != token.NAME and toknum != token.NUMBER and toknum != token.STRING: # we see a token that is a separator
+            if prev_non_sep_tok != None:
+                if prev_sep is None:
+                    prev_sep = tokval
+                else:
+                    prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator
+"""
 """
     Return:
         transProb such that transProb[w0][sep][w1] gives you the count
@@ -195,7 +221,7 @@ class TransitionProbsBuilder:
             g = tokenize.generate_tokens(io.BytesIO(content).readline)
             prev_non_sep_tok = None
             prev_sep = None # this is the separator that comes after prev_non_sep_tok
-            for toknum, tokval, _, _, _  in g:
+            for sep, tokval  in getSeparatorAndToken(g):
                 # we see a token that is not a separator
                 if toknum == tokenize.COMMENT:
                     continue
