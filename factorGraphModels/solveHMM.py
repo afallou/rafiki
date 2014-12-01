@@ -68,5 +68,10 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         print 'viterbi dp table'
         print(V)
 
-    (prob, state) = max( ((V[n][state], state) for state in states), key=lambda x:x[0])
+    if not obs[len(obs)-1].isName:
+        end_states = [obs[len(obs)-1]]
+    else:
+        end_states = states
+
+    (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
     return (prob, path[state])

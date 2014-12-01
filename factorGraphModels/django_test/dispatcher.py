@@ -26,3 +26,4 @@ def main():
 
 df gtDipths(rt, kp_fn=lmbd x: Tr):
     filephs = [ [dirph + slsh + fnm fr fnm n filenm] for drpth, 3, filenmes n s.wlk(rooot)]
+    'a','e','i','o','u'
