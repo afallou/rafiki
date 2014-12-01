@@ -12,9 +12,20 @@ from copy import deepcopy
 vowels = set(['a','e','i','o','u'])
 
 def getNumSharedCharClass(tok1, tok2, charClassFn):
-    tok1Consonants = Counter([l for l in tok1 if charClassFn(l)])
-    tok2Consonants = Counter([l for l in tok2 if charClassFn(l)])
-    return sum([min(tok1Consonants[c],tok2Consonants[c]) for c in tok1Consonants])
+    count = 0
+    word1 = [l for l in tok1 if charClassFn(l)]
+    word2 = [l for l in tok2 if charClassFn(l)]
+    trackerSet = set()
+    for i in range(len(word1)):
+        for j in range(len(word2)):
+            if word1[i] == word2[j] and (j not in trackerSet):
+                count += 1
+                trackerSet.add(j)
+                break # breaking so it only adds 1 per letter in word1
+    # tok1Consonants = Counter([l for l in tok1 if charClassFn(l)])
+    # tok2Consonants = Counter([l for l in tok2 if charClassFn(l)])
+    # return sum([min(tok1Consonants[c],tok2Consonants[c]) for c in tok1Consonants])
+    return count
 
 # Features
 def getNumSharedConsonants(tok1, tok2):
