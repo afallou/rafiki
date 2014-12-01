@@ -49,7 +49,7 @@ def main():
 			startTestLine = int(totalLineCount * (1 - percentage))
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 
-			for lineno in range(startTestLine, totalLineCount+1): # line 1 is a line
+			for lineno in range(startTestLine, totalLineCount + 1): # line 1 is a line
 				print 'lineno: ', lineno
 				# TODO: if slow, the next line is wasteful since we get a new generator every time
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)]

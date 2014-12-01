@@ -25,7 +25,7 @@ class MaybeName:
         return self.name if self.isName else 'CONSTANT'
     
     def __eq__(self, other):
-        if not self.isName and other.isName:
+        if not self.isName and not other.isName:
             return True
         if self.isName and other.isName and other.getName()==self.getName():
             return True
@@ -67,15 +67,16 @@ class MatchProbsBuilder:
                         self.last_seen_in_file[dirpath][tokval] = []
                     last_seen_in_file_for_tokval = self.last_seen_in_file[dirpath][tokval]
                     last_seen_in_file_for_tokval.append(lineno) # order important
-                    self.allNames.add(tokval)
+                    self.allNames.add(MaybeName(True, lineno, tokval))
                     self.X.append(feature_vec)
                     self.Y.append(1)
 
-                    randomName = random.sample(self.allNames, 1)
+                    randomName = random.sample(self.allNames, 1)[0]
                     while random == tokval:
-                        randomName = random.sample(self.allNames, 1)
+                        randomName = random.sample(self.allNames, 1)[0]
+                    assert(randomName.isName)
 
-                    feature_vec = getFeatureVector(randomName[0], abbrToken, lineno, self.last_seen_in_file[dirpath])
+                    feature_vec = getFeatureVector(randomName.getName(), abbrToken, lineno, self.last_seen_in_file[dirpath])
                     self.X.append(feature_vec)
                     self.Y.append(0)
 
@@ -84,6 +85,7 @@ class MatchProbsBuilder:
         return MatchProbs(self.logreg, self.last_seen_in_file)
 
 class MatchProbs:
+    CONSTANT_MATCH_PROB = 1.0
     def __init__(self, logreg, last_seen_in_file):
         self.logreg = logreg 
         # last_seen_in_file is a map from filename => {name:[lineno1, lineno2, ...]}
@@ -91,7 +93,7 @@ class MatchProbs:
         self.dirpath = None
         self.lineno = None
         # print 'coeffs', self.logreg.coef_
-    def setDirpath(self, dirpath):
+    def setDirpath(self, dirpath): # TODO: this seems error prone, change to arg of getProb
         self.dirpath = dirpath
 
     def getProb(self, name, abbr):
@@ -100,11 +102,15 @@ class MatchProbs:
             abbr: a MaybeName (TODO: what if this is not a name?)
         """
         assert(self.dirpath is not None)
-        feature_vec = getFeatureVector(name, abbr.getName(), abbr.lineno, self.last_seen_in_file[self.dirpath])
-        # print self.logreg.classes_
-        return self.logreg.predict_proba([feature_vec])[0][1] # TODO check order in self.classes_
+        if not abbr.isName or not name.isName:
+            return MatchProbs.CONSTANT_MATCH_PROB
+        else:
+            feature_vec = getFeatureVector(name.getName(), abbr.getName(), abbr.lineno, self.last_seen_in_file[self.dirpath])
+            # print self.logreg.classes_
+            return self.logreg.predict_proba([feature_vec])[0][1] # TODO check order in self.classes_
 
 class TransitionProbs:
+    CONSTANT_TRANSITION_PROB = 1.0
     def __init__(self, transProb, lambda_val=0.7):
         self.transProb = deepcopy(transProb)
         for s0 in transProb:
@@ -121,17 +127,18 @@ class TransitionProbs:
         self.lambda_val = lambda_val
 
     def getProb(self, s0, sep, s1):
-        # print "s0==", s0, "==sep==", sep, "==s1==", s1, "=="
-        s0 = MaybeName(True, 0, s0)
-        s1 = MaybeName(True, 0, s1)
+        # if not s0.isName or not s0.isName:
+        #    return CONSTANT_TRANSITION_PROB
         try:
-          #  print ('asdfgtransProb' + str(self.transProb[s0][sep][s1]))
             return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
         except KeyError:
             return 0
 
     def getStartProb(self, s0):
-        return self.startProb.get(MaybeName(True, 0, s0), 0)
+        if not s0.isName:
+            return TransitionProbs.CONSTANT_TRANSITION_PROB
+        else:
+            return self.startProb.get(s0, 0)
 
 
 SPACE = ' '
@@ -191,6 +198,8 @@ class TransitionProbsBuilder:
             prev_non_sep_tok = None
             for prev_sep, maybe_name  in getSeparatorAndToken(g, stopTrainLine):
                 assert((prev_non_sep_tok is None and prev_sep is None) or (prev_non_sep_tok is not None and prev_sep is not None))
+                # if not maybe_name.isName:
+                    # continue
                 if prev_non_sep_tok is not None and prev_sep is not None:
                     if prev_non_sep_tok in self.transProb:
                         if prev_sep in self.transProb[prev_non_sep_tok]:

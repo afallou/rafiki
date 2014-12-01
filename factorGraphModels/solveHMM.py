@@ -23,9 +23,13 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     path = {}
  
     # Initialize base cases (t == 0)
-    for state in states:
-        V[0][state] = trans_p.getStartProb(state) * emit_p.getProb(state,obs[0])
-        path[state] = [state]
+    if not obs[0].isName:
+        start_states = [obs[0]]
+    else:
+        start_states = states
+    for start_state in start_states:
+        V[0][start_state] = trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0])
+        path[start_state] = [start_state]
     # print 'start with a?' + Maybestr(trans_p.transProb['a'])
     print 'initializing V: ' + str(V)
  
@@ -33,15 +37,26 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     for t in range(1, len(obs)):
         newpath = {}
 
-        for state in states:
-            for prev_state in states:
+        if not obs[t-1].isName:
+            prev_states = [obs[t-1]]
+        else: 
+            prev_states = states
+
+        if not obs[t].isName:
+            (prob, old_state) = max([(V[t-1][prev_state] 
+                * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], obs[t]) 
+                * emit_p.getProb(obs[t],obs[t]), prev_state) for prev_state in prev_states], key=lambda x:x[0])
+            V[t][obs[t]] = prob
+            newpath[obs[t]] = path[old_state] + [obs[t]]
+        else:
+            for state in states:                
                 (prob, old_state) = max(
                 [(V[t-1][prev_state] 
                     * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) 
-                    * emit_p.getProb(state,obs[t]), prev_state) for prev_state in states], key=lambda x:x[0])
-            # print 'proba======',prob
-            V[t][state] = prob
-            newpath[state] = path[old_state] + [state]
+                    * emit_p.getProb(state,obs[t]), prev_state) for prev_state in prev_states], key=lambda x:x[0])
+                # print 'proba======',prob
+                V[t][state] = prob
+                newpath[state] = path[old_state] + [state]
  
         # Don't need to remember the old paths
         path = newpath
