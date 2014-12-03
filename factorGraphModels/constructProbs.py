@@ -154,7 +154,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
     for toknum, tokval, startloc, _, _  in token_gen:
         lineno, _ = startloc
-        print lineno, tokval
+        # print lineno, tokval
         if train:
             if lineno >= testTrainLine:
                 return
