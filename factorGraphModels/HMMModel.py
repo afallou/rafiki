@@ -3,7 +3,6 @@ import sys, os, io
 from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken
 from extract_features import vowels
 import itertools
-import token
 import tokenize
 from solveHMM import viterbi
 import random
@@ -37,7 +36,7 @@ def abbrRandomShuffleLetters(token):
 	return ''.join(array)
 
 def abbrToken(token):
-	if token is None or token not isName:
+	if token is None or token not token.isName:
 		return token
 	else:
 		return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
