@@ -205,4 +205,4 @@ def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbo
         end_states = states
 
     (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
-    return (prob, path[state])
+    return [(prob, path[state])]
