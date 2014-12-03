@@ -1,18 +1,17 @@
 import heapq
 
-"""
-    Gets the highest probability assignment for the HMM.
 
+def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
+    """
+    Gets the highest probability assignment for the HMM.
     Args:
         obs: list of observations
         states: list of states
         trans_p: trans_p[a_0][sep][a_1] gives you the prob of moving from state a_0 to a_1 given separator sep between them
         emit_p: emit_p[obs][state] gives you the prob of emiting obs from state 
-
     Returns:
         a tuple with the probability of the assignment and the assignment
-"""
-def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
+    """
     if verbose:
         print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
 
@@ -96,3 +95,55 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
 
     # (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
     return heapq.nlargest(numResults, end_options)
+
+
+def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, K=5, candidates_count=100):
+    """
+    Gets the highest probability assignment for the HMM.
+
+    Args:
+        obs: list of observations
+        states: list of states
+        trans_p: trans_p[a_0][sep][a_1] gives you the prob of moving from state a_0 to a_1 given separator sep between them
+        emit_p: emit_p[obs][state] gives you the prob of emiting obs from state 
+        K: particles we get in the end
+        candidates_count: number of candidates we propose at each timestep
+
+    Returns:    
+    """
+    if len(obs) == 0 and len(transitions_per_timestep)==0: 
+        return (0,[])
+
+    assert(len(obs) == 1 + len(transitions_per_timestep))
+    timesteps = len(obs)
+
+    # initialize
+    paths = []
+    candidates = [{} for _ in xrange(K)]
+    for k in xrange(K):
+        for _ in xrange(candidates_count):
+                candidate = util.weightedRandomChoice(trans_p.startProb)
+                candidate_weight = emit_p[obs[0]][candidate]
+                candidates[k][candidate] = candidate_weight
+
+    for k in xrange(K):
+            next_state = util.weightedRandomChoice(candidates[k])
+            paths[k].append(next_state)
+
+    # Run for t > 0
+    for t in range(1, timesteps):
+        candidates = [{} for _ in xrange(K)]
+        for k in xrange(K):
+            old_state = path[-1]
+            # Propose and reweight
+            for _ in xrange(candidates_count):
+                candidate = util.weightedRandomChoice(trans_p[old_state][transitions_per_timestep[t-1]])
+                candidate_weight = emit_p[obs[t]][candidate]
+                candidates[k][candidate] = candidate_weight
+
+        # Resample
+        for k in xrange(K):
+            next_state = util.weightedRandomChoice(candidates[k])
+            paths[k].append(next_state)
+
+    return paths
