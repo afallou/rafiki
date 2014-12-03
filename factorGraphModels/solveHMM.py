@@ -1,3 +1,5 @@
+import heapq
+
 """
     Gets the highest probability assignment for the HMM.
 
@@ -10,7 +12,7 @@
     Returns:
         a tuple with the probability of the assignment and the assignment
 """
-def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False):
+def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=2):
     if verbose:
         print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
 
@@ -19,7 +21,10 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
 
     assert(len(obs) == 1 + len(transitions_per_timestep))
     timesteps = len(obs)
+
+    # V is a list of maps, where each map is state => [best prob, second best prob]
     V = [{} for t in range(timesteps)]
+    # path is a map from state to [[best way of getting there][second best way of getting there]]
     path = {}
  
     # Initialize base cases (t == 0)
@@ -27,12 +32,15 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         start_states = [obs[0]]
     else:
         start_states = states
+
+    # initial timestemp 
     for start_state in start_states:
-        V[0][start_state] = trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0])
-        path[start_state] = [start_state]
-    # print 'start with a?' + Maybestr(trans_p.transProb['a'])
+        for i in xrange(numResults):
+            V[0][start_state].append(trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0]))
+            path[start_state].append([start_state])
     print 'initializing V: ' + str(V)
- 
+
+    
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
         newpath = {}
@@ -42,24 +50,31 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         else: 
             prev_states = states
 
+        options = [] 
         if not obs[t].isName:
-            (prob, old_state) = max([(V[t-1][prev_state] 
-                * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], obs[t]) 
-                * emit_p.getProb(obs[t],obs[t]), prev_state) for prev_state in prev_states], key=lambda x:x[0])
-            V[t][obs[t]] = prob
-            newpath[obs[t]] = path[old_state] + [obs[t]]
-        else:
-            for state in states:                
-                (prob, old_state) = max(
-                [(V[t-1][prev_state] 
-                    * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) 
-                    * emit_p.getProb(state,obs[t]), prev_state) for prev_state in prev_states], key=lambda x:x[0])
+            for prev_state in prev_states:
+                for i in xrange(numResults):
+                    prob = V[t-1][prev_state] * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], obs[t]) * emit_p.getProb(obs[t],obs[t])
+                    options.append((prob, prev_state))
                 # print 'proba======',prob
-                V[t][state] = prob
-                newpath[state] = path[old_state] + [state]
+            topResults = heapq.nLargest(options,numResults)
+            V[t][obs[t]] = [prob for prob, _ in topResults] 
+            newpath[obs[t]] = [path[old_state] + obs[t] for _,old_state in topResults]
+ 
+        else:
+            for state in states: 
+                for prev_state in prev_states:  
+                    for i in xrange(numResults):    
+                        prob = V[t-1][prev_state] * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) * emit_p.getProb(state,obs[t])
+                        options.append((prob, prev_state))
+                # print 'proba======',prob
+                topResults = heapq.nLargest(options,numResults)
+                V[t][state] = [prob for prob, _ in topResults] 
+                newpath[state] = [path[old_state] + state for _,old_state in topResults]
  
         # Don't need to remember the old paths
         path = newpath
+
     n = 0           # if only one element is observed max is sought in the initialization values
     if len(obs) != 1:
         n = t
@@ -73,5 +88,11 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     else:
         end_states = states
 
-    (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
-    return (prob, path[state])
+    # get the top numResults states to end up in 
+    options = []
+    for state in end_states:
+        for i in xrange(numResults): 
+            options.append((V[n][state][i], path[state][i]))
+
+    # (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
+    return (prob, heapq.nLargest(options, numResults))
