@@ -22,7 +22,7 @@ def getDirpaths(root, keep_fn=lambda x: True):
 	return filter(keep_fn, flattened)
 
 def abbrRemoveVowels(token):
-	return ''.join([l for l in token.getName() if l not in vowels]))
+	return ''.join([l for l in token if l not in vowels])
 
 def abbrRemoveVowelsTesting(token):
 	token.setName(''.join([l for l in token.getName() if l not in vowels]))
