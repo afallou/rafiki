@@ -118,7 +118,7 @@ class TransitionProbs:
                 for s1 in transProb[s0][transition]:
                     self.transProb[s0][transition][s1] = transProb[s0][transition][s1] / float(sum(transProb[s0][transition].values()))
 
-        self.startProb = {}
+        self.startProb = {str(False): TransitionProbs.CONSTANT_TRANSITION_PROB}
         for s0 in self.transProb:
             self.startProb[s0] = sum([sum(countsDict.values()) for countsDict in self.transProb[s0].values()])
         for s0 in self.transProb:
@@ -135,9 +135,6 @@ class TransitionProbs:
             return 0
 
     def getStartProb(self, s0):
-        if not s0.isName:
-            return TransitionProbs.CONSTANT_TRANSITION_PROB
-        else:
             return self.startProb.get(s0, 0)
 
 
