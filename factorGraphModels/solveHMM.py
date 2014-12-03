@@ -65,8 +65,8 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         n = t
 
     if verbose:
-        print 'viterbi dp table'
-        print(V)
+        # print 'viterbi dp table'
+        # print(V)
 
     if not obs[len(obs)-1].isName:
         end_states = [obs[len(obs)-1]]
