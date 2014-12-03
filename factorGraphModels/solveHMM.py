@@ -12,7 +12,7 @@ import heapq
     Returns:
         a tuple with the probability of the assignment and the assignment
 """
-def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=2):
+def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
     if verbose:
         print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
 
@@ -58,7 +58,6 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
                 for i in xrange(numResults):
                     prob = V[t-1][prev_state][i] * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], obs[t]) * emit_p.getProb(obs[t],obs[t])
                     options.append((prob, prev_state, i))
-                # print 'proba======',prob
             topResults = heapq.nlargest(numResults,options)
             V[t][obs[t]] = [prob for prob, _,_ in topResults] 
             newpath[obs[t]] = [path[old_state][i] + obs[t] for _,old_state,i in topResults]
@@ -69,11 +68,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
                     for i in xrange(numResults):    
                         prob = V[t-1][prev_state][i] * trans_p.getProb(prev_state, transitions_per_timestep[t - 1], state) * emit_p.getProb(state,obs[t])
                         options.append((prob, prev_state, i))
-                # print 'proba======',prob
-                # print 'to get to', state, 'in time step ', t
-                # print 'options',options
                 topResults = heapq.nlargest(numResults, options)
-                # print 'topResults', topResults
                 V[t][state] = [prob for prob, _, _ in topResults] 
                 newpath[state] = [path[old_state][i] + [state] for _,old_state, i in topResults]
  
