@@ -6,6 +6,7 @@ import itertools
 import tokenize
 import random
 from solveHMM import legacy_viterbi, particle_filtering
+import copy 
 
 """
 	Return a list of filenames 
@@ -96,14 +97,23 @@ def main():
 					sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 					# apply the abbreviation functions :) to all of the words in tokens
 					tokens = [token for (separator, token) in sep_tokens] #actual list of words
+					actual_tokens = copy.deepcopy(tokens)
 					observations = [abbrToken(token) for token in tokens]
 					separators = [separator for (separator, token) in sep_tokens]
 					matchProb.setDirpath(dirpath)
+					if len(observations) == 0:
+						continue
 					correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+					print 'test here'
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
-					if correctedLines[0] == tokens:
+					if correctedLines[0][1] == tokens:
 						training_correct += 1 
+					print 'compared:', actual_tokens 
+					print observations
+					print correctedLines
+					print correctedLines[0][1]
+					print correctedLines
 				print 'Number of Training Samples:', training_samples
 				print 'Training Correct Ratio:', float(training_correct)/(training_samples)
 				print 'Training Error:', 1 - float(training_correct)/(training_samples)
@@ -119,17 +129,25 @@ def main():
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
-				observations = [abbrToken(token) for token in tokens]
+				actual_tokens = copy.deepcopy(tokens)
+				observations = [(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
+				# print len(observations)
+				if len(observations) == 0:
+					continue
 				correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
-				if correctedLines[0] == tokens:
+				print 'compared:', actual_tokens 
+				print observations
+				print correctedLines[0][1]
+				print correctedLines
+				if correctedLines[0][1] == actual_tokens:
 					test_correct += 1 
-				print 'Number of Test Samples:', test_samples
-				print 'Test Correct Ratio:', float(test_correct)/(test_samples)
-				print 'Test Error:', 1 - float(test_correct)/(test_samples)
+			print 'Number of Test Samples:', test_samples
+			print 'Test Correct Ratio:', float(test_correct)/(test_samples)
+			print 'Test Error:', 1 - float(test_correct)/(test_samples)
 
 if __name__ == "__main__":
 	main()
