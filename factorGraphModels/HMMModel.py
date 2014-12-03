@@ -44,7 +44,6 @@ def abbrToken(token):
 	return token
 
 def main():
-	print 'working!!!!'
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
 		'root', help='the directory to start recursively searching from')
@@ -84,18 +83,15 @@ def main():
 		with open(dirpath, 'r') as f:
 
 			totalLineCount = sum(1 for line in f)
-			print totalLineCount
 			f.seek(0)
 			startTestLine = int(totalLineCount * (1 - percentage))
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 
 			if training_error_check:	
-				print 'Training'
 				# for training error
 				training_samples = 0
 				training_correct = 0
 				for lineno in range(1, startTestLine - 1): # line 1 is a line
-					print 'lineno: ', lineno
 					# TODO: if slow, the next line is wasteful since we get a new generator every time
 					sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 					# apply the abbreviation functions :) to all of the words in tokens
@@ -106,8 +102,7 @@ def main():
 					prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
-					print 'comparison:', tokens, correctedLines
-					if correctedLines == tokens:
+					if correctedLines[0] == tokens:
 						training_correct += 1 
 				print 'Number of Training Samples:', training_samples
 				print 'Training Correct Ratio:', float(training_correct)/(training_samples)
@@ -125,16 +120,13 @@ def main():
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
 				observations = [abbrToken(token) for token in tokens]
-				print(observations)
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
-				print 'comparison:', tokens, correctedLines
-				if correctedLines == tokens:
+				if correctedLines[0] == tokens:
 					test_correct += 1 
-
 				print 'Number of Test Samples:', test_samples
 				print 'Test Correct Ratio:', float(test_correct)/(test_samples)
 				print 'Test Error:', 1 - float(test_correct)/(test_samples)
