@@ -125,11 +125,14 @@ def main():
 				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
+				print 'compared:', tokens 
+				print observations
+				print correctedLines
 				if correctedLines[0] == tokens:
 					test_correct += 1 
-				print 'Number of Test Samples:', test_samples
-				print 'Test Correct Ratio:', float(test_correct)/(test_samples)
-				print 'Test Error:', 1 - float(test_correct)/(test_samples)
+			print 'Number of Test Samples:', test_samples
+			print 'Test Correct Ratio:', float(test_correct)/(test_samples)
+			print 'Test Error:', 1 - float(test_correct)/(test_samples)
 
 if __name__ == "__main__":
 	main()
