@@ -162,6 +162,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
             if lineno < testTrainLine:
                 continue
             elif lineno  == testTrainLine and toknum == token.NEWLINE:
+                print 'found new line!'
                 return
 
         # we see a token that is not a separator
