@@ -22,6 +22,9 @@ def getDirpaths(root, keep_fn=lambda x: True):
 	return filter(keep_fn, flattened)
 
 def abbrRemoveVowels(token):
+	return ''.join([l for l in token.getName() if l not in vowels]))
+
+def abbrRemoveVowelsTesting(token):
 	token.setName(''.join([l for l in token.getName() if l not in vowels]))
 
 def abbrRandomlyRemLetters(token):
@@ -43,7 +46,7 @@ def abbrToken(token, abbrType):
 		return token
 	else:
 		if abbrType == 2: # remove vowels and all, if type is 1 then shuffle and remove
-			abbrRemoveVowels(token)
+			abbrRemoveVowelsTesting(token)
 		abbrRandomShuffleLetters(token)
 		abbrRandomlyRemLetters(token)
 		return token
