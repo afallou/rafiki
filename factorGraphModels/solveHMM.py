@@ -14,10 +14,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     """
     if verbose:
         print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
-
-    if len(obs) == 0 and len(transitions_per_timestep)==0: 
-        return (0,[])
-
+    assert(len(obs) != 0)
     assert(len(obs) == 1 + len(transitions_per_timestep))
     timesteps = len(obs)
 
