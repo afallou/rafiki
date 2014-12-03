@@ -51,7 +51,7 @@ def abbrToken(token, abbrType):
         abbrRandomlyRemLetters(token)
         return token
 
-def runAndTrainingError(g, datatype, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath):
+def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath):
     samples_count = 0
     correct_count = 0
     for lineno in range(startLine, endLine):
