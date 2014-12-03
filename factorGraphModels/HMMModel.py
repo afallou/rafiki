@@ -36,7 +36,7 @@ def abbrRandomShuffleLetters(token):
 	return ''.join(array)
 
 def abbrToken(token):
-	if token is None or token not token.isName:
+	if token is None or not isName:
 		return token
 	else:
 		return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
