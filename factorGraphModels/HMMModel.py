@@ -27,13 +27,16 @@ def abbrRandomlyRemLetters(token):
 	return ''.join([l for l in token if random.random() > removalProb])
 
 def abbrRandomShuffleLetters(token):
-	array = [l for l in token]
-	for i in range(len(array)):
-		if random.random() < switchProb and i+1 < len(array):
-			letter = array[i]
-			array[i] = array[i+1]
-			array[i+1] = letter
-	return ''.join(array)
+	if len(token) == 0:
+		return ''
+	else:
+		array = [l for l in token]
+		for i in range(len(array)):
+			if random.random() < switchProb and i+1 < len(array):
+				letter = array[i]
+				array[i] = array[i+1]
+				array[i+1] = letter
+		return ''.join(array)
 
 def abbrToken(token):
 	return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
