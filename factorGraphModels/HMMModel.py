@@ -74,9 +74,9 @@ def runAndTrainingError(g, datatype, startLine, endLine):
         # print correctedLines
         # print correctedLines[0][1]
         # print correctedLines
-  print 'Number of {} Samples:'.format(dataType), samples_count
-  print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
-  print '{} Error:'.format(dataType), 1 - float(correct_count)/(samples_count)
+    print 'Number of {} Samples:'.format(dataType), samples_count
+    print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
+    print '{} Error:'.format(dataType), 1 - float(correct_count)/(samples_count)
 
 def main():
     parser = argparse.ArgumentParser()
