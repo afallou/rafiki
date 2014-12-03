@@ -49,13 +49,10 @@ def main():
 	parser.add_argument(
 		'percentage', help='percentage of each file (at end) to be used for testing')
 	parser.add_argument(
-<<<<<<< HEAD
 		'solve', help='solve algo (viterbi or pfilter)')
-	
-=======
+	parser.add_argument(
 		'training_error', type = int, default = 0, help='calculate training error - 1 or not - 0')
 
->>>>>>> jamesTest
 	# can make the following option-controlled later if we start looking at other langs
 	def isPythonFile(dirpath):
 		return dirpath[len(dirpath)-3:len(dirpath)] == ".py"
@@ -63,8 +60,6 @@ def main():
 	args = parser.parse_args()
 	dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
 	percentage = float(args.percentage)
-<<<<<<< HEAD
-
 	solve_fn = viterbi
 	if args.solve == 'pfilter':
 		print "Using particle_filtering"
@@ -72,9 +67,8 @@ def main():
 		print "Using Viterbi"
 
 
-=======
 	training_error_check = bool(args.training_error)
->>>>>>> jamesTest
+
 	transProbBuilder = TransitionProbsBuilder(percentage)
 	matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
 	for dirpath in dirpaths:
@@ -132,11 +126,6 @@ def main():
 				observations = [abbrToken(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
-<<<<<<< HEAD
-				correctedLine = solve_fn(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
-				print observations
-				print correctedLine
-=======
 				prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				testing_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
@@ -147,7 +136,6 @@ def main():
 				print 'Number of Test Samples:', testing_samples
 				print 'Test Correct Ratio:', float(test_correct)/(test_samples)
 				print 'Test Error:', 1 - float(test_correct)/(test_samples)
->>>>>>> jamesTest
 
 if __name__ == "__main__":
 	main()
