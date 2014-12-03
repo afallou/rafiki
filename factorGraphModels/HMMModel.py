@@ -4,8 +4,8 @@ from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparat
 from extract_features import vowels
 import itertools
 import tokenize
-from solveHMM import viterbi
 import random
+from solveHMM import viterbi, particle_filtering
 
 """
 	Return a list of filenames 
@@ -40,6 +40,8 @@ def main():
 		'root', help='the directory to start recursively searching from')
 	parser.add_argument(
 		'percentage', help='percentage of each file (at end) to be used for testing')
+	parser.add_argument(
+		'solve', help='solve algo (viterbi or pfilter)')
 	
 	# can make the following option-controlled later if we start looking at other langs
 	def isPythonFile(dirpath):
@@ -48,6 +50,14 @@ def main():
 	args = parser.parse_args()
 	dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
 	percentage = float(args.percentage)
+
+	solve_fn = viterbi
+	if args.solve == 'pfilter':
+		print "Using particle_filtering"
+	else:
+		print "Using Viterbi"
+
+
 	transProbBuilder = TransitionProbsBuilder(percentage)
 	matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
 	for dirpath in dirpaths:
@@ -72,7 +82,7 @@ def main():
 				observations = [token for (separator, token) in sep_tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
-				correctedLine = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+				correctedLine = solve_fn(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				print observations
 				print correctedLine
 
