@@ -10,6 +10,8 @@ from collections import Counter
 from copy import deepcopy
 from extract_features import getFeatureVector
 
+verbose = False
+
 class MaybeName:
     def __init__(self,isName, lineno, name=None):
         assert((name is None and not isName) or (name is not None and isName))
@@ -21,10 +23,17 @@ class MaybeName:
         assert(self.isName)
         return self.name
 
+    def setName(self, name):
+        if self.isName:
+            self.name = name
+
     def __repr__(self):
         return self.name if self.isName else 'CONSTANT'
     
     def __eq__(self, other):
+        if verbose:
+            print "self", self, self.__class__
+            print "other", other, other.__class__
         if not self.isName and not other.isName:
             return True
         if self.isName and other.isName and other.getName() == self.getName():
@@ -118,7 +127,8 @@ class TransitionProbs:
                 for s1 in transProb[s0][transition]:
                     self.transProb[s0][transition][s1] = transProb[s0][transition][s1] / float(sum(transProb[s0][transition].values()))
 
-        self.startProb = {str(False): TransitionProbs.CONSTANT_TRANSITION_PROB}
+        not_name = MaybeName(False, 0)
+        self.startProb = {not_name: TransitionProbs.CONSTANT_TRANSITION_PROB}
         for s0 in self.transProb:
             self.startProb[s0] = sum([sum(countsDict.values()) for countsDict in self.transProb[s0].values()])
         for s0 in self.transProb:
@@ -144,7 +154,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
     for toknum, tokval, startloc, _, _  in token_gen:
         lineno, _ = startloc
-        print lineno, tokval
+        # print lineno, tokval
         if train:
             if lineno >= testTrainLine:
                 return

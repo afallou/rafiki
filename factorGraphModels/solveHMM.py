@@ -39,7 +39,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
-        print 'path', path
+        # print 'path', path
         newpath = {}
 
         if not obs[t-1].isName:
@@ -55,7 +55,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
                     options.append((prob, prev_state, i))
             topResults = heapq.nlargest(numResults,options)
             V[t][obs[t]] = [prob for prob, _,_ in topResults] 
-            newpath[obs[t]] = [path[old_state][i] + obs[t] for _,old_state,i in topResults]
+            newpath[obs[t]] = [path[old_state][i] + [obs[t]] for _,old_state,i in topResults]
  
         else:
             for state in states: 
@@ -74,9 +74,9 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     if len(obs) != 1:
         n = t
 
-    # if verbose:
-        # print 'viterbi dp table'
-        # print(V)
+    if verbose:
+        print 'viterbi dp table'
+        print(V)
 
     if not obs[len(obs)-1].isName:
         end_states = [obs[len(obs)-1]]
