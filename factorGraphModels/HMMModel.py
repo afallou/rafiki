@@ -124,6 +124,7 @@ def main():
 				observations = [abbrToken(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
+				print len(observations)
 				if len(observations) == 0:
 					continue
 				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
