@@ -51,14 +51,14 @@ def abbrToken(token, abbrType):
         abbrRandomlyRemLetters(token)
         return token
 
-def runAndTrainingError(g, datatype, startLine, endLine):
+def runAndTrainingError(g, datatype, startLine, endLine, abbrType):
     samples_count = 0
     correct_count = 0
     for lineno in range(startLine, endLine):
         sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
         # apply the abbreviation functions :) to all of the words in tokens
         tokens = [token for (separator, token) in sep_tokens] #actual list of words
-        observations = [abbrToken(token) for token in tokens]
+        observations = [abbrToken(token, abbrType) for token in tokens]
         separators = [separator for (separator, token) in sep_tokens]
         matchProb.setDirpath(dirpath)
         if len(observations) == 0:
@@ -124,7 +124,7 @@ def main():
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             if training_error_check:
                 runAndTrainingError(g, 'Train', 1, startTestLine)
-            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1)
+            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType)
 
 if __name__ == "__main__":
     main()
