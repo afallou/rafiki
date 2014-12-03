@@ -39,6 +39,7 @@ def abbrToken(token):
 	return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
 
 def main():
+	print 'working!!!!'
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
 		'root', help='the directory to start recursively searching from')
@@ -88,7 +89,7 @@ def main():
 					prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
-					print 'comparison:', tokes, correctedLines
+					print 'comparison:', tokens, correctedLines
 					if correctedLines == tokens:
 						training_correct += 1 
 				print 'Number of Training Samples:', training_samples
@@ -110,7 +111,7 @@ def main():
 				prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				testing_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
-				print 'comparison:', tokes, correctedLines
+				print 'comparison:', tokens, correctedLines
 				if correctedLines == tokens:
 					testing_correct += 1 
 
