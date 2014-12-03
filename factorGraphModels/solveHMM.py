@@ -11,8 +11,8 @@
         a tuple with the probability of the assignment and the assignment
 """
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False):
-    if verbose:
-        print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
+    # if verbose:
+        # print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
 
     if len(obs) == 0 and len(transitions_per_timestep)==0: 
         return (0,[])
@@ -31,7 +31,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         V[0][start_state] = trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0])
         path[start_state] = [start_state]
     # print 'start with a?' + Maybestr(trans_p.transProb['a'])
-    print 'initializing V: ' + str(V)
+    # print 'initializing V: ' + str(V)
  
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
