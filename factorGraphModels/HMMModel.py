@@ -3,6 +3,7 @@ import sys, os, io
 from constructProbs import TransitionProbsBuilder, MatchProbsBuilder, getSeparatorAndToken
 from extract_features import vowels
 import itertools
+import token
 import tokenize
 from solveHMM import viterbi
 import random
