@@ -5,10 +5,14 @@ from extract_features import vowels
 import itertools
 import tokenize
 from solveHMM import viterbi
+import random
 
 """
 	Return a list of filenames 
 """
+removalProb = 0.3
+switchProb = 0.3
+
 def getDirpaths(root, keep_fn=lambda x: True):
 	filepaths = [ [dirpath + '/' + fname for fname in filenames] for dirpath, _, filenames in os.walk(root)]
 	flattened = list(itertools.chain(*filepaths))
@@ -16,7 +20,19 @@ def getDirpaths(root, keep_fn=lambda x: True):
 	return filter(keep_fn, flattened)
 
 def abbrRemoveVowels(token):
-    return ''.join([l for l in token if l not in vowels])
+	return ''.join([l for l in token if l not in vowels])
+
+def abbrRandomlyRemLetters(token):
+	return ''.join([l for l in token if random.random() > removalProb])
+
+def abbrRandomShuffleLetters(token):
+	array = [l for l in token]
+	for i in range(len(array)):
+		if random.random() < switchProb and i+1 < len(array):
+			letter = array[i]
+			array[i] = array[i+1]
+			array[i+1] = letter
+	return ''.join(array)
 
 def main():
 	parser = argparse.ArgumentParser()
