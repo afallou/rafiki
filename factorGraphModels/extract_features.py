@@ -22,14 +22,11 @@ def getNumSharedCharClass(tok1, tok2, charClassFn):
                 count += 1
                 trackerSet.add(j)
                 break # breaking so it only adds 1 per letter in word1
-    # tok1Consonants = Counter([l for l in tok1 if charClassFn(l)])
-    # tok2Consonants = Counter([l for l in tok2 if charClassFn(l)])
-    # return sum([min(tok1Consonants[c],tok2Consonants[c]) for c in tok1Consonants])
     return count
 
 # Features
 def getNumSharedConsonants(tok1, tok2):
-    charClassFn = lambda l: l not in vowels
+    charClassFn = lambda l: l not in vowels and l.isalpha() #make sure consanant and a letter
     return getNumSharedCharClass(tok1, tok2, charClassFn)
 
 def getNumSharedCapitals(tok1, tok2):
