@@ -137,20 +137,21 @@ class TransitionProbs:
     def getStartProb(self, s0):
             return self.startProb.get(s0, 0)
 
-
 SPACE = ' '
+# do not use the same generator for training and testing!!!!
 def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yields (separator, MaybeName)
     at_beginning = True
     prev_sep = None # this is the separator that comes after prev_non_sep_tok
     for toknum, tokval, startloc, _, _  in token_gen:
         lineno, _ = startloc
+        print lineno, tokval
         if train:
             if lineno >= testTrainLine:
                 return
         else:
             if lineno < testTrainLine:
                 continue
-            elif lineno  > testTrainLine:
+            elif lineno  == testTrainLine and toknum == token.NEWLINE:
                 return
 
         # we see a token that is not a separator
