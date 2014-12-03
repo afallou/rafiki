@@ -55,6 +55,7 @@ def main():
 	args = parser.parse_args()
 	dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
 	percentage = float(args.percentage)
+	training_error_check = bool(args.training_error)
 	transProbBuilder = TransitionProbsBuilder(percentage)
 	matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
 	for dirpath in dirpaths:
@@ -73,7 +74,7 @@ def main():
 			startTestLine = int(totalLineCount * (1 - percentage))
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 
-			if training_error:	
+			if training_error_check:	
 				# for training error
 				training_samples = 0
 				training_correct = 0
