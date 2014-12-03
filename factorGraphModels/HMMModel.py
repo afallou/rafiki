@@ -6,6 +6,7 @@ import itertools
 import tokenize
 import random
 from solveHMM import viterbi, particle_filtering
+import copy 
 
 """
 	Return a list of filenames 
@@ -119,16 +120,17 @@ def main():
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
+				actual_tokens = copy.deepcopy(tokens)
 				observations = [abbrToken(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
-				print 'compared:', tokens 
+				print 'compared:', actual_tokens 
 				print observations
 				print correctedLines
-				if correctedLines[0] == tokens:
+				if correctedLines[0][1] == actual_tokens:
 					test_correct += 1 
 			print 'Number of Test Samples:', test_samples
 			print 'Test Correct Ratio:', float(test_correct)/(test_samples)
