@@ -142,8 +142,8 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
     return paths
 
 def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False):
-    if verbose:
-        print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
+    # if verbose:
+    #     print "Obs:", obs, "Transitions per timestep", transitions_per_timestep
 
     if len(obs) == 0 and len(transitions_per_timestep)==0: 
         return (0,[])
@@ -162,7 +162,7 @@ def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbo
         V[0][start_state] = trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0])
         path[start_state] = [start_state]
     # print 'start with a?' + Maybestr(trans_p.transProb['a'])
-    print 'initializing V: ' + str(V)
+    # print 'initializing V: ' + str(V)
  
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
@@ -195,9 +195,9 @@ def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbo
     if len(obs) != 1:
         n = t
 
-    if verbose:
-        print 'viterbi dp table'
-        print(V)
+    # if verbose:
+    #     print 'viterbi dp table'
+    #     print(V)
 
     if not obs[len(obs)-1].isName:
         end_states = [obs[len(obs)-1]]
@@ -205,4 +205,4 @@ def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbo
         end_states = states
 
     (prob, state) = max( ((V[n][state], state) for state in end_states), key=lambda x:x[0])
-    return (prob, path[state])
+    return [(prob, path[state])]
