@@ -24,22 +24,24 @@ def abbrRemoveVowels(token):
 	return ''.join([l for l in token if l not in vowels])
 
 def abbrRandomlyRemLetters(token):
-	return ''.join([l for l in token if random.random() > removalProb])
+	token.setName(''.join([l for l in token.getName() if random.random() > removalProb]))
 
 def abbrRandomShuffleLetters(token):
-	array = [l for l in token]
+	array = [l for l in token.getName()]
 	for i in range(len(array)):
 		if random.random() < switchProb and i+1 < len(array):
 			letter = array[i]
 			array[i] = array[i+1]
 			array[i+1] = letter
-	return ''.join(array)
+	token.setName(''.join(array))
 
 def abbrToken(token):
 	if token is None or not token.isName:
 		return token
 	else:
-		return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
+		abbrRandomShuffleLetters(token)
+		abbrRandomlyRemLetters(token)
+	return token
 
 def main():
 	print 'working!!!!'
@@ -114,26 +116,26 @@ def main():
 				# 'hallo there {}'.format('bob')
 
 			# for testing error
-			testing_samples = 0
-			testing_correct = 0	
+			test_samples = 0
+			test_correct = 0	
 			for lineno in range(startTestLine, totalLineCount + 1): # line 1 is a line
 				print 'lineno: ', lineno
 				# TODO: if slow, the next line is wasteful since we get a new generator every time
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
-				print(observations)
 				observations = [abbrToken(token) for token in tokens]
+				print(observations)
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
-				prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
-				testing_samples += 1
+				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
 				print 'comparison:', tokens, correctedLines
 				if correctedLines == tokens:
-					testing_correct += 1 
+					test_correct += 1 
 
-				print 'Number of Test Samples:', testing_samples
+				print 'Number of Test Samples:', test_samples
 				print 'Test Correct Ratio:', float(test_correct)/(test_samples)
 				print 'Test Error:', 1 - float(test_correct)/(test_samples)
 

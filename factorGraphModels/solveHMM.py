@@ -55,7 +55,7 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
                     options.append((prob, prev_state, i))
             topResults = heapq.nlargest(numResults,options)
             V[t][obs[t]] = [prob for prob, _,_ in topResults] 
-            newpath[obs[t]] = [path[old_state][i] + obs[t] for _,old_state,i in topResults]
+            newpath[obs[t]] = [path[old_state][i] + [obs[t]] for _,old_state,i in topResults]
  
         else:
             for state in states: 
