@@ -51,7 +51,7 @@ def abbrToken(token, abbrType):
         abbrRandomlyRemLetters(token)
         return token
 
-def runAndTrainingError(g, datatype, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder):
+def runAndTrainingError(g, datatype, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath):
     samples_count = 0
     correct_count = 0
     for lineno in range(startLine, endLine):
@@ -124,7 +124,7 @@ def main():
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             if training_error_check:
                 runAndTrainingError(g, 'Train', 1, startTestLine)
-            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder)
+            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
 
 if __name__ == "__main__":
     main()
