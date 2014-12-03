@@ -27,19 +27,19 @@ def abbrRandomlyRemLetters(token):
 	return ''.join([l for l in token if random.random() > removalProb])
 
 def abbrRandomShuffleLetters(token):
-	if len(token) == 0:
-		return ''
-	else:
-		array = [l for l in token]
-		for i in range(len(array)):
-			if random.random() < switchProb and i+1 < len(array):
-				letter = array[i]
-				array[i] = array[i+1]
-				array[i+1] = letter
-		return ''.join(array)
+	array = [l for l in token]
+	for i in range(len(array)):
+		if random.random() < switchProb and i+1 < len(array):
+			letter = array[i]
+			array[i] = array[i+1]
+			array[i+1] = letter
+	return ''.join(array)
 
 def abbrToken(token):
-	return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
+	if token is None or token not isName:
+		return token
+	else:
+		return abbrRandomlyRemLetters(abbrRandomShuffleLetters(token))
 
 def main():
 	print 'working!!!!'
@@ -87,7 +87,7 @@ def main():
 					sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 					# apply the abbreviation functions :) to all of the words in tokens
 					tokens = [token for (separator, token) in sep_tokens] #actual list of words
-					observations = [abbrToken(token) for token in tokens]
+					observations = [abbrToken(tokens) for token in tokens]
 					separators = [separator for (separator, token) in sep_tokens]
 					matchProb.setDirpath(dirpath)
 					prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
