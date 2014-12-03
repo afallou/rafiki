@@ -27,7 +27,7 @@ class MaybeName:
     def __eq__(self, other):
         if not self.isName and not other.isName:
             return True
-        if self.isName and other.isName and other.getName()==self.getName():
+        if self.isName and other.isName and other.getName() == self.getName():
             return True
         return False
 
