@@ -54,10 +54,13 @@ def abbrToken(token, abbrType):
 def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath):
     samples_count = 0
     correct_count = 0
+    print startLine, endLine
     for lineno in range(startLine, endLine):
+        print lineno
         sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
         # apply the abbreviation functions :) to all of the words in tokens
         tokens = [token for (separator, token) in sep_tokens] #actual list of words
+        actual_tokens = copy.deepcopy(tokens)
         observations = [abbrToken(token, abbrType) for token in tokens]
         separators = [separator for (separator, token) in sep_tokens]
         matchProb.setDirpath(dirpath)
@@ -67,12 +70,12 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
-        if correctedLines[0][1] == tokens:
+        if correctedLines[0][1] == actual_tokens:
             correct_count += 1
-    # print 'compared:', actual_tokens 
-        # print observations
-        # print correctedLines
-        # print correctedLines[0][1]
+        print 'compared:', actual_tokens 
+        print observations
+        #print correctedLines
+        print correctedLines[0][1]
         # print correctedLines
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
