@@ -114,7 +114,7 @@ def main():
 			test_samples = 0
 			test_correct = 0	
 			for lineno in range(startTestLine, totalLineCount + 1): # line 1 is a line
-				print 'lineno: ', lineno
+				# print 'lineno: ', lineno
 				# TODO: if slow, the next line is wasteful since we get a new generator every time
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
