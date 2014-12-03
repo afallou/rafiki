@@ -63,7 +63,7 @@ def runAndTrainingError(g, datatype, startLine, endLine, abbrType, matchProb, tr
         matchProb.setDirpath(dirpath)
         if len(observations) == 0:
             continue
-        correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+        correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
