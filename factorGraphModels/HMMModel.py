@@ -104,6 +104,7 @@ def main():
 					if len(observations) == 0:
 						continue
 					correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+					print 'test here'
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
 					if correctedLines[0][1] == tokens:
