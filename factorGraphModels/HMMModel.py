@@ -99,7 +99,7 @@ def main():
 					observations = [abbrToken(token) for token in tokens]
 					separators = [separator for (separator, token) in sep_tokens]
 					matchProb.setDirpath(dirpath)
-					prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+					correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
 					if correctedLines[0] == tokens:
