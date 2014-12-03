@@ -22,7 +22,7 @@ def getDirpaths(root, keep_fn=lambda x: True):
 	return filter(keep_fn, flattened)
 
 def abbrRemoveVowels(token):
-	return ''.join([l for l in token if l not in vowels])
+	token.setName(''.join([l for l in token.getName() if l not in vowels]))
 
 def abbrRandomlyRemLetters(token):
 	token.setName(''.join([l for l in token.getName() if random.random() > removalProb]))
@@ -36,13 +36,17 @@ def abbrRandomShuffleLetters(token):
 			array[i+1] = letter
 	token.setName(''.join(array))
 
-def abbrToken(token):
+def abbrToken(token, abbrType):
 	if token is None or not token.isName:
 		return token
+	if abbrType == 0:
+		return token
 	else:
+		if abbrType == 2: # remove vowels and all, if type is 1 then shuffle and remove
+			abbrRemoveVowels(token)
 		abbrRandomShuffleLetters(token)
 		abbrRandomlyRemLetters(token)
-	return token
+		return token
 
 def main():
 	parser = argparse.ArgumentParser()
@@ -54,6 +58,8 @@ def main():
 		'solve', help='solve algo (legacy_viterbi or pfilter)')
 	parser.add_argument(
 		'training_error', type = int, default = 0, help='calculate training error - 1 or not - 0')
+	parser.add_argument(
+		'abbr_Type', type = int, default = 0, help='what abbr function to apply: 0 - nothing, 1 - switch & remove, 2 - switch, remove, & no vowels')
 
 	# can make the following option-controlled later if we start looking at other langs
 	def isPythonFile(dirpath):
@@ -70,6 +76,7 @@ def main():
 
 
 	training_error_check = bool(args.training_error)
+	abbrType = int(args.abbr_Type)
 
 	transProbBuilder = TransitionProbsBuilder(percentage)
 	matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
@@ -98,7 +105,7 @@ def main():
 					# apply the abbreviation functions :) to all of the words in tokens
 					tokens = [token for (separator, token) in sep_tokens] #actual list of words
 					actual_tokens = copy.deepcopy(tokens)
-					observations = [abbrToken(token) for token in tokens]
+					observations = [abbrToken(token, abbrType) for token in tokens]
 					separators = [separator for (separator, token) in sep_tokens]
 					matchProb.setDirpath(dirpath)
 					if len(observations) == 0:
@@ -109,11 +116,11 @@ def main():
 					#increment training correct count if your best guess is equal to corrected lines
 					if correctedLines[0][1] == tokens:
 						training_correct += 1 
-					print 'compared:', actual_tokens 
-					print observations
-					print correctedLines
-					print correctedLines[0][1]
-					print correctedLines
+					# print 'compared:', actual_tokens 
+					# print observations
+					# print correctedLines
+					# print correctedLines[0][1]
+					# print correctedLines
 				print 'Number of Training Samples:', training_samples
 				print 'Training Correct Ratio:', float(training_correct)/(training_samples)
 				print 'Training Error:', 1 - float(training_correct)/(training_samples)
@@ -125,12 +132,12 @@ def main():
 			test_correct = 0	
 			for lineno in range(startTestLine, totalLineCount + 1): # line 1 is a line
 				# print 'lineno: ', lineno
-				# TODO: if slow, the next line is wasteful since we get a new generator every time
+				# TODO: if slow, the nesxt line is wasteful since we get a new generator every time
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
 				actual_tokens = copy.deepcopy(tokens)
-				observations = [(token) for token in tokens]
+				observations = [abbrToken(token, abbrType) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				# print len(observations)
@@ -139,10 +146,10 @@ def main():
 				correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
-				print 'compared:', actual_tokens 
-				print observations
-				print correctedLines[0][1]
-				print correctedLines
+				# print 'compared:', actual_tokens 
+				# print observations
+				# print correctedLines[0][1]
+				# print correctedLines
 				if correctedLines[0][1] == actual_tokens:
 					test_correct += 1 
 			print 'Number of Test Samples:', test_samples
