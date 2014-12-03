@@ -5,7 +5,7 @@ from extract_features import vowels
 import itertools
 import tokenize
 import random
-from solveHMM import viterbi, particle_filtering
+from solveHMM import legacy_viterbi, particle_filtering
 
 """
 	Return a list of filenames 
@@ -50,7 +50,7 @@ def main():
 	parser.add_argument(
 		'percentage', help='percentage of each file (at end) to be used for testing')
 	parser.add_argument(
-		'solve', help='solve algo (viterbi or pfilter)')
+		'solve', help='solve algo (legacy_viterbi or pfilter)')
 	parser.add_argument(
 		'training_error', type = int, default = 0, help='calculate training error - 1 or not - 0')
 
@@ -61,7 +61,7 @@ def main():
 	args = parser.parse_args()
 	dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
 	percentage = float(args.percentage)
-	solve_fn = viterbi
+	solve_fn = legacy_viterbi
 	if args.solve == 'pfilter':
 		print "Using particle_filtering"
 	else:
@@ -99,7 +99,7 @@ def main():
 					observations = [abbrToken(token) for token in tokens]
 					separators = [separator for (separator, token) in sep_tokens]
 					matchProb.setDirpath(dirpath)
-					correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+					correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 					training_samples += 1
 					#increment training correct count if your best guess is equal to corrected lines
 					if correctedLines[0] == tokens:
@@ -122,7 +122,7 @@ def main():
 				observations = [abbrToken(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
-				correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+				correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
 				test_samples += 1
 				#increment training correct count if your best guess is equal to corrected lines
 				if correctedLines[0] == tokens:
