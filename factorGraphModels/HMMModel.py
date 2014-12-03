@@ -78,6 +78,7 @@ def main():
 			g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
 
 			if training_error_check:	
+				print 'Training'
 				# for training error
 				training_samples = 0
 				training_correct = 0
@@ -109,7 +110,9 @@ def main():
 				sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
+				print(observations)
 				observations = [abbrToken(token) for token in tokens]
+
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				prob, correctedLines = viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
