@@ -1,5 +1,5 @@
 events: Ticks
-summary: 351605
+summary: 18984
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=FitSolverError
 2343 0
@@ -27,19 +27,19 @@ cfn=<method 'rstrip' of 'str' objects>
 calls=4 0
 264 0
 cfn=<len>
-calls=63 0
+calls=117 0
 264 0
 cfn=<method 'append' of 'list' objects>
-calls=7 0
+calls=10 0
 264 0
 cfn=<method 'readline' of '_io.BytesIO' objects>
-calls=41 0
+calls=76 0
 264 0
 cfn=<method 'match' of '_sre.SRE_Pattern' objects>
-calls=346 0
-264 0
+calls=617 0
+264 1
 cfn=<method 'span' of '_sre.SRE_Match' objects>
-calls=346 0
+calls=617 0
 264 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/lgmres.py
@@ -191,7 +191,7 @@ calls=36 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 cfn=parse
 calls=36 675
-493 8
+493 9
 cfn=<method 'items' of 'dict' objects>
 calls=36 0
 493 0
@@ -202,23 +202,43 @@ calls=36 472
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
 cfn=_code
 calls=36 478
-493 9
+493 10
 
-fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/keyword.py
 fn=<module>
-4 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
-cfn=__new__
-calls=1 86
-4 0
-cfl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
-cfn=VarianceThreshold
-calls=1 11
-4 0
+11 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=dgamma_gen
 2887 0
+
+fl=constructProbs.py
+fn=updateTransitionProbs
+192 0
+cfn=<method 'read' of 'file' objects>
+calls=1 0
+192 0
+cfn=<open>
+calls=1 0
+192 0
+cfl=constructProbs.py
+cfn=__eq__
+calls=184 27
+192 0
+cfn=<sum>
+calls=1 0
+192 0
+cfl=constructProbs.py
+cfn=__hash__
+calls=370 37
+192 0
+cfl=constructProbs.py
+cfn=getSeparatorAndToken
+calls=91 145
+192 1
+cfn=<method 'seek' of 'file' objects>
+calls=1 0
+192 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/records.py
 fn=record
@@ -258,11 +278,11 @@ fn=KFold
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/__init__.py
 fn=<module>
-48 24
+48 37
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/quadpack.py
 cfn=<module>
 calls=1 3
-48 5
+48 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -273,7 +293,7 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/_ode.py
 cfn=<module>
 calls=1 39
-48 13
+48 85
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/quadrature.py
 cfn=<module>
 calls=1 1
@@ -284,11 +304,15 @@ calls=33 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/odepack.py
 cfn=<module>
 calls=1 2
-48 4
+48 32
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=truncnorm_gen
 5740 0
+
+fl=solveHMM.py
+fn=<lambda>
+76 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numerictypes.py
 fn=<module>
@@ -426,7 +450,7 @@ calls=1 23
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/bisect.py
 cfn=<module>
 calls=1 1
-2 1
+2 2
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/compat/_inspect.py
 fn=<lambda>
@@ -535,7 +559,7 @@ fn=<numpy.core.multiarray.can_cast>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tempfile.py
 fn=<module>
-18 9
+18 13
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tempfile.py
 cfn=_RandomNameSequence
 calls=1 108
@@ -557,7 +581,7 @@ calls=5 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py
 cfn=<module>
 calls=1 40
-18 12
+18 23
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack2.py
 fn=SmoothBivariateSpline
@@ -569,34 +593,23 @@ fn=_RandomNameSequence
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/__init__.py
 fn=<module>
-101 98
+101 90
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/memory.py
 cfn=<module>
 calls=1 5
-101 175
+101 233
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/parallel.py
 cfn=<module>
 calls=1 3
-101 140
+101 186
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/stride_tricks.py
 fn=DummyArray
 14 0
 
-fl=extract_features.py
-fn=getNumSharedCapitals
-24 1512
-cfl=extract_features.py
-cfn=getNumSharedCharClass
-calls=1376693 14
-24 30674
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 fn=_DomainGreaterEqual
 794 0
-
-fn=<built-in method __new__ of type object at 0x102948598>
-0 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 fn=<module>
@@ -608,7 +621,7 @@ fn=_StoreTrueAction
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_internal.py
 fn=<module>
-6 0
+6 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_internal.py
 cfn=_ctypes
 calls=1 224
@@ -626,7 +639,7 @@ calls=2 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/compat/__init__.py
 cfn=<module>
 calls=1 10
-6 4
+6 6
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_internal.py
 cfn=_missing_ctypes
 calls=1 217
@@ -638,7 +651,7 @@ fn=_SumLinearOperator
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 fn=<module>
-35 3
+35 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 cfn=MaybeEncodingError
 calls=1 71
@@ -666,7 +679,7 @@ calls=1 574
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 cfn=ThreadPool
 calls=1 709
-35 5
+35 21
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 cfn=ApplyResult
 calls=1 522
@@ -737,7 +750,7 @@ fn=IMapUnorderedIterator
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/io.py
 fn=<module>
-34 4
+34 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__new__
 calls=4 86
@@ -783,10 +796,6 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=levy_l_gen
 4467 0
 
-fl=constructProbs.py
-fn=TransitionProbs
-107 0
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.py
 fn=normcase
 51 0
@@ -829,10 +838,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threa
 cfn=_Verbose
 calls=1 56
 1 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
-cfn=filterwarnings
-calls=1 45
-1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py
 cfn=_MainThread
 calls=1 1088
@@ -855,6 +860,10 @@ calls=1 551
 1 0
 cfn=<thread.allocate_lock>
 calls=1 0
+1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
+cfn=filterwarnings
+calls=1 45
 1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py
 cfn=_BoundedSemaphore
@@ -890,7 +899,7 @@ calls=13 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=_construct_doc
 calls=13 6465
-6365 6
+6365 7
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 cfn=__init__
 calls=52 1518
@@ -920,31 +929,31 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/__init__.py
 fn=<module>
-2 57
+2 65
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csc.py
 cfn=<module>
 calls=1 9
-2 3
+2 35
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csgraph.py
 cfn=<module>
 calls=1 9
-2 1
+2 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/bsr.py
 cfn=<module>
 calls=1 9
-2 3
+2 35
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csr.py
 cfn=<module>
 calls=1 9
-2 4
+2 35
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/dia.py
 cfn=<module>
 calls=1 9
-2 2
+2 13
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/coo.py
 cfn=<module>
 calls=1 9
-2 4
+2 35
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 fn=Lasso
@@ -964,17 +973,17 @@ calls=2 763
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 fn=__instancecheck__
-128 28379
+128 461
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__contains__
-calls=32319367 68
-128 14549
+calls=552495 68
+128 239
 cfn=<getattr>
-calls=16159684 0
-128 3295
+calls=276248 0
+128 50
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__subclasscheck__
-calls=2 148
+calls=1 148
 128 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
@@ -1091,6 +1100,10 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=_ScaledLinearOperator
 296 0
 
+fl=constructProbs.py
+fn=TransitionProbsBuilder
+185 0
+
 fl=<string>
 fn=_CVScoreTuple
 1 0
@@ -1101,11 +1114,11 @@ fn=foldnorm_gen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/__init__.py
 fn=<module>
-197 42
+197 60
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/lil.py
 cfn=<module>
 calls=1 2
-197 3
+197 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -1113,11 +1126,11 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csgraph/__init__.py
 cfn=<module>
 calls=1 119
-197 22
+197 103
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 cfn=<module>
 calls=1 1
-197 8
+197 18
 cfn=<dir>
 calls=1 0
 197 0
@@ -1151,7 +1164,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csr.py
 cfn=<module>
 calls=1 1
-197 92
+197 245
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=kstwobign_gen
@@ -1185,9 +1198,13 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=__getattr__
 426 0
 
+fl=constructProbs.py
+fn=TransitionProbs
+112 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/random/__init__.py
 fn=<module>
-88 11
+88 48
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -1195,10 +1212,6 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/random/info.py
 cfn=<module>
 calls=1 84
-88 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
-cfn=filterwarnings
-calls=1 45
 88 0
 cfn=<method 'extend' of 'list' objects>
 calls=1 0
@@ -1220,16 +1233,13 @@ cfn=__init__
 calls=1 318
 88 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
+cfn=filterwarnings
+calls=1 45
+88 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 cfn=__enter__
 calls=1 339
 88 0
-
-fl=extract_features.py
-fn=getClosestDistance
-72 422
-cfn=<max>
-calls=688254 0
-72 247
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/numbers.py
 fn=Rational
@@ -1241,7 +1251,7 @@ fn=ModuleScanner
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/__init__.py
 fn=<module>
-7 18
+7 28
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -1249,7 +1259,7 @@ calls=1 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/__init__.py
 cfn=<module>
 calls=1 45
-7 76
+7 102
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/decorators.py
 cfn=<module>
 calls=1 15
@@ -1261,7 +1271,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/utils.py
 cfn=<module>
 calls=1 4
-7 4
+7 6
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 fn=ExcitingMixing
@@ -1269,7 +1279,7 @@ fn=ExcitingMixing
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/heapq.py
 fn=<module>
-31 3
+31 13
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/_expm_multiply.py
 fn=LazyOperatorNormInfo
@@ -1277,11 +1287,11 @@ fn=LazyOperatorNormInfo
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/scanner.py
 fn=<module>
-2 1
+2 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py
 cfn=compile
 calls=1 188
-2 0
+2 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 fn=LogRecord
@@ -1289,7 +1299,7 @@ fn=LogRecord
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ctypeslib.py
 fn=<module>
-51 5
+51 8
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ctypeslib.py
 cfn=_ndptr
 calls=1 150
@@ -1297,7 +1307,7 @@ calls=1 150
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 cfn=<module>
 calls=1 4
-51 6
+51 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=deprecate
 calls=1 152
@@ -1334,7 +1344,7 @@ calls=10 13
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/stats.py
 fn=<module>
-166 58
+166 130
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=<lambda>
 calls=1 212
@@ -1342,7 +1352,7 @@ calls=1 212
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=<module>
 calls=1 5
-166 268
+166 564
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=deprecate
 calls=1 152
@@ -1383,9 +1393,16 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=uniform_gen
 5844 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
-fn=doc_note
-92 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
+fn=asformat
+195 0
+cfn=<getattr>
+calls=1 0
+195 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/coo.py
+cfn=tocsr
+calls=1 286
+195 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py
 fn=JSONEncoder
@@ -1400,7 +1417,7 @@ fn=ncf_gen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/quadpack.py
 fn=<module>
-3 5
+3 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/quadpack.py
 cfn=_RangeFunc
 calls=1 619
@@ -1482,7 +1499,7 @@ calls=215 744
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 fn=<module>
-1 16
+1 36
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/twodim_base.py
 cfn=<module>
 calls=1 3
@@ -1514,9 +1531,6 @@ fn=_extrema_operation
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 fn=__new__
 86 3
-cfn=<built-in method __new__ of type object at 0x102948598>
-calls=100 0
-86 3
 cfn=<getattr>
 calls=374 0
 86 0
@@ -1531,6 +1545,9 @@ calls=155 89
 cfn=<method 'items' of 'dict' objects>
 calls=100 0
 86 0
+cfn=<built-in method __new__ of type object at 0x100a50598>
+calls=100 0
+86 3
 cfn=<method 'add' of 'set' objects>
 calls=61 0
 86 0
@@ -1538,34 +1555,6 @@ calls=61 0
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 fn=__init__
 1151 0
-
-fl=constructProbs.py
-fn=updateTransitionProbs
-185 0
-cfn=<method 'read' of 'file' objects>
-calls=1 0
-185 0
-cfl=constructProbs.py
-cfn=getSeparatorAndToken
-calls=48 138
-185 0
-cfn=<open>
-calls=1 0
-185 0
-cfl=constructProbs.py
-cfn=__eq__
-calls=51 27
-185 0
-cfn=<sum>
-calls=1 0
-185 0
-cfl=constructProbs.py
-cfn=__hash__
-calls=165 37
-185 0
-cfn=<method 'seek' of 'file' objects>
-calls=1 0
-185 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/dok.py
 fn=dok_matrix
@@ -1581,11 +1570,11 @@ fn=c_ushort
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/linsolve.py
 fn=<module>
-1 6
+1 37
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/umfpack/__init__.py
 cfn=<module>
 calls=1 173
-1 6
+1 9
 cfn=<hasattr>
 calls=1 0
 1 0
@@ -1643,14 +1632,14 @@ fn=WarningManager
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 fn=vstack
-179 2184
+179 102
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 cfn=atleast_2d
-calls=1376384 60
-179 9974
+calls=77220 60
+179 460
 cfn=<numpy.core.multiarray.concatenate>
-calls=688192 0
-179 2609
+calls=38610 0
+179 124
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=dweibull_gen
@@ -1717,7 +1706,7 @@ calls=1 460
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 fn=__contains__
-68 14549
+68 239
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
 fn=__init__
@@ -1786,7 +1775,7 @@ calls=6 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/kde.py
 fn=<module>
-20 2
+20 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/kde.py
 cfn=gaussian_kde
 calls=1 41
@@ -1794,7 +1783,7 @@ calls=1 41
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_trustregion_dogleg.py
 fn=<module>
-1 2
+1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_trustregion.py
 cfn=<module>
 calls=1 1
@@ -1867,6 +1856,17 @@ fn=MultiTaskElasticNetCV
 fn=<method 'translate' of 'str' objects>
 0 0
 
+fl=extract_features.py
+fn=getOtherPercentageSharedLetters
+76 36
+cfn=<len>
+calls=77792 0
+76 8
+cfl=extract_features.py
+cfn=getNumSharedLetters
+calls=38895 40
+76 528
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_basinhopping.py
 fn=AdaptiveStepsize
 149 0
@@ -1884,10 +1884,6 @@ fn=<method 'rstrip' of 'str' objects>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 fn=<module>
 10 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
-cfn=doc_note
-calls=2 92
-10 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 cfn=mr_class
 calls=1 1485
@@ -1895,6 +1891,10 @@ calls=1 1485
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 cfn=_fromnxfunction
 calls=1 224
+10 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
+cfn=doc_note
+calls=2 92
 10 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 cfn=__init__
@@ -1917,17 +1917,19 @@ fl=<string>
 fn=ArgInfo
 1 0
 
-fl=constructProbs.py
-fn=build
-209 0
-cfl=constructProbs.py
-cfn=__init__
-calls=1 108
-209 2
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
+fn=__cmp__
+292 0
+cfn=<isinstance>
+calls=2 0
+292 0
+cfn=<cmp>
+calls=2 0
+292 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nnls.py
 fn=<module>
-1 2
+1 10
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 fn=match
@@ -1960,11 +1962,11 @@ calls=1 44
 45 0
 
 fn=<isinstance>
-0 12447
+0 235
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__instancecheck__
-calls=16159684 128
-0 46225
+calls=276248 128
+0 751
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/ridge.py
 fn=RidgeClassifier
@@ -2060,7 +2062,7 @@ fn=csc_matrix
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/fixes.py
 fn=<module>
-5 7
+5 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=__init__
 calls=1 2701
@@ -2108,11 +2110,11 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 cfn=__init__
 calls=1 22
-5 3
+5 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/__init__.py
 cfn=<module>
 calls=1 527
-5 31
+5 116
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 cfn=__enter__
 calls=1 339
@@ -2126,7 +2128,7 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakr
 fn=__enter__
 20 0
 cfn=<method 'add' of 'set' objects>
-calls=16 0
+calls=14 0
 20 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/svm/__init__.py
@@ -2135,7 +2137,7 @@ fn=<module>
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/classes.py
 cfn=<module>
 calls=1 1
-3 146
+3 153
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/bounds.py
 cfn=<module>
 calls=1 1
@@ -2151,23 +2153,23 @@ calls=16 15
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=array2d
-115 2078
+115 95
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=asarray
-calls=688193 392
-115 1141
+calls=38611 392
+115 51
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 cfn=atleast_2d
-calls=688193 60
-115 7416
+calls=38611 60
+115 331
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 cfn=isspmatrix
-calls=688193 702
-115 523
+calls=38611 702
+115 25
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=_assert_all_finite
-calls=688193 37
-115 13801
+calls=38611 37
+115 632
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_trustregion_ncg.py
 fn=<module>
@@ -2219,7 +2221,7 @@ fn=Popen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py
 fn=<module>
-387 1
+387 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py
 cfn=Popen
 calls=1 647
@@ -2262,7 +2264,7 @@ fn=<thread.get_ident>
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 fn=<module>
-8 38
+8 40
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 cfn=MultiTaskLasso
 calls=1 1547
@@ -2308,6 +2310,22 @@ cfn=MultiTaskElasticNet
 calls=1 1384
 8 0
 
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
+fn=<module>
+1 10
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
+cfn=TestResult
+calls=1 26
+1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/util.py
+cfn=<module>
+calls=1 1
+1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/StringIO.py
+cfn=<module>
+calls=1 30
+1 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/signals.py
 fn=<module>
 1 0
@@ -2338,7 +2356,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csc.py
 cfn=swig_import_helper
 calls=1 11
-9 3
+9 35
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 fn=__delitem__
@@ -2365,11 +2383,11 @@ fn=LockedIterator
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/special_matrices.py
 fn=<module>
-1 1
+1 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/__init__.py
 cfn=<module>
 calls=1 38
-1 38
+1 63
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/six.py
 fn=_resolve
@@ -2381,6 +2399,17 @@ calls=2 72
 cfn=<getattr>
 calls=2 0
 126 0
+
+fl=extract_features.py
+fn=getNumSharedOrderedLetters
+44 398
+cfn=<len>
+calls=340160 0
+44 33
+cfl=extract_features.py
+cfn=orderedLettersRecurse
+calls=77794 48
+44 3844
 
 fn=<map>
 0 0
@@ -2413,9 +2442,16 @@ cfn=<posix.stat>
 calls=1 0
 38 0
 
+fl=constructProbs.py
+fn=getStartProb
+137 0
+cfn=<method 'get' of 'dict' objects>
+calls=90 0
+137 0
+
 fl=/Library/Python/2.7/site-packages/sklearn/__check_build/__init__.py
 fn=<module>
-3 19
+3 18
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/fft/helper.py
 fn=<module>
@@ -2423,41 +2459,42 @@ fn=<module>
 
 fl=solveHMM.py
 fn=viterbi
-13 6009
-cfn=<len>
-calls=18 0
-13 0
-cfn=<max>
-calls=21506 0
-13 351
-cfn=<range>
-calls=4 0
-13 0
-cfl=constructProbs.py
-cfn=getProb
-calls=688128 123
-13 8423
-cfl=constructProbs.py
-cfn=getProb
-calls=688192 97
-13 332349
+13 297
 cfl=constructProbs.py
 cfn=getStartProb
-calls=64 133
+calls=91 137
 13 0
+cfn=<len>
+calls=30 0
+13 0
+cfl=constructProbs.py
+cfn=getProb
+calls=38568 129
+13 254
+cfn=<max>
+calls=907 0
+13 15
+cfn=<range>
+calls=6 0
+13 0
+cfl=constructProbs.py
+cfn=__repr__
+calls=91 24
+13 0
+cfl=constructProbs.py
+cfn=__hash__
+calls=41465 37
+13 64
+cfl=constructProbs.py
+cfn=getProb
+calls=38659 99
+13 11824
 
 fn=<numpy.core.multiarray.array>
-0 6480
+0 289
 
 fn=<iter>
 0 0
-
-fl=extract_features.py
-fn=<lambda>
-25 4496
-cfn=<method 'isupper' of 'str' objects>
-calls=12744136 0
-25 1625
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pprint.py
 fn=<module>
@@ -2483,15 +2520,11 @@ fn=WorkerInterrupt
 
 fl=/Library/Python/2.7/site-packages/sklearn/__init__.py
 fn=<module>
-14 29
+14 26
 cfl=/Library/Python/2.7/site-packages/sklearn/__check_build/__init__.py
 cfn=<module>
 calls=1 3
-14 19
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
-cfn=filterwarnings
-calls=1 45
-14 0
+14 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py
 cfn=escape
 calls=1 204
@@ -2499,10 +2532,14 @@ calls=1 204
 cfn=<method 'format' of 'str' objects>
 calls=1 0
 14 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
+cfn=filterwarnings
+calls=1 45
+14 0
 cfl=/Library/Python/2.7/site-packages/sklearn/base.py
 cfn=<module>
 calls=1 1
-14 991
+14 1876
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 fn=ConvergenceWarning
@@ -2525,7 +2562,7 @@ calls=1 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/spatial/distance.py
 fn=<module>
-63 1
+63 9
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_char
@@ -2544,7 +2581,7 @@ calls=1 15
 59 0
 
 fn=<getattr>
-0 3296
+0 51
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=__get__
 calls=4 2432
@@ -2552,7 +2589,7 @@ calls=4 2432
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/polynomial.py
 fn=<module>
-4 1
+4 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 cfn=simplefilter
 calls=1 74
@@ -2572,32 +2609,32 @@ calls=1 930
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/__init__.py
 cfn=<module>
 calls=1 44
-4 22
+4 60
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 fn=deepcopy
 145 0
 cfn=<id>
-calls=564 0
+calls=946 0
 145 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=_keep_alive
-calls=244 267
+calls=394 267
 145 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=_deepcopy_dict
-calls=119 253
-145 1
+calls=191 253
+145 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=_deepcopy_inst
-calls=47 283
-145 0
+calls=81 283
+145 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=_deepcopy_atomic
-calls=78 198
+calls=122 198
 145 0
 cfn=<method 'get' of 'dict' objects>
-calls=808 0
+calls=1340 0
 145 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/stochastic_gradient.py
@@ -2646,7 +2683,7 @@ fn=MinimizerWrapper
 230 0
 
 fn=<len>
-0 3428
+0 254
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/six.py
 cfn=__len__
 calls=1 54
@@ -2687,6 +2724,21 @@ cfn=combine
 calls=1 70
 1 0
 
+fl=constructProbs.py
+fn=getProb
+129 146
+cfl=constructProbs.py
+cfn=__eq__
+calls=37977 27
+129 70
+cfl=constructProbs.py
+cfn=__hash__
+calls=45371 37
+129 36
+cfn=<method 'get' of 'dict' objects>
+calls=265 0
+129 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/lambertw.py
 fn=<module>
 1 0
@@ -2706,7 +2758,7 @@ fn=_deprecate
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
 fn=__new__
 223 0
-cfn=<built-in method __new__ of type object at 0x102948598>
+cfn=<built-in method __new__ of type object at 0x100a50598>
 calls=1 0
 223 0
 
@@ -2722,7 +2774,7 @@ fn=Struct
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/__init__.py
 fn=<module>
-38 63
+38 111
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -2734,24 +2786,7 @@ calls=1 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=<module>
 calls=1 21
-38 1
-
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
-fn=filterwarnings
-45 0
-cfn=<isinstance>
-calls=20 0
-45 0
-cfn=<method 'insert' of 'list' objects>
-calls=5 0
-45 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py
-cfn=compile
-calls=10 188
-45 1
-cfn=<issubclass>
-calls=5 0
-45 0
+38 2
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py
 fn=_AssertRaisesContext
@@ -2771,7 +2806,7 @@ fn=strseq
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csgraph/__init__.py
 fn=<module>
-119 17
+119 77
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -2791,7 +2826,7 @@ calls=1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csgraph/_validation.py
 cfn=<module>
 calls=1 1
-119 4
+119 25
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
 fn=_MovedItems
@@ -2841,14 +2876,14 @@ calls=1 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/extmath.py
 fn=safe_sparse_dot
-168 998
+168 45
 cfn=<numpy.core._dotblas.dot>
-calls=688192 0
-168 1513
+calls=38610 0
+168 68
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 cfn=isspmatrix
-calls=1376384 702
-168 1374
+calls=77220 702
+168 64
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 fn=get_shape
@@ -2910,14 +2945,14 @@ fn=__subclasscheck__
 148 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__contains__
-calls=22 68
+calls=18 68
 148 0
 cfn=<getattr>
-calls=16 0
+calls=14 0
 148 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=add
-calls=16 81
+calls=14 81
 148 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__init__
@@ -2925,25 +2960,25 @@ calls=10 36
 148 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py
 cfn=__subclasshook__
-calls=4 98
+calls=2 98
 148 0
 cfn=<method '__subclasses__' of 'type' objects>
-calls=16 0
+calls=14 0
 148 0
 cfn=<method '__subclasshook__' of 'object' objects>
 calls=12 0
 148 0
 cfn=<issubclass>
-calls=18 0
+calls=15 0
 148 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__iter__
-calls=32 58
+calls=28 58
 148 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/supervised.py
 fn=<module>
-5 60
+5 59
 
 fl=<string>
 fn=HermiteE
@@ -2954,7 +2989,7 @@ calls=2 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 fn=<module>
-1 7
+1 17
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/six.py
 cfn=__get__
 calls=1 83
@@ -3053,7 +3088,7 @@ fn=IMapIterator
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/main.py
 fn=<module>
-1 3
+1 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/main.py
 cfn=TestProgram
 calls=1 63
@@ -3061,7 +3096,7 @@ calls=1 63
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/runner.py
 cfn=<module>
 calls=1 1
-1 3
+1 4
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=rv_discrete
@@ -3146,14 +3181,14 @@ fn=JSONDecoder
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/blas.py
 fn=<module>
-119 5
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
-cfn=__init__
-calls=2 23
-119 0
+119 36
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
 cfn=<module>
 calls=1 1
+119 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
+cfn=__init__
+calls=2 23
 119 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
@@ -3180,7 +3215,7 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakr
 fn=add
 81 0
 cfn=<method 'add' of 'set' objects>
-calls=28 0
+calls=26 0
 81 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/basic.py
@@ -3213,7 +3248,7 @@ fn=ArgumentError
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/__init__.py
 fn=<module>
-151 37
+151 48
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -3240,11 +3275,11 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/misc.py
 cfn=<module>
 calls=1 1
-151 8
+151 40
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/basic.py
 cfn=<module>
 calls=1 7
-151 22
+151 79
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/decomp_cholesky.py
 cfn=<module>
 calls=1 1
@@ -3263,7 +3298,7 @@ calls=11 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/decomp_schur.py
 cfn=<module>
 calls=1 1
-151 25
+151 27
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/dual.py
 cfn=<module>
 calls=1 12
@@ -3274,7 +3309,7 @@ calls=110 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/matfuncs.py
 cfn=<module>
 calls=1 5
-151 51
+151 78
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/_decomp_polar.py
 cfn=<module>
 calls=1 1
@@ -3315,6 +3350,10 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.p
 cfn=__new__
 calls=2 86
 2 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
+cfn=__cmp__
+calls=1 292
+2 0
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/omp.py
 cfn=OrthogonalMatchingPursuit
 calls=1 495
@@ -3324,25 +3363,9 @@ cfn=OrthogonalMatchingPursuitCV
 calls=1 772
 2 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
-cfn=__cmp__
-calls=1 292
-2 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
 cfn=__init__
 calls=2 263
 2 0
-
-fl=constructProbs.py
-fn=getSeparatorAndToken
-138 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
-cfn=generate_tokens
-calls=267 264
-138 1
-cfl=constructProbs.py
-cfn=__init__
-calls=70 14
-138 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 fn=_update_doc
@@ -3375,6 +3398,10 @@ calls=6 2320
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 fn=AxisConcatenator
 213 0
+
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
+fn=invgauss_gen
+4241 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/scorer.py
 fn=_BaseScorer
@@ -3444,10 +3471,10 @@ fn=<method '__contains__' of 'frozenset' objects>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_methods.py
 fn=_sum
-23 982
+23 47
 cfn=<method 'reduce' of 'numpy.ufunc' objects>
-calls=688193 0
-23 6489
+calls=38611 0
+23 291
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numerictypes.py
 fn=issubdtype
@@ -3468,7 +3495,7 @@ calls=1 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=<module>
-4 6
+4 24
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 cfn=__init__
 calls=1 349
@@ -3630,7 +3657,7 @@ fn=<dir>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=<module>
-5 11
+5 27
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=FitSolverError
 calls=1 2343
@@ -3646,7 +3673,7 @@ calls=1 2887
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/__init__.py
 cfn=<module>
 calls=1 48
-5 48
+5 182
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=truncnorm_gen
 calls=1 5740
@@ -3753,6 +3780,10 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/s
 cfn=rv_continuous
 calls=1 829
 5 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
+cfn=invgauss_gen
+calls=1 4241
+5 0
 cfn=<dir>
 calls=1 0
 5 0
@@ -3775,7 +3806,7 @@ calls=1 2856
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=__init__
 calls=85 1036
-5 67
+5 65
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=exponpow_gen
 calls=1 3062
@@ -3988,7 +4019,7 @@ calls=6 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/__init__.py
 cfn=<module>
 calls=1 142
-5 131
+5 277
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=skellam_gen
 calls=1 7873
@@ -4075,10 +4106,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/s
 cfn=hypergeom_gen
 calls=1 7399
 5 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
-cfn=invgauss_gen
-calls=1 4241
-5 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=__new__
 calls=2 93
@@ -4100,6 +4127,14 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=<module>
 1 0
 
+fl=constructProbs.py
+fn=build
+218 0
+cfl=constructProbs.py
+cfn=__init__
+calls=1 114
+218 3
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 fn=deprecate
 152 0
@@ -4116,10 +4151,10 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.p
 fn=_keep_alive
 267 0
 cfn=<id>
-calls=245 0
+calls=395 0
 267 0
 cfn=<method 'append' of 'list' objects>
-calls=243 0
+calls=393 0
 267 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
@@ -4160,10 +4195,14 @@ fn=_SymmetricArpackParams
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/least_angle.py
 fn=<module>
-4 107
+4 114
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__new__
 calls=5 86
+4 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
+cfn=__cmp__
+calls=1 292
 4 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/__init__.py
 cfn=<module>
@@ -4172,11 +4211,11 @@ calls=1 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/__init__.py
 cfn=<module>
 calls=1 153
-4 97
+4 289
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=<module>
 calls=1 4
-4 904
+4 1361
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
 cfn=<module>
 calls=1 27
@@ -4192,10 +4231,6 @@ calls=1 1011
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/least_angle.py
 cfn=LarsCV
 calls=1 841
-4 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
-cfn=__cmp__
-calls=1 292
 4 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
 cfn=__init__
@@ -4216,7 +4251,7 @@ calls=2 93
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py
 fn=<module>
-55 6
+55 16
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py
 cfn=__get_openssl_constructor
 calls=6 94
@@ -4227,10 +4262,10 @@ calls=6 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 fn=asarray
-392 573
+392 26
 cfn=<numpy.core.multiarray.array>
-calls=688210 0
-392 567
+calls=38628 0
+392 24
 
 fn=<abs>
 0 0
@@ -4270,25 +4305,13 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multip
 fn=ForkAwareThreadLock
 330 0
 
-fl=constructProbs.py
-fn=build
-82 0
-cfl=constructProbs.py
-cfn=__init__
-calls=1 87
-82 0
-cfl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
-cfn=fit
-calls=1 656
-82 2
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_minimize.py
 fn=<module>
-8 27
+8 43
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_trustregion_dogleg.py
 cfn=<module>
 calls=1 1
-8 2
+8 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_trustregion_ncg.py
 cfn=<module>
 calls=1 1
@@ -4300,19 +4323,19 @@ calls=1 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/lbfgsb.py
 cfn=<module>
 calls=1 9
-8 4
+8 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/cobyla.py
 cfn=<module>
 calls=1 11
-8 3
+8 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/tnc.py
 cfn=<module>
 calls=1 33
-8 1
+8 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/slsqp.py
 cfn=<module>
 calls=1 14
-8 2
+8 10
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 fn=GenericBroyden
@@ -4333,10 +4356,6 @@ fn=AccuracyWarning
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=cosine_gen
 2856 0
-
-fl=constructProbs.py
-fn=<genexpr>
-187 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/string.py
 fn=convert
@@ -4362,7 +4381,7 @@ calls=85 553
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=_construct_doc
 calls=85 1112
-1036 50
+1036 49
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 cfn=__init__
 calls=340 1518
@@ -4392,37 +4411,32 @@ fn=PrecisionError
 
 fl=extract_features.py
 fn=getNumSharedCharClass
-14 49248
+14 2018
+cfn=<len>
+calls=933661 0
+14 90
 cfl=extract_features.py
 cfn=<lambda>
-calls=12744136 25
-14 6122
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
-cfn=__missing__
-calls=7712215 452
-14 1268
+calls=1112523 41
+14 407
+cfn=<range>
+calls=933661 0
+14 274
 cfl=extract_features.py
 cfn=<lambda>
-calls=6372068 29
-14 3101
-cfn=<min>
-calls=10620069 0
-14 2679
+calls=741682 29
+14 318
 cfl=extract_features.py
 cfn=<lambda>
-calls=19116204 33
-14 8562
-cfn=<sum>
-calls=5506772 0
-14 1442
+calls=741682 33
+14 299
 cfl=extract_features.py
 cfn=<lambda>
-calls=12744136 21
-14 2902
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
-cfn=__init__
-calls=11013544 438
-14 81954
+calls=370841 37
+14 144
+cfn=<method 'add' of 'set' objects>
+calls=157189 0
+14 21
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=exponpow_gen
@@ -4462,18 +4476,18 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.p
 fn=_deepcopy_dict
 253 0
 cfn=<id>
-calls=119 0
+calls=191 0
 253 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=deepcopy
-calls=516 145
-253 1
+calls=864 145
+253 2
 cfn=<method 'iteritems' of 'dict' objects>
-calls=119 0
+calls=191 0
 253 0
 cfl=constructProbs.py
 cfn=__hash__
-calls=77 37
+calls=125 37
 253 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py
@@ -4509,11 +4523,11 @@ fn=NotMemorizedResult
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
 fn=predict_proba
-112 1193
+112 54
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 cfn=_predict_proba_lr
-calls=688192 222
-112 68846
+calls=38610 222
+112 3156
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/_expm_frechet.py
 fn=<module>
@@ -4525,11 +4539,11 @@ fn=debug
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/__init__.py
 fn=<module>
-321 58
+321 105
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/stats.py
 cfn=<module>
 calls=1 166
-321 327
+321 695
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -4537,7 +4551,7 @@ calls=1 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/kde.py
 cfn=<module>
 calls=1 20
-321 2
+321 10
 cfn=<method 'endswith' of 'str' objects>
 calls=223 0
 321 0
@@ -4547,11 +4561,11 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/mstats.py
 cfn=<module>
 calls=1 78
-321 22
+321 33
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/morestats.py
 cfn=<module>
 calls=1 5
-321 2
+321 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/contingency.py
 cfn=<module>
 calls=1 2
@@ -4581,7 +4595,7 @@ calls=9 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/bicluster/bicluster_metrics.py
 fn=<module>
-1 18
+1 19
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/linear_assignment_.py
 cfn=<module>
 calls=1 5
@@ -4625,6 +4639,13 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/thread
 fn=_Semaphore
 422 0
 
+fl=extract_features.py
+fn=<lambda>
+41 296
+cfn=<method 'isalpha' of 'str' objects>
+calls=1112523 0
+41 111
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/machar.py
 fn=__init__
 97 0
@@ -4639,7 +4660,7 @@ calls=2 2705
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/machar.py
 cfn=_do_init
 calls=2 113
-97 24
+97 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=__exit__
 calls=2 2710
@@ -4647,7 +4668,7 @@ calls=2 2710
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/sparsetools/_graph_validation.py
 fn=<module>
-1 35
+1 39
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 fn=<lambda>
@@ -4666,7 +4687,7 @@ fn=BufferedIOBase
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/lbfgsb.py
 fn=<module>
-9 4
+9 26
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 fn=__init__
@@ -4674,7 +4695,7 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/dummy/__init__.py
 fn=<module>
-36 3
+36 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py
 cfn=currentThread
 calls=1 1152
@@ -4704,34 +4725,6 @@ cfn=Namespace
 calls=1 113
 36 0
 
-fl=extract_features.py
-fn=orderedLettersRecurse
-40 28316
-cfn=<len>
-calls=12940284 0
-40 1260
-cfl=extract_features.py
-cfn=orderedLettersRecurse
-calls=2221970 40
-40 31292
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
-cfn=__missing__
-calls=5002786 452
-40 774
-cfn=<max>
-calls=2702388 0
-40 681
-cfn=<min>
-calls=7334306 0
-40 1679
-cfn=<sum>
-calls=2573070 0
-40 651
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
-cfn=__init__
-calls=5146140 438
-40 42054
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_double
 201 0
@@ -4749,7 +4742,7 @@ calls=482 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/umfpack/__init__.py
 fn=<module>
-173 6
+173 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -4775,11 +4768,11 @@ calls=37 82
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/misc.py
 fn=<module>
-1 2
+1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/blas.py
 cfn=<module>
 calls=1 119
-1 6
+1 36
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
 fn=fixup
@@ -4798,7 +4791,7 @@ fn=<module>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 fn=__missing__
-452 2043
+452 38
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 fn=atleast_1d
@@ -4850,7 +4843,7 @@ fn=GridSearchCV
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/_datasource.py
 fn=<module>
-33 6
+33 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/_datasource.py
 cfn=__init__
 calls=1 72
@@ -4870,7 +4863,7 @@ calls=1 150
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py
 cfn=<module>
 calls=1 5
-33 1
+33 2
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
 fn=__init__
@@ -4897,7 +4890,7 @@ fn=Mismatch
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/lapack.py
 fn=<module>
-201 4
+201 36
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
 cfn=__init__
 calls=2 23
@@ -4942,7 +4935,7 @@ fn=abstractmethod
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/dis.py
 fn=<module>
-1 2
+1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/opcode.py
 cfn=<module>
 calls=1 5
@@ -4990,10 +4983,6 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=gumbel_l_gen
 3975 0
 
-fl=constructProbs.py
-fn=TransitionProbsBuilder
-178 0
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_wchar
 294 0
@@ -5019,7 +5008,7 @@ fn=PassiveAggressiveRegressor
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle.py
 fn=<module>
-25 2
+25 3
 cfn=<method 'extend' of 'list' objects>
 calls=1 0
 25 0
@@ -5073,7 +5062,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csgraph.py
 cfn=swig_import_helper
 calls=1 11
-9 1
+9 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 fn=TextDoc
@@ -5102,9 +5091,9 @@ fn=_ConsistentSet
 fn=<_ctypes.set_conversion_mode>
 0 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
-fn=RawDescriptionHelpFormatter
-627 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
+fn=EndOfBlock
+630 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/preprocessing/data.py
 fn=PolynomialFeatures
@@ -5114,17 +5103,17 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.p
 fn=_deepcopy_inst
 283 0
 cfn=<id>
-calls=47 0
+calls=81 0
 283 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
 cfn=deepcopy
-calls=47 145
+calls=81 145
 283 0
 cfn=<hasattr>
-calls=188 0
+calls=324 0
 283 0
 cfn=<method 'update' of 'dict' objects>
-calls=47 0
+calls=81 0
 283 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
@@ -5152,7 +5141,7 @@ calls=2 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/basic.py
 fn=<module>
-7 15
+7 32
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/decomp.py
 cfn=<module>
 calls=1 15
@@ -5160,11 +5149,11 @@ calls=1 15
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/lapack.py
 cfn=<module>
 calls=1 201
-7 4
+7 36
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/flinalg.py
 cfn=<module>
 calls=1 5
-7 2
+7 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/decomp_svd.py
 cfn=<module>
 calls=1 1
@@ -5202,7 +5191,7 @@ calls=1 21
 9 0
 
 fn=<method 'lstrip' of 'str' objects>
-0 1
+0 2
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 fn=Pool
@@ -5221,7 +5210,7 @@ calls=1 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 fn=<module>
-1 29
+1 49
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 cfn=CClass
 calls=1 439
@@ -5229,7 +5218,7 @@ calls=1 439
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 cfn=<module>
 calls=1 1
-1 17
+1 37
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 cfn=nd_grid
 calls=1 85
@@ -5269,7 +5258,7 @@ calls=1 456
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/matrixlib/__init__.py
 cfn=<module>
 calls=1 3
-1 6
+1 12
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 cfn=IndexExpression
 calls=1 584
@@ -5343,18 +5332,18 @@ calls=1 5
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/sparsetools/__init__.py
 cfn=<module>
 calls=1 1
-3 107
+3 110
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=<module>
 calls=1 1
-3 62
+3 152
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 cfn=deprecated
 calls=1 29
 3 0
 
 fn=<numpy.core._dotblas.dot>
-0 1513
+0 68
 
 fl=/Library/Python/2.7/site-packages/sklearn/svm/classes.py
 fn=SVR
@@ -5405,7 +5394,7 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/flinalg.py
 fn=<module>
-5 2
+5 10
 
 fn=<method 'keys' of 'dict' objects>
 0 0
@@ -5413,17 +5402,6 @@ fn=<method 'keys' of 'dict' objects>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py
 fn=SpecialFileError
 34 0
-
-fl=extract_features.py
-fn=getPercentageSharedConsonants
-62 939
-cfn=<len>
-calls=1376693 0
-62 148
-cfl=extract_features.py
-cfn=getNumSharedConsonants
-calls=688346 20
-62 20556
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=_reset_cache
@@ -5443,9 +5421,9 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes
 fn=c_byte
 233 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
-fn=StreamWriter
-62 0
+fl=solveHMM.py
+fn=<lambda>
+48 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=genhalflogistic_gen
@@ -5467,7 +5445,7 @@ calls=1 70
 71 0
 cfn=<__import__>
 calls=1 0
-71 1
+71 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/__init__.py
 cfn=normalize_encoding
 calls=1 49
@@ -5478,7 +5456,7 @@ calls=2 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/__init__.py
 fn=<module>
-153 25
+153 32
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack2.py
 cfn=<module>
 calls=1 7
@@ -5493,7 +5471,7 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/interpolate.py
 cfn=<module>
 calls=1 2
-153 30
+153 89
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/rbf.py
 cfn=<module>
 calls=1 44
@@ -5501,7 +5479,7 @@ calls=1 44
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/ndgriddata.py
 cfn=<module>
 calls=1 6
-153 41
+153 166
 cfn=<method 'startswith' of 'str' objects>
 calls=62 0
 153 0
@@ -5517,9 +5495,17 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argpar
 fn=_HelpAction
 979 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/keyword.py
+fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
 fn=<module>
-11 0
+4 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
+cfn=__new__
+calls=1 86
+4 0
+cfl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
+cfn=VarianceThreshold
+calls=1 11
+4 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
 fn=VarianceThreshold
@@ -5546,23 +5532,27 @@ fn=Attribute
 1 0
 
 fn=<max>
-0 1166
+0 58
+cfl=solveHMM.py
+cfn=<lambda>
+calls=91 76
+0 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 cfn=<lambda>
 calls=196 603
 0 0
 cfl=solveHMM.py
 cfn=<lambda>
-calls=688128 41
-0 113
-cfl=solveHMM.py
-cfn=<lambda>
-calls=64 56
+calls=48 48
 0 0
 cfl=solveHMM.py
 cfn=<genexpr>
-calls=66 56
+calls=94 76
 0 0
+cfl=solveHMM.py
+cfn=<lambda>
+calls=38520 56
+0 5
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 fn=__init__
@@ -5587,7 +5577,7 @@ calls=358 329
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/optimize.py
 fn=<module>
-17 4
+17 8
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/optimize.py
 cfn=MemoizeJac
 calls=1 49
@@ -5611,7 +5601,7 @@ calls=1 122
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/linesearch.py
 cfn=<module>
 calls=1 13
-17 1
+17 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=__new__
 calls=1 93
@@ -5643,18 +5633,18 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/bsr.py
 cfn=swig_import_helper
 calls=1 11
-9 3
+9 35
 
 fn=<method 'items' of 'dict' objects>
 0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/__init__.py
 fn=<module>
-19 15
+19 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
 cfn=<module>
 calls=1 7
-19 4
+19 33
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_internal.py
 fn=_getintp_ctype
@@ -5759,7 +5749,7 @@ fn=wrapcauchy_gen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/interpolate.py
 fn=<module>
-2 18
+2 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/interpolate.py
 cfn=ppform
 calls=1 487
@@ -5771,7 +5761,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack.py
 cfn=<module>
 calls=1 23
-2 11
+2 63
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/interpolate.py
 cfn=interp2d
 calls=1 69
@@ -5791,18 +5781,18 @@ fn=_fromnxfunction
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_root.py
 fn=<module>
-7 17
+7 24
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/minpack.py
 cfn=<module>
 calls=1 1
-7 3
+7 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 cfn=<module>
 calls=1 110
 7 1
 
 fn=<imp.load_module>
-0 2
+0 15
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/fnmatch.py
 fn=<module>
@@ -5831,14 +5821,14 @@ calls=98 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 cfn=getwidth
 calls=341 140
-140 0
+140 1
 cfn=<min>
 calls=852 0
 140 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/machar.py
 fn=_do_init
-113 10
+113 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=<lambda>
 calls=10 150
@@ -5867,7 +5857,7 @@ calls=12 149
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/fromnumeric.py
 cfn=any
 calls=2024 1762
-113 11
+113 13
 
 fn=<method 'values' of 'dict' objects>
 0 0
@@ -5882,15 +5872,15 @@ fn=<module>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 fn=<module>
-1 9
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/heapq.py
-cfn=<module>
-calls=1 31
-1 3
+1 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/keyword.py
 cfn=<module>
 calls=1 11
 1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/heapq.py
+cfn=<module>
+calls=1 31
+1 13
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 cfn=OrderedDict
 calls=1 26
@@ -6003,7 +5993,7 @@ fn=bsr_matrix
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/synchronize.py
 fn=<module>
-36 8
+36 7
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/synchronize.py
 cfn=Event
 calls=1 299
@@ -6065,7 +6055,7 @@ fn=<genexpr>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/loader.py
 fn=<module>
-1 2
+1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/fnmatch.py
 cfn=<module>
 calls=1 11
@@ -6081,11 +6071,11 @@ calls=1 38
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
 fn=<module>
-35 17
+35 19
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py
 cfn=<module>
 calls=1 387
-35 1
+35 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
 cfn=ForkAwareThreadLock
 calls=1 330
@@ -6094,13 +6084,13 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/atexi
 cfn=register
 calls=1 37
 35 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
-cfn=Finalize
-calls=1 171
-35 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
 cfn=__init__
 calls=1 47
+35 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
+cfn=Finalize
+calls=1 171
 35 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
 cfn=ForkAwareLocal
@@ -6119,7 +6109,7 @@ fn=<method 'close' of 'file' objects>
 0 0
 
 fn=<method 'isupper' of 'str' objects>
-0 1625
+0 81
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/six.py
 fn=Iterator
@@ -6135,19 +6125,19 @@ fn=BasinHoppingRunner
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/__init__.py
 fn=<module>
-7 56
+7 54
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/supervised.py
 cfn=<module>
 calls=1 5
-7 60
+7 59
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/unsupervised.py
 cfn=<module>
 calls=1 1
-7 97
+7 100
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/bicluster/__init__.py
 cfn=<module>
 calls=1 1
-7 20
+7 22
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 fn=<module>
@@ -6155,10 +6145,6 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 cfn=IncrementalEncoder
 calls=1 52
-8 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
-cfn=StreamWriter
-calls=1 62
 8 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 cfn=Codec
@@ -6169,9 +6155,21 @@ cfn=StreamReader
 calls=1 65
 8 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
+cfn=StreamWriter
+calls=1 62
+8 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 cfn=IncrementalDecoder
 calls=1 57
 8 0
+
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
+fn=__init__
+47 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserDict.py
+cfn=__init__
+calls=2 4
+47 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=erlang_gen
@@ -6186,7 +6184,7 @@ fn=OrthogonalMatchingPursuit
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/numpy_pickle.py
 fn=<module>
-3 2
+3 4
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/numpy_pickle.py
 cfn=NDArrayWrapper
 calls=1 95
@@ -6216,7 +6214,7 @@ calls=1 133
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/linalg.py
 fn=<module>
-10 5
+10 41
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/linalg.py
 cfn=LinAlgError
 calls=1 43
@@ -6236,7 +6234,7 @@ fn=<module>
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/pairwise.py
 cfn=<module>
 calls=1 31
-1 35
+1 38
 
 fn=<method 'split' of 'str' objects>
 0 0
@@ -6340,7 +6338,7 @@ fn=_metavar_formatter
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/ridge.py
 fn=<module>
-3 43
+3 40
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__new__
 calls=7 86
@@ -6395,11 +6393,11 @@ calls=2 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/__init__.py
 fn=<module>
-52 3
+52 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/linsolve.py
 cfn=<module>
 calls=1 1
-52 13
+52 47
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -6435,7 +6433,7 @@ fn=<method 'nonzero' of 'numpy.ndarray' objects>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 fn=add_newdoc
-2940 4
+2940 3
 cfn=<method 'strip' of 'str' objects>
 calls=272 0
 2940 0
@@ -6477,7 +6475,7 @@ calls=7 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/six.py
 cfn=exec_
 calls=7 322
-1483 0
+1483 1
 cfn=<zip>
 calls=7 0
 1483 0
@@ -6523,7 +6521,7 @@ calls=1 112
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/__init__.py
 cfn=<module>
 calls=1 7
-14 236
+14 237
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
 cfn=with_metaclass
 calls=1 564
@@ -6633,13 +6631,17 @@ cfn=<method 'translate' of 'str' objects>
 calls=40 0
 157 0
 
-fl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
-fn=BaseShuffleSplit
-749 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
-cfn=abstractmethod
-calls=1 15
-749 0
+fl=constructProbs.py
+fn=build
+83 0
+cfl=constructProbs.py
+cfn=__init__
+calls=1 89
+83 0
+cfl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
+cfn=fit
+calls=1 656
+83 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/decorators.py
 fn=set_test
@@ -6663,7 +6665,7 @@ fn=SparseEfficiencyWarning
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/random.py
 fn=<module>
-4 33
+4 32
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numerictypes.py
 fn=<lambda>
@@ -6725,7 +6727,7 @@ calls=1 71
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/mstats.py
 fn=<module>
-78 22
+78 33
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/mstats_extras.py
 cfn=<module>
 calls=1 8
@@ -6782,7 +6784,7 @@ fn=TestSuite
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/spatial/__init__.py
 fn=<module>
-85 31
+85 116
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -6794,7 +6796,7 @@ calls=1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/spatial/distance.py
 cfn=<module>
 calls=1 63
-85 1
+85 9
 cfn=<dir>
 calls=1 0
 85 0
@@ -6804,7 +6806,7 @@ calls=26 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/spatial/_plotutils.py
 cfn=<module>
 calls=1 1
-85 0
+85 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/util.py
 fn=<module>
@@ -6865,11 +6867,11 @@ fn=<method 'release' of 'thread.lock' objects>
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/func_inspect.py
 fn=<module>
-3 19
+3 25
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/logger.py
 cfn=<module>
 calls=1 5
-3 39
+3 46
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/_compat.py
 cfn=<module>
 calls=1 3
@@ -6877,7 +6879,7 @@ calls=1 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/polynomial.py
 fn=<module>
-55 14
+55 21
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/string.py
 cfn=substitute
 calls=1 148
@@ -6900,7 +6902,7 @@ fn=SelectKBest
 
 fl=/Library/Python/2.7/site-packages/sklearn/svm/classes.py
 fn=<module>
-1 38
+1 35
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/classes.py
 cfn=NuSVC
 calls=1 282
@@ -6928,7 +6930,7 @@ calls=1 7
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
 cfn=<module>
 calls=1 1
-1 108
+1 116
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/classes.py
 cfn=SVC
 calls=1 145
@@ -6938,13 +6940,17 @@ fl=/Library/Python/2.7/site-packages/sklearn/linear_model/ridge.py
 fn=RidgeCV
 884 0
 
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
+fn=StreamWriter
+62 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=truncexpon_gen
 5690 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/zeros.py
 fn=<module>
-1 2
+1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/zeros.py
 cfn=RootResults
 calls=1 20
@@ -6962,7 +6968,7 @@ calls=1 0
 257 0
 
 fn=<range>
-0 1
+0 275
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tempfile.py
 fn=SpooledTemporaryFile
@@ -6987,25 +6993,6 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=coo_matrix
 20 0
 
-fl=constructProbs.py
-fn=getProb
-123 4657
-cfl=constructProbs.py
-cfn=__init__
-calls=1376256 14
-123 886
-cfl=constructProbs.py
-cfn=__eq__
-calls=671168 27
-123 1443
-cfl=constructProbs.py
-cfn=__hash__
-calls=793600 37
-123 1419
-cfn=<method 'get' of 'dict' objects>
-calls=4544 0
-123 17
-
 fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/univariate_selection.py
 fn=SelectFpr
 422 0
@@ -7015,17 +7002,17 @@ fn=<math.exp>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 fn=atleast_2d
-60 8800
+60 403
 cfn=<len>
-calls=6193734 0
-60 768
+calls=347496 0
+60 34
 cfn=<method 'append' of 'list' objects>
-calls=2064578 0
-60 527
+calls=115832 0
+60 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=asanyarray
-calls=2064578 462
-60 7293
+calls=115832 462
+60 328
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/data.py
 fn=__init__
@@ -7051,11 +7038,11 @@ calls=11 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/__init__.py
 fn=<module>
-6 559
+6 548
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 cfn=<module>
 calls=1 8
-6 38
+6 41
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/perceptron.py
 cfn=<module>
 calls=1 4
@@ -7067,15 +7054,15 @@ calls=1 2
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/least_angle.py
 cfn=<module>
 calls=1 4
-6 1110
+6 1767
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/ridge.py
 cfn=<module>
 calls=1 3
-6 45
+6 43
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
 cfn=<module>
 calls=1 5
-6 194
+6 206
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/randomized_l1.py
 cfn=<module>
 calls=1 4
@@ -7083,11 +7070,11 @@ calls=1 4
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 cfn=<module>
 calls=1 3
-6 1059
+6 1517
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/ransac.py
 cfn=<module>
 calls=1 7
-6 51
+6 50
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/bayes.py
 cfn=<module>
 calls=1 3
@@ -7095,7 +7082,7 @@ calls=1 3
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/stochastic_gradient.py
 cfn=<module>
 calls=1 5
-6 90
+6 89
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/passive_aggressive.py
 cfn=<module>
 calls=1 4
@@ -7109,32 +7096,25 @@ cfn=__new__
 calls=14 86
 564 1
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
-fn=asformat
-195 0
-cfn=<getattr>
-calls=1 0
-195 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/coo.py
-cfn=tocsr
-calls=1 286
-195 3
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
+fn=doc_note
+92 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/add_newdocs.py
 fn=<module>
-10 1
+10 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
 cfn=add_newdoc
 calls=275 2940
-10 5
+10 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/__init__.py
 cfn=<module>
 calls=1 1
-10 438
+10 815
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/__init__.py
 fn=<module>
-38 10
+38 17
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -7146,7 +7126,7 @@ calls=1 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/pilutil.py
 cfn=<module>
 calls=1 7
-38 28
+38 45
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/doccer.py
 cfn=<module>
 calls=1 2
@@ -7278,13 +7258,13 @@ fn=<binascii.hexlify>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 fn=update
-501 39457
+501 818
 cfn=<isinstance>
-calls=16159684 0
-501 57343
+calls=276248 0
+501 922
 cfn=<method 'get' of 'dict' objects>
-calls=48591418 0
-501 6126
+calls=1148212 0
+501 126
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/chebyshev.py
 fn=<module>
@@ -7317,11 +7297,11 @@ fn=Finalize
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py
 fn=<module>
-2 1
+2 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/scanner.py
 cfn=<module>
 calls=1 2
-2 2
+2 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py
 cfn=JSONDecoder
 calls=1 273
@@ -7333,18 +7313,22 @@ calls=2 188
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py
 cfn=_floatconstants
 calls=1 17
-2 1
+2 3
 
 fl=HMMModel.py
 fn=abbrRemoveVowels
 18 0
 cfn=<method 'join' of 'str' objects>
-calls=108 0
+calls=203 0
 18 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 fn=__exit__
 355 0
+
+fl=constructProbs.py
+fn=__init__
+89 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/preprocessing/label.py
 fn=MultiLabelBinarizer
@@ -7387,7 +7371,7 @@ calls=1 15
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/fft/fftpack.py
 fn=<module>
-32 1
+32 10
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=gausshyper_gen
@@ -7467,6 +7451,10 @@ cfl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
 cfn=with_metaclass
 calls=1 564
 2 0
+
+fl=constructProbs.py
+fn=<genexpr>
+194 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/interface.py
 fn=IdentityOperator
@@ -7577,10 +7565,10 @@ calls=3 60
 
 fl=extract_features.py
 fn=<lambda>
-29 2282
+29 253
 cfn=<method 'isalpha' of 'str' objects>
-calls=6372068 0
-29 818
+calls=555484 0
+29 64
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 fn=opengroup
@@ -7620,15 +7608,15 @@ fn=Error
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=_atleast2d_or_sparse
-128 1179
+128 52
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=array2d
-calls=688193 115
-128 24961
+calls=38611 115
+128 1137
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 cfn=isspmatrix
-calls=688193 702
-128 750
+calls=38611 702
+128 38
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/matfuncs.py
 fn=MatrixPowerOperator
@@ -7642,13 +7630,24 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes
 fn=c_float
 197 0
 
+fl=extract_features.py
+fn=getPercentageSharedCapitals
+67 50
+cfn=<len>
+calls=77792 0
+67 7
+cfl=extract_features.py
+cfn=getNumSharedCapitals
+calls=38895 32
+67 360
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_basinhopping.py
 fn=Storage
 14 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 fn=<module>
-4 20
+4 27
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=KFold
 calls=1 262
@@ -7668,10 +7667,6 @@ calls=1 527
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=Bootstrap
 calls=1 609
-4 0
-cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
-cfn=BaseShuffleSplit
-calls=1 749
 4 0
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/six.py
 cfn=with_metaclass
@@ -7704,7 +7699,7 @@ calls=1 462
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/__init__.py
 cfn=<module>
 calls=1 4
-4 881
+4 1331
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=_BaseKFold
 calls=1 234
@@ -7712,6 +7707,10 @@ calls=1 234
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=ShuffleSplit
 calls=1 797
+4 0
+cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
+cfn=BaseShuffleSplit
+calls=1 749
 4 0
 cfl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 cfn=LeaveOneOut
@@ -7759,21 +7758,9 @@ cfn=<method 'join' of 'str' objects>
 calls=150 0
 553 0
 
-fl=constructProbs.py
-fn=getProb
-97 3596
-cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
-cfn=predict_proba
-calls=688192 112
-97 70039
-cfl=constructProbs.py
-cfn=getName
-calls=688192 20
-97 189
-cfl=extract_features.py
-cfn=getFeatureVector
-calls=688192 71
-97 258523
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
+fn=ArpackError
+276 0
 
 fn=<method 'insert' of 'list' objects>
 0 0
@@ -7783,11 +7770,22 @@ fn=__init__
 131 0
 
 fn=<min>
-0 4360
+0 90
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=check_random_state
 337 0
+
+fl=extract_features.py
+fn=getPercentageSharedConsonants
+70 40
+cfn=<len>
+calls=77792 0
+70 7
+cfl=extract_features.py
+cfn=getNumSharedConsonants
+calls=38895 28
+70 544
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/logger.py
 fn=PrintTime
@@ -7808,17 +7806,9 @@ cfn=<method 'append' of 'list' objects>
 calls=272 0
 258 0
 
-fl=extract_features.py
-fn=getNumSharedLetters
-32 2278
-cfl=extract_features.py
-cfn=getNumSharedCharClass
-calls=2065039 14
-32 67440
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/__init__.py
 fn=<module>
-65 3
+65 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/__config__.py
 cfn=<module>
 calls=1 3
@@ -7837,34 +7827,34 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/__init__.py
 cfn=<module>
 calls=1 3
-65 27
+65 37
 cfn=<method 'remove' of 'list' objects>
 calls=1 0
 65 0
 
 fl=constructProbs.py
 fn=<module>
-1 27
+1 33
+cfl=constructProbs.py
+cfn=TransitionProbsBuilder
+calls=1 185
+1 0
 cfl=constructProbs.py
 cfn=TransitionProbs
-calls=1 107
+calls=1 112
 1 0
 cfl=/Library/Python/2.7/site-packages/sklearn/__init__.py
 cfn=<module>
 calls=1 14
-1 1041
+1 1921
 cfl=extract_features.py
 cfn=<module>
 calls=1 1
 1 0
-cfl=constructProbs.py
-cfn=TransitionProbsBuilder
-calls=1 178
-1 0
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/__init__.py
 cfn=<module>
 calls=1 6
-1 3152
+1 4265
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
 cfn=<module>
 calls=1 23
@@ -7879,7 +7869,7 @@ calls=1 3
 1 0
 cfl=constructProbs.py
 cfn=MatchProbs
-calls=1 86
+calls=1 87
 1 0
 cfl=constructProbs.py
 cfn=MaybeName
@@ -7902,13 +7892,13 @@ calls=18 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/machar.py
 cfn=__init__
 calls=2 97
-126 25
+126 26
 cfn=<setattr>
 calls=18 0
 126 0
 
 fn=<method 'append' of 'list' objects>
-0 533
+0 31
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/compat/_inspect.py
 fn=strseq
@@ -7953,8 +7943,9 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=X
 53 0
 
-fn=<function seed at 0x103add2a8>
-0 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
+fn=_MaskedUnaryOperation
+805 0
 
 fl=<string>
 fn=Legendre
@@ -7973,17 +7964,20 @@ fn=PlaceHolder
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 fn=isspmatrix
-702 1320
+702 65
 cfn=<isinstance>
-calls=2752775 0
-702 1327
+calls=154447 0
+702 62
+
+fn=<built-in method __new__ of type object at 0x100a50598>
+0 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 fn=Counter
 387 0
 
 fn=<numpy.core.multiarray.concatenate>
-0 2609
+0 124
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/ufuncs.py
 fn=<module>
@@ -8043,7 +8037,7 @@ calls=2 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/memory.py
 fn=<module>
-5 95
+5 116
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/memory.py
 cfn=NotMemorizedFunc
 calls=1 265
@@ -8055,15 +8049,15 @@ calls=1 223
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/numpy_pickle.py
 cfn=<module>
 calls=1 3
-5 2
+5 4
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/func_inspect.py
 cfn=<module>
 calls=1 3
-5 58
+5 72
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py
 cfn=<module>
 calls=1 99
-5 16
+5 35
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
 cfn=__init__
 calls=1 243
@@ -8083,7 +8077,7 @@ calls=1 67
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 cfn=<module>
 calls=1 35
-5 2
+5 4
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/memory.py
 cfn=MemorizedResult
 calls=1 142
@@ -8102,7 +8096,7 @@ calls=1 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/logger.py
 fn=<module>
-5 23
+5 27
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/logger.py
 cfn=PrintTime
 calls=1 92
@@ -8118,7 +8112,7 @@ calls=1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 cfn=<module>
 calls=1 24
-5 15
+5 18
 
 fn=<posix.uname>
 0 0
@@ -8186,7 +8180,7 @@ calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 4
+11 34
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=powerlaw_gen
@@ -8207,7 +8201,7 @@ calls=115 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/doccer.py
 cfn=docformat
 calls=170 12
-1112 49
+1112 48
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/interface.py
 fn=MatrixLinearOperator
@@ -8219,7 +8213,7 @@ fn=<lambda>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/__init__.py
 fn=<module>
-104 16
+104 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/_expm_multiply.py
 cfn=<module>
 calls=1 2
@@ -8234,15 +8228,15 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/__init__.py
 cfn=<module>
 calls=1 52
-104 16
+104 52
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/__init__.py
 cfn=<module>
 calls=1 1
-104 41
+104 92
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/__init__.py
 cfn=<module>
 calls=1 8
-104 26
+104 63
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/matfuncs.py
 cfn=<module>
 calls=1 3
@@ -8264,7 +8258,7 @@ fn=<module>
 8 0
 
 fn=<hash>
-0 176
+0 13
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
 fn=isstring
@@ -8275,7 +8269,7 @@ calls=72 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/__init__.py
 fn=Semaphore
-192 4
+192 6
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/synchronize.py
 cfn=<module>
 calls=1 36
@@ -8326,15 +8320,15 @@ calls=1 0
 27 0
 
 fn=<method 'sum' of 'numpy.ndarray' objects>
-0 579
+0 28
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_methods.py
 cfn=_sum
-calls=688193 23
-0 7472
+calls=38611 23
+0 338
 
 fl=constructProbs.py
 fn=__init__
-14 886
+14 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=levy_stable_gen
@@ -8368,7 +8362,7 @@ fn=<method 'split' of '_sre.SRE_Pattern' objects>
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/parallel.py
 fn=<module>
-3 68
+3 83
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/parallel.py
 cfn=LockedIterator
 calls=1 159
@@ -8392,11 +8386,11 @@ calls=1 12
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/_multiprocessing_helpers.py
 cfn=<module>
 calls=1 5
-3 66
+3 96
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/pool.py
 cfn=<module>
 calls=1 11
-3 2
+3 4
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/parallel.py
 cfn=CallBack
 calls=1 145
@@ -8412,7 +8406,7 @@ calls=1 132
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/lobpcg/__init__.py
 fn=<module>
-101 4
+101 7
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -8424,7 +8418,7 @@ calls=1 11
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/cobyla.py
 fn=<module>
-11 3
+11 25
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csr.py
 fn=<module>
@@ -8432,7 +8426,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csr.py
 cfn=swig_import_helper
 calls=1 11
-9 4
+9 35
 
 fn=<method 'readline' of '_io.BytesIO' objects>
 0 0
@@ -8487,11 +8481,11 @@ fn=_DomainCheckInterval
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py
 fn=<module>
-99 9
+99 16
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py
 cfn=<module>
 calls=1 2
-99 6
+99 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py
 cfn=__init__
 calls=1 101
@@ -8656,7 +8650,7 @@ calls=1 228
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/extmath.py
 fn=<module>
-3 65
+3 66
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 cfn=__init__
 calls=1 50
@@ -8732,7 +8726,7 @@ calls=118 226
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/npyio.py
 fn=<module>
-1 26
+1 32
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/npyio.py
 cfn=NpzFile
 calls=1 133
@@ -8744,7 +8738,7 @@ calls=1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/_datasource.py
 cfn=<module>
 calls=1 33
-1 7
+1 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/format.py
 cfn=<module>
 calls=1 136
@@ -8753,10 +8747,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/n
 cfn=BagObj
 calls=1 90
 1 0
-
-fl=constructProbs.py
-fn=__init__
-181 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/decomp_cholesky.py
 fn=<module>
@@ -8805,7 +8795,7 @@ calls=1 232
 cfl=/Library/Python/2.7/site-packages/sklearn/preprocessing/__init__.py
 cfn=<module>
 calls=1 4
-9 542
+9 990
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 cfn=__call__
 calls=1 60
@@ -8821,17 +8811,6 @@ fn=Polynomial
 cfn=<numpy.core.multiarray.array>
 calls=2 0
 7 0
-
-fl=constructProbs.py
-fn=getStartProb
-133 0
-cfl=constructProbs.py
-cfn=__init__
-calls=64 14
-133 0
-cfn=<method 'get' of 'dict' objects>
-calls=64 0
-133 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=genextreme_gen
@@ -8916,9 +8895,20 @@ cfn=_callable
 calls=2 95
 2239 0
 
+fl=extract_features.py
+fn=getPercentageSharedLetters
+73 39
+cfn=<len>
+calls=77792 0
+73 7
+cfl=extract_features.py
+cfn=getNumSharedLetters
+calls=38895 40
+73 552
+
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
 fn=<module>
-5 2
+5 8
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__new__
 calls=1 86
@@ -8926,7 +8916,7 @@ calls=1 86
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/__init__.py
 cfn=<module>
 calls=1 3
-5 191
+5 197
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
 cfn=LogisticRegression
 calls=1 12
@@ -8995,11 +8985,11 @@ fn=Logger
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/pilutil.py
 fn=<module>
-7 6
+7 8
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tempfile.py
 cfn=<module>
 calls=1 18
-7 21
+7 36
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py
 fn=CalledProcessError
@@ -9020,31 +9010,9 @@ fn=_Section
 fn=<method '__subclasses__' of 'type' objects>
 0 0
 
-fl=constructProbs.py
-fn=__init__
-108 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
-cfn=deepcopy
-calls=1 145
-108 1
-cfn=<method 'values' of 'dict' objects>
-calls=148 0
-108 0
-cfl=constructProbs.py
-cfn=__eq__
-calls=92 27
-108 0
-cfn=<sum>
-calls=148 0
-108 0
-cfl=constructProbs.py
-cfn=__hash__
-calls=425 37
-108 0
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/fromnumeric.py
 fn=<module>
-3 1
+3 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_methods.py
 cfn=<module>
 calls=1 5
@@ -9052,7 +9020,7 @@ calls=1 5
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 fn=<module>
-1 13
+1 32
 cfn=<method 'extend' of 'list' objects>
 calls=1 0
 1 0
@@ -9081,7 +9049,7 @@ calls=1 2716
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/arrayprint.py
 cfn=<module>
 calls=1 5
-1 20
+1 43
 cfn=<issubclass>
 calls=2 0
 1 0
@@ -9101,6 +9069,28 @@ fn=<module>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 fn=MAError
 128 0
+
+fl=constructProbs.py
+fn=__init__
+114 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py
+cfn=deepcopy
+calls=1 145
+114 2
+cfn=<method 'values' of 'dict' objects>
+calls=234 0
+114 0
+cfl=constructProbs.py
+cfn=__eq__
+calls=160 27
+114 0
+cfn=<sum>
+calls=234 0
+114 0
+cfl=constructProbs.py
+cfn=__hash__
+calls=689 37
+114 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
 fn=ismethod
@@ -9128,15 +9118,15 @@ calls=1 0
 1152 0
 
 fn=<method 'ravel' of 'numpy.ndarray' objects>
-0 620
+0 29
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/__init__.py
 fn=<module>
-1 96
+1 257
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numerictypes.py
 cfn=<module>
 calls=1 82
-1 1
+1 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 cfn=<module>
 calls=1 1
@@ -9144,7 +9134,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_internal.py
 cfn=<module>
 calls=1 6
-1 6
+1 9
 cfn=<numpy.core.multiarray.set_typeDict>
 calls=1 0
 1 0
@@ -9155,7 +9145,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/__init__.py
 cfn=<module>
 calls=1 7
-1 100
+1 137
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -9171,7 +9161,7 @@ calls=1 14
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=<module>
 calls=1 1
-1 34
+1 75
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/records.py
 cfn=<module>
 calls=1 36
@@ -9246,11 +9236,11 @@ calls=13 15
 
 fl=constructProbs.py
 fn=getName
-20 607
+20 37
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/arrayprint.py
 fn=<module>
-5 18
+5 40
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/arrayprint.py
 cfn=LongFloatFormat
 calls=1 658
@@ -9274,7 +9264,7 @@ calls=1 699
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/fromnumeric.py
 cfn=<module>
 calls=1 3
-5 1
+5 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/arrayprint.py
 cfn=DatetimeFormat
 calls=1 715
@@ -9349,10 +9339,28 @@ fn=_LazyDescr
 78 0
 
 fn=<method 'reduce' of 'numpy.ufunc' objects>
-0 6495
+0 297
 
 fn=<method 'rfind' of 'str' objects>
 0 0
+
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/polynomial.py
+fn=__init__
+1035 0
+cfn=<isinstance>
+calls=4 0
+1035 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
+cfn=trim_zeros
+calls=4 1211
+1035 0
+cfn=<len>
+calls=12 0
+1035 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
+cfn=atleast_1d
+calls=4 8
+1035 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_methods.py
 fn=_all
@@ -9386,7 +9394,7 @@ calls=1 0
 cfn=<binascii.hexlify>
 calls=1 0
 100 0
-cfn=<function seed at 0x103add2a8>
+cfn=<function seed at 0x101c212a8>
 calls=1 0
 100 0
 
@@ -9459,7 +9467,7 @@ fn=<module>
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/sparsetools/_graph_validation.py
 cfn=<module>
 calls=1 1
-1 35
+1 39
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 fn=_VersionAction
@@ -9505,13 +9513,13 @@ calls=3 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/doccer.py
 fn=indentcount_lines
-128 7
+128 6
 cfn=<len>
 calls=18876 0
 128 1
 cfn=<method 'lstrip' of 'str' objects>
 calls=11962 0
-128 1
+128 2
 cfn=<min>
 calls=9438 0
 128 1
@@ -9543,17 +9551,6 @@ fn=_UnexpectedSuccess
 fn=<method '__subclasshook__' of 'object' objects>
 0 0
 
-fl=extract_features.py
-fn=getNumSharedOrderedLetters
-36 8257
-cfn=<len>
-calls=6162316 0
-36 684
-cfl=extract_features.py
-cfn=orderedLettersRecurse
-calls=1376694 40
-36 75417
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_ulong
 180 0
@@ -9564,26 +9561,30 @@ fn=rdist_gen
 
 fl=constructProbs.py
 fn=__eq__
-27 1033
+27 51
 cfl=constructProbs.py
 cfn=getName
-calls=1351834 20
-27 417
+calls=77246 20
+27 20
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/__init__.py
 fn=<module>
-45 30
+45 35
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/suite.py
 cfn=<module>
 calls=1 1
 45 1
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
+cfn=<module>
+calls=1 1
+45 11
 cfn=<method 'extend' of 'list' objects>
 calls=1 0
 45 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/main.py
 cfn=<module>
 calls=1 1
-45 7
+45 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/loader.py
 cfn=<module>
 calls=1 1
@@ -9591,11 +9592,7 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py
 cfn=<module>
 calls=1 1
-45 29
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
-cfn=<module>
-calls=1 1
-45 6
+45 41
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 fn=__init__
@@ -9611,10 +9608,6 @@ fn=<_ctypes.POINTER>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=betaprime_gen
 2541 0
-
-fl=constructProbs.py
-fn=__init__
-87 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/io.py
 fn=TextIOBase
@@ -9827,7 +9820,7 @@ fn=MachAr
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/bisect.py
 fn=<module>
-1 1
+1 2
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csr.py
 fn=_swap
@@ -9862,7 +9855,7 @@ fn=<module>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/__init__.py
 fn=<module>
-1 20
+1 42
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/lgmres.py
 cfn=<module>
 calls=1 4
@@ -9889,7 +9882,7 @@ calls=1 50
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/iterative.py
 cfn=<module>
 calls=1 1
-1 20
+1 50
 cfn=<method 'startswith' of 'str' objects>
 calls=22 0
 1 0
@@ -9900,7 +9893,7 @@ fn=compile
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py
 cfn=_compile
 calls=42 226
-188 18
+188 19
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/_matfuncs_sqrtm.py
 fn=<module>
@@ -9961,7 +9954,7 @@ calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 2
+11 12
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=pearson3_gen
@@ -9999,14 +9992,14 @@ calls=12 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=_assert_all_finite
-37 4734
+37 218
 cfn=<method 'sum' of 'numpy.ndarray' objects>
-calls=688193 0
-37 8052
+calls=38611 0
+37 366
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 cfn=asanyarray
-calls=688193 462
-37 1015
+calls=38611 462
+37 47
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserDict.py
 fn=__init__
@@ -10028,20 +10021,20 @@ calls=1 127
 11 0
 cfn=<imp.load_module>
 calls=1 0
-11 0
+11 4
 cfn=<method 'close' of 'file' objects>
 calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 3
+11 30
 
 fl=extract_features.py
 fn=<lambda>
-33 6232
-cfn=<method 'isalpha' of 'str' objects>
-calls=19116204 0
-33 2330
+33 217
+cfn=<method 'isupper' of 'str' objects>
+calls=741682 0
+33 81
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
 fn=tell
@@ -10098,12 +10091,12 @@ fn=<issubclass>
 0 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__subclasscheck__
-calls=14 148
+calls=13 148
 0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/compat.py
 fn=<module>
-3 14
+3 20
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=deprecate
 calls=2 152
@@ -10111,7 +10104,7 @@ calls=2 152
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle.py
 cfn=<module>
 calls=1 25
-3 2
+3 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/compat.py
 cfn=Pickler
 calls=1 117
@@ -10119,7 +10112,7 @@ calls=1 117
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/functions.py
 cfn=<module>
 calls=1 3
-3 1
+3 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/compat.py
 cfn=Unpickler
 calls=1 110
@@ -10182,6 +10175,14 @@ cfn=_optimize_charset
 calls=164 207
 178 4
 
+fl=extract_features.py
+fn=getNumSharedNonLetters
+36 21
+cfl=extract_features.py
+cfn=getNumSharedCharClass
+calls=38897 14
+36 307
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/repr.py
 fn=Repr
 8 0
@@ -10196,7 +10197,7 @@ fn=_DomainedBinaryOperation
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=<module>
-1 18
+1 19
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 cfn=simplefilter
 calls=2 74
@@ -10204,7 +10205,7 @@ calls=2 74
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/fixes.py
 cfn=<module>
 calls=1 5
-1 43
+1 132
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=DataConversionWarning
 calls=1 20
@@ -10269,8 +10270,8 @@ fn=updateMatchProbsTrainingData
 50 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
 cfn=generate_tokens
-calls=109 264
-50 0
+calls=204 264
+50 1
 cfn=<method 'read' of 'file' objects>
 calls=1 0
 50 0
@@ -10279,25 +10280,33 @@ calls=1 0
 50 0
 cfl=HMMModel.py
 cfn=abbrRemoveVowels
-calls=108 18
+calls=203 18
 50 0
 cfn=<method 'append' of 'list' objects>
-calls=235 0
+calls=420 0
+50 0
+cfl=constructProbs.py
+cfn=__init__
+calls=84 14
+50 0
+cfl=constructProbs.py
+cfn=getName
+calls=84 20
 50 0
 cfn=<sum>
 calls=1 0
 50 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py
 cfn=sample
-calls=47 291
-50 0
-cfn=<method 'add' of 'set' objects>
-calls=47 0
+calls=84 291
 50 0
 cfl=extract_features.py
 cfn=getFeatureVector
-calls=155 71
-50 128
+calls=287 79
+50 146
+cfn=<method 'add' of 'set' objects>
+calls=84 0
+50 0
 cfn=<method 'seek' of 'file' objects>
 calls=1 0
 50 0
@@ -10316,7 +10325,7 @@ fn=isident
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csgraph/_validation.py
 fn=<module>
-1 4
+1 25
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
 fn=register_after_fork
@@ -10338,7 +10347,7 @@ calls=808 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/linesearch.py
 fn=<module>
-13 1
+13 10
 
 fn=<method 'replace' of 'str' objects>
 0 0
@@ -10346,6 +10355,10 @@ fn=<method 'replace' of 'str' objects>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 fn=BroydenSecond
 997 0
+
+fl=constructProbs.py
+fn=setDirpath
+96 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/suite.py
 fn=_ErrorHolder
@@ -10380,11 +10393,15 @@ calls=1 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
 fn=<module>
-25 2
+25 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/dis.py
 cfn=<module>
 calls=1 1
-25 2
+25 3
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
+cfn=EndOfBlock
+calls=1 630
+25 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 cfn=namedtuple
 calls=6 288
@@ -10395,10 +10412,6 @@ calls=3 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
 cfn=BlockFinder
 calls=1 632
-25 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
-cfn=EndOfBlock
-calls=1 630
 25 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/os.py
@@ -10449,6 +10462,13 @@ cfn=<method 'min' of 'numpy.ndarray' objects>
 calls=2 0
 206 0
 
+fl=extract_features.py
+fn=getClosestDistance
+80 19
+cfn=<max>
+calls=38733 0
+80 13
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 fn=LinearMixing
 1224 0
@@ -10475,13 +10495,37 @@ cfn=<delattr>
 calls=4 0
 85 0
 
-fl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
-fn=LogisticRegression
-12 0
+fl=HMMModel.py
+fn=<module>
+1 67
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
+cfn=generate_tokens
+calls=1 264
+1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/io.py
+cfn=<module>
+calls=1 34
+1 27
+cfl=constructProbs.py
+cfn=<module>
+calls=1 1
+1 6232
+cfl=solveHMM.py
+cfn=<module>
+calls=1 12
+1 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
+cfn=<module>
+calls=1 62
+1 38
+cfl=HMMModel.py
+cfn=main
+calls=1 21
+1 12619
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/morestats.py
 fn=<module>
-5 2
+5 11
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=<lambda>
 calls=1 212
@@ -10523,7 +10567,7 @@ fn=_DomainTan
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/__init__.py
 fn=<module>
-44 9
+44 16
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/__init__.py
 cfn=AuthenticationError
 calls=1 80
@@ -10539,7 +10583,7 @@ calls=1 77
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/util.py
 cfn=<module>
 calls=1 35
-44 19
+44 22
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py
 cfn=<module>
 calls=1 35
@@ -10566,19 +10610,19 @@ calls=4 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/_multiprocessing_helpers.py
 fn=<module>
-5 14
+5 16
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 cfn=<module>
 calls=1 35
-5 9
+5 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/__init__.py
 cfn=Semaphore
 calls=1 192
-5 13
+5 14
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/__init__.py
 cfn=<module>
 calls=1 44
-5 29
+5 39
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserDict.py
 cfn=get
 calls=1 58
@@ -10605,23 +10649,30 @@ cfn=<numpy.core.multiarray.concatenate>
 calls=1 0
 93 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/polynomial.py
-fn=__init__
-1035 0
-cfn=<isinstance>
-calls=4 0
-1035 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/function_base.py
-cfn=trim_zeros
-calls=4 1211
-1035 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
+fn=_optimize_charset
+207 3
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
+cfn=_identityfunction
+calls=314 24
+207 0
 cfn=<len>
-calls=12 0
-1035 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
-cfn=atleast_1d
-calls=4 8
-1035 0
+calls=259 0
+207 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
+cfn=fixup
+calls=14 51
+207 0
+cfn=<range>
+calls=35 0
+207 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
+cfn=_mk_bitmap
+calls=34 258
+207 1
+cfn=<method 'append' of 'list' objects>
+calls=447 0
+207 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/my_exceptions.py
 fn=TransportableException
@@ -10639,7 +10690,7 @@ calls=13 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/doccer.py
 cfn=docformat
 calls=26 12
-6465 6
+6465 7
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/orthogonal.py
 fn=<module>
@@ -10772,7 +10823,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=__new__
 calls=2 93
-1 25
+1 27
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/fromnumeric.py
 fn=all
@@ -10825,18 +10876,18 @@ fn=<module>
 3 0
 
 fn=<sum>
-0 2093
+0 37
 cfl=constructProbs.py
 cfn=<genexpr>
-calls=17 187
+calls=30 52
 0 0
 cfl=constructProbs.py
 cfn=<genexpr>
-calls=17 52
+calls=30 194
 0 0
 cfl=HMMModel.py
 cfn=<genexpr>
-calls=17 46
+calls=30 46
 0 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/hashing.py
@@ -10905,7 +10956,7 @@ calls=1 95
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/minpack.py
 fn=<module>
-1 3
+1 10
 
 fn=<zip>
 0 0
@@ -10970,7 +11021,7 @@ calls=1 246
 3 0
 
 fn=<__import__>
-0 1
+0 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 cfn=<module>
 calls=1 8
@@ -10978,7 +11029,7 @@ calls=1 8
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/__init__.py
 fn=<module>
-8 2
+8 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -10989,11 +11040,11 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/__init__.py
 cfn=<module>
 calls=1 19
-8 19
+8 51
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/lobpcg/__init__.py
 cfn=<module>
 calls=1 101
-8 4
+8 7
 cfn=<method 'startswith' of 'str' objects>
 calls=18 0
 8 0
@@ -11019,7 +11070,7 @@ calls=3 200
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/__init__.py
 fn=<module>
-3 6
+3 9
 cfn=<_warnings.warn>
 calls=1 0
 3 0
@@ -11038,11 +11089,11 @@ calls=1 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/compat.py
 cfn=<module>
 calls=1 3
-3 19
+3 26
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/misc.py
 cfn=<module>
 calls=1 3
-3 0
+3 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/anneal.py
 fn=_state
@@ -11063,20 +11114,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/n
 cfn=finfo
 calls=1 24
 3 0
-
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
-fn=__cmp__
-292 0
-cfn=<isinstance>
-calls=2 0
-292 0
-cfn=<cmp>
-calls=2 0
-292 0
-
-fl=extract_features.py
-fn=<lambda>
-21 2902
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=bradford_gen
@@ -11125,6 +11162,9 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/nu
 fn=_MaskedPrintOption
 2241 0
 
+fn=<function seed at 0x101c212a8>
+0 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 fn=_add_action
 1667 0
@@ -11145,7 +11185,7 @@ fn=PyDLL
 388 0
 
 fn=<method 'match' of '_sre.SRE_Pattern' objects>
-0 0
+0 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 fn=extend_all
@@ -11189,7 +11229,7 @@ fn=frechet_l_gen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/__init__.py
 fn=<module>
-44 16
+44 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -11197,7 +11237,7 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/linalg.py
 cfn=<module>
 calls=1 10
-44 5
+44 42
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/linalg/info.py
 cfn=<module>
 calls=1 34
@@ -11206,6 +11246,14 @@ calls=1 34
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/matfuncs.py
 fn=ProductOperator
 139 0
+
+fl=extract_features.py
+fn=getNumSharedLetters
+40 86
+cfl=extract_features.py
+cfn=getNumSharedCharClass
+calls=116687 14
+40 1537
 
 fn=<posix.listdir>
 0 0
@@ -11216,7 +11264,7 @@ fn=BaseSVC
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/__init__.py
 fn=<module>
-1 82
+1 118
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/financial.py
 cfn=<module>
 calls=1 10
@@ -11228,7 +11276,7 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/polynomial.py
 cfn=<module>
 calls=1 4
-1 24
+1 63
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/arrayterator.py
 cfn=<module>
 calls=1 9
@@ -11236,7 +11284,7 @@ calls=1 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/index_tricks.py
 cfn=<module>
 calls=1 1
-1 53
+1 99
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/shape_base.py
 cfn=<module>
 calls=1 1
@@ -11252,7 +11300,7 @@ calls=1 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/npyio.py
 cfn=<module>
 calls=1 1
-1 34
+1 44
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/arraysetops.py
 cfn=<module>
 calls=1 26
@@ -11268,7 +11316,7 @@ calls=1 20
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/type_check.py
 cfn=<module>
 calls=1 3
-1 243
+1 489
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/scimath.py
 fn=<module>
@@ -11328,17 +11376,6 @@ fn=TextTestResult
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 fn=Handler
 646 0
-
-fl=extract_features.py
-fn=getOtherPercentageSharedLetters
-68 859
-cfn=<len>
-calls=1376693 0
-68 151
-cfl=extract_features.py
-cfn=getNumSharedLetters
-calls=688346 32
-68 22873
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack2.py
 fn=InterpolatedUnivariateSpline
@@ -11402,17 +11439,6 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle
 fn=Pickler
 171 0
 
-fl=extract_features.py
-fn=getPercentageSharedCapitals
-59 1145
-cfl=extract_features.py
-cfn=getNumSharedCapitals
-calls=688346 24
-59 15985
-cfn=<len>
-calls=1376693 0
-59 148
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/_tukeylambda_stats.py
 fn=<module>
 1 0
@@ -11442,19 +11468,19 @@ fn=<module>
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/cluster/bicluster/bicluster_metrics.py
 cfn=<module>
 calls=1 1
-1 18
+1 19
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/tnc.py
 fn=<module>
-33 1
+33 10
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
-fn=EndOfBlock
-630 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
+fn=RawDescriptionHelpFormatter
+627 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 fn=<module>
-1 4
+1 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 cfn=_cs_matrix
 calls=1 19
@@ -11487,7 +11513,7 @@ calls=1 188
 fl=<string>
 fn=__new__
 8 0
-cfn=<built-in method __new__ of type object at 0x102948598>
+cfn=<built-in method __new__ of type object at 0x100a50598>
 calls=430 0
 8 0
 
@@ -11586,7 +11612,7 @@ fn=ElasticNetCV
 
 fl=/Library/Python/2.7/site-packages/sklearn/preprocessing/__init__.py
 fn=<module>
-4 123
+4 124
 cfl=/Library/Python/2.7/site-packages/sklearn/preprocessing/_weights.py
 cfn=<module>
 calls=1 1
@@ -11598,7 +11624,7 @@ calls=1 7
 cfl=/Library/Python/2.7/site-packages/sklearn/preprocessing/imputation.py
 cfn=<module>
 calls=1 4
-4 417
+4 864
 cfl=/Library/Python/2.7/site-packages/sklearn/preprocessing/label.py
 cfn=<module>
 calls=1 9
@@ -11608,23 +11634,23 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random
 fn=sample
 291 0
 cfn=<isinstance>
-calls=19 0
+calls=42 0
 291 0
 cfn=<len>
-calls=66 0
+calls=126 0
 291 0
 cfn=<method 'random' of '_random.Random' objects>
-calls=66 0
+calls=126 0
 291 0
 cfn=<hasattr>
-calls=38 0
+calls=84 0
 291 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py
 cfn=sample
-calls=19 291
+calls=42 291
 291 0
 cfn=<method 'add' of 'set' objects>
-calls=38 0
+calls=84 0
 291 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
@@ -11645,7 +11671,7 @@ calls=1 17
 
 fl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/pool.py
 fn=<module>
-11 2
+11 4
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/pool.py
 cfn=CustomizablePicklingQueue
 calls=1 297
@@ -11669,18 +11695,18 @@ calls=1 260
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 fn=decision_function
-173 8076
+173 349
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/extmath.py
 cfn=safe_sparse_dot
-calls=688192 168
-173 3885
+calls=38610 168
+173 178
 cfn=<method 'ravel' of 'numpy.ndarray' objects>
-calls=688192 0
-173 620
+calls=38610 0
+173 29
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=atleast2d_or_csr
-calls=688192 157
-173 27755
+calls=38610 157
+173 1267
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 fn=__call__
@@ -11726,7 +11752,7 @@ fn=recarray
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/basic.py
 fn=<module>
-5 13
+5 43
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
 cfn=simplefilter
 calls=1 74
@@ -11754,7 +11780,7 @@ fn=_Interpolator1DWithDerivatives
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/misc.py
 fn=<module>
-3 0
+3 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/array_printer.py
 cfn=<module>
 calls=1 1
@@ -11766,7 +11792,7 @@ fn=fast_sa
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/iterative.py
 fn=<module>
-1 18
+1 47
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/interface.py
 cfn=<module>
 calls=1 1
@@ -11864,7 +11890,7 @@ calls=1 157
 656 0
 cfn=<sklearn.svm.liblinear.train_wrap>
 calls=1 0
-656 1
+656 0
 cfl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
 cfn=classes_
 calls=2 724
@@ -11876,7 +11902,7 @@ fn=_ProbaScorer
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/functions.py
 fn=<module>
-3 1
+3 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/typeconv.py
 cfn=<module>
 calls=1 1
@@ -11892,11 +11918,11 @@ fn=CFunctionType
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 fn=<module>
-3 101
+3 105
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/joblib/__init__.py
 cfn=<module>
 calls=1 101
-3 413
+3 510
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 cfn=LinearModel
 calls=1 114
@@ -11908,11 +11934,11 @@ calls=2 86
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/__init__.py
 cfn=<module>
 calls=1 151
-3 145
+3 274
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/__init__.py
 cfn=<module>
 calls=1 3
-3 230
+3 324
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 cfn=LinearRegression
 calls=1 296
@@ -11928,11 +11954,11 @@ calls=1 6
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/__init__.py
 cfn=<module>
 calls=1 104
-3 101
+3 235
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/extmath.py
 cfn=<module>
 calls=1 3
-3 65
+3 66
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/sparsefuncs.py
 cfn=<module>
 calls=1 5
@@ -11970,15 +11996,15 @@ calls=215 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/__init__.py
 fn=<module>
-106 66
+106 124
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/random/__init__.py
 cfn=<module>
 calls=1 88
-106 12
+106 49
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ctypeslib.py
 cfn=<module>
 calls=1 51
-106 12
+106 34
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/__config__.py
 cfn=<module>
 calls=1 3
@@ -11990,11 +12016,7 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/__init__.py
 cfn=<module>
 calls=1 38
-106 64
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
-cfn=filterwarnings
-calls=2 45
-106 0
+106 114
 cfn=<method 'extend' of 'list' objects>
 calls=5 0
 106 0
@@ -12005,14 +12027,18 @@ calls=1 48
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/add_newdocs.py
 cfn=<module>
 calls=1 10
-106 445
+106 823
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/__init__.py
 cfn=<module>
 calls=1 15
-106 104
+106 132
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/__init__.py
 cfn=ModuleDeprecationWarning
 calls=1 112
+106 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
+cfn=filterwarnings
+calls=2 45
 106 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/_import_tools.py
 cfn=<module>
@@ -12025,12 +12051,12 @@ calls=1 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/fft/__init__.py
 cfn=<module>
 calls=1 1
-106 14
+106 38
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/codecs.py
 fn=__new__
 77 0
-cfn=<built-in method __new__ of type object at 0x102948598>
+cfn=<built-in method __new__ of type object at 0x100a50598>
 calls=1 0
 77 0
 
@@ -12042,7 +12068,7 @@ fn=<sklearn.svm.liblinear.set_verbosity_wrap>
 0 0
 
 fn=<method 'isalpha' of 'str' objects>
-0 3149
+0 213
 
 fl=/Library/Python/2.7/site-packages/sklearn/preprocessing/imputation.py
 fn=Imputer
@@ -12054,7 +12080,7 @@ fn=TestLoader
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/__init__.py
 fn=<module>
-142 53
+142 87
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -12062,26 +12088,26 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nnls.py
 cfn=<module>
 calls=1 1
-142 2
+142 10
 cfn=<dir>
 calls=1 0
 142 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_minimize.py
 cfn=<module>
 calls=1 8
-142 44
+142 120
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/optimize.py
 cfn=<module>
 calls=1 17
-142 6
+142 19
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_root.py
 cfn=<module>
 calls=1 7
-142 22
+142 36
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/zeros.py
 cfn=<module>
 calls=1 1
-142 2
+142 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/_basinhopping.py
 cfn=<module>
 calls=1 3
@@ -12102,15 +12128,14 @@ calls=1 0
 17 0
 cfn=<method 'decode' of 'str' objects>
 calls=1 0
-17 1
+17 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/_datasource.py
 fn=Repository
 497 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
-fn=ArpackError
-276 0
+fn=<_csr.csr_sum_duplicates>
+0 1
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/dsolve/umfpack/umfpack.py
 fn=UmfpackWarning
@@ -12124,9 +12149,49 @@ fl=<string>
 fn=ModuleInfo
 1 0
 
-fl=solveHMM.py
-fn=<lambda>
-41 113
+fl=extract_features.py
+fn=getFeatureVector
+79 252
+cfl=extract_features.py
+cfn=getOtherPercentageSharedLetters
+calls=38897 76
+79 573
+cfl=extract_features.py
+cfn=getNumSharedOrderedLetters
+calls=77794 44
+79 4275
+cfl=extract_features.py
+cfn=getPercentageSharedCapitals
+calls=38897 67
+79 418
+cfl=extract_features.py
+cfn=getPercentageSharedConsonants
+calls=38897 70
+79 592
+cfl=extract_features.py
+cfn=getPercentageSharedLetters
+calls=38897 73
+79 599
+cfl=extract_features.py
+cfn=getNumSharedNonLetters
+calls=38897 36
+79 328
+cfl=extract_features.py
+cfn=getClosestDistance
+calls=38733 80
+79 32
+cfl=extract_features.py
+cfn=getNumSharedLetters
+calls=38897 40
+79 541
+cfl=extract_features.py
+cfn=getNumSharedCapitals
+calls=38897 32
+79 341
+cfl=extract_features.py
+cfn=getNumSharedConsonants
+calls=38897 28
+79 599
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 fn=__init__
@@ -12134,7 +12199,7 @@ fn=__init__
 
 fl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
 fn=<module>
-1 107
+1 115
 cfn=<sklearn.svm.libsvm_sparse.set_verbosity_wrap>
 calls=1 0
 1 0
@@ -12165,10 +12230,6 @@ cfn=<sklearn.svm.libsvm.set_verbosity_wrap>
 calls=1 0
 1 0
 
-fl=constructProbs.py
-fn=setDirpath
-94 0
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/_matfuncs_sqrtm.py
 fn=SqrtmError
 21 0
@@ -12184,6 +12245,10 @@ fn=Ridge
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 fn=__init__
 22 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
+cfn=asformat
+calls=1 195
+22 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 cfn=check_format
 calls=3 101
@@ -12221,10 +12286,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/s
 cfn=__init__
 calls=3 22
 22 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
-cfn=asformat
-calls=1 195
-22 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 cfn=isspmatrix
 calls=3 702
@@ -12301,7 +12362,7 @@ fn=ParameterGrid
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/__init__.py
 fn=<module>
-527 17
+527 72
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=1 140
@@ -12324,14 +12385,14 @@ calls=1 34
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/special/basic.py
 cfn=<module>
 calls=1 5
-527 13
+527 43
 cfn=<method 'startswith' of 'str' objects>
 calls=319 0
 527 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py
 fn=<module>
-1 27
+1 40
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pprint.py
 cfn=<module>
 calls=1 35
@@ -12378,7 +12439,7 @@ fn=_HungarianState
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/ransac.py
 fn=<module>
-7 17
+7 18
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/ransac.py
 cfn=RANSACRegressor
 calls=1 52
@@ -12386,7 +12447,7 @@ calls=1 52
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/random.py
 cfn=<module>
 calls=1 4
-7 33
+7 32
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/dummy/__init__.py
 fn=Value
@@ -12420,17 +12481,17 @@ fn=TokenError
 
 fl=constructProbs.py
 fn=__hash__
-37 1247
+37 87
 cfn=<hash>
-calls=798875 0
-37 176
+calls=88550 0
+37 13
 
 fn=<method 'decode' of 'str' objects>
 0 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/__init__.py
 cfn=search_function
 calls=1 71
-0 1
+0 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/hex_codec.py
 cfn=hex_decode
 calls=1 27
@@ -12446,7 +12507,7 @@ fn=SGDRegressor
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack.py
 fn=<module>
-23 11
+23 63
 cfn=<numpy.core.multiarray.array>
 calls=11 0
 23 0
@@ -12473,10 +12534,6 @@ calls=1 5931
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=MaskedArray
 calls=1 2563
-21 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
-cfn=doc_note
-calls=2 92
 21 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=_extrema_operation
@@ -12511,8 +12568,16 @@ cfn=_frommethod
 calls=1 5973
 21 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
+cfn=doc_note
+calls=2 92
+21 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=__init__
 calls=6 769
+21 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
+cfn=_MaskedUnaryOperation
+calls=1 805
 21 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=_DomainCheckInterval
@@ -12579,10 +12644,6 @@ cfn=__init__
 calls=23 5983
 21 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
-cfn=_MaskedUnaryOperation
-calls=1 805
-21 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 cfn=_convert2ma
 calls=1 7178
 21 0
@@ -12624,7 +12685,7 @@ fn=_PartitionIterator
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/__init__.py
 fn=<module>
-15 70
+15 93
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -12632,7 +12693,7 @@ calls=2 140
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/polynomial.py
 cfn=<module>
 calls=1 55
-15 15
+15 22
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/legendre.py
 cfn=<module>
 calls=1 83
@@ -12648,11 +12709,19 @@ calls=1 59
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/laguerre.py
 cfn=<module>
 calls=1 59
-15 5
+15 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/hermite_e.py
 cfn=<module>
 calls=1 59
 15 3
+
+fl=extract_features.py
+fn=getNumSharedCapitals
+32 50
+cfl=extract_features.py
+cfn=getNumSharedCharClass
+calls=77792 14
+32 651
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/bayes.py
 fn=<module>
@@ -12679,13 +12748,13 @@ calls=1 127
 11 0
 cfn=<imp.load_module>
 calls=1 0
-11 0
+11 5
 cfn=<method 'close' of 'file' objects>
 calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 3
+11 30
 
 fl=/Library/Python/2.7/site-packages/sklearn/base.py
 fn=MetaEstimatorMixin
@@ -12758,7 +12827,7 @@ fn=MaskError
 
 fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/__init__.py
 fn=<module>
-5 65
+5 64
 cfl=/Library/Python/2.7/site-packages/sklearn/feature_selection/variance_threshold.py
 cfn=<module>
 calls=1 4
@@ -12847,6 +12916,34 @@ fl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
 fn=LeaveOneLabelOut
 462 0
 
+fl=extract_features.py
+fn=orderedLettersRecurse
+48 1370
+cfn=<len>
+calls=676128 0
+48 57
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
+cfn=__missing__
+calls=263746 452
+48 38
+cfn=<max>
+calls=156710 0
+48 34
+cfn=<min>
+calls=380568 0
+48 88
+cfn=<sum>
+calls=138124 0
+48 36
+cfl=extract_features.py
+cfn=orderedLettersRecurse
+calls=118376 48
+48 1407
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
+cfn=__init__
+calls=276248 438
+48 2216
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/gettext.py
 fn=gettext
 565 0
@@ -12879,19 +12976,19 @@ calls=316 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/__init__.py
 fn=<module>
-4 94
+4 96
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/scorer.py
 cfn=<module>
 calls=1 14
-4 240
+4 241
 cfl=/Library/Python/2.7/site-packages/sklearn/metrics/metrics.py
 cfn=<module>
 calls=1 9
-4 546
+4 993
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
 fn=<module>
-7 4
+7 33
 cfn=<method 'copy' of 'dict' objects>
 calls=4 0
 7 0
@@ -12912,16 +13009,16 @@ cfn=IterOpInv
 calls=1 956
 7 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
+cfn=ArpackError
+calls=1 276
+7 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
 cfn=_UnsymmetricArpackParams
 calls=1 589
 7 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
 cfn=SpLuInv
 calls=1 891
-7 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
-cfn=ArpackError
-calls=1 276
 7 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/eigen/arpack/arpack.py
 cfn=IterInv
@@ -12940,6 +13037,13 @@ cfn=__init__
 calls=2 259
 241 0
 
+fl=extract_features.py
+fn=<lambda>
+37 107
+cfn=<method 'isalpha' of 'str' objects>
+calls=370841 0
+37 37
+
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 fn=LassoCV
 1142 0
@@ -12948,11 +13052,13 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/nu
 fn=ModuleDeprecationWarning
 112 0
 
-fn=<_csr.csr_sum_duplicates>
-0 1
-
-fn=<method 'setter' of 'property' objects>
-0 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/defchararray.py
+fn=<module>
+17 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/defchararray.py
+cfn=chararray
+calls=1 1668
+17 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
 fn=get_object_signature
@@ -12996,19 +13102,14 @@ fn=hypsecant_gen
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/slsqp.py
 fn=<module>
-14 2
+14 10
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=__new__
 calls=1 93
 14 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/defchararray.py
-fn=<module>
-17 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/defchararray.py
-cfn=chararray
-calls=1 1668
-17 0
+fn=<method 'setter' of 'property' objects>
+0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/csgraph.py
 fn=swig_import_helper
@@ -13025,7 +13126,7 @@ calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 1
+11 3
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
 fn=_compile_info
@@ -13146,7 +13247,7 @@ calls=11 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/decorator.py
 cfn=create
 calls=11 177
-200 1
+200 2
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/oldnumeric/precision.py
 fn=_lookup
@@ -13156,12 +13257,16 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=planck_gen
 7609 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/decorator.py
 fn=__init__
-23 0
-cfn=<__import__>
-calls=4 0
-23 0
+63 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
+cfn=getargspec
+calls=9 804
+63 0
+cfn=<getattr>
+calls=9 0
+63 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/quadpack.py
 fn=_NQuad
@@ -13304,7 +13409,7 @@ fn=<method 'format' of 'str' objects>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 fn=<module>
-62 11
+62 13
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=_StoreTrueAction
 calls=1 861
@@ -13330,10 +13435,6 @@ cfn=_AppendAction
 calls=1 895
 62 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
-cfn=RawDescriptionHelpFormatter
-calls=1 627
-62 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=_ActionsContainer
 calls=1 1167
 62 0
@@ -13344,7 +13445,7 @@ calls=1 979
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 cfn=<module>
 calls=1 1
-62 13
+62 25
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=Action
 calls=1 712
@@ -13384,6 +13485,10 @@ calls=1 649
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=_AttributeHolder
 calls=1 112
+62 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
+cfn=RawDescriptionHelpFormatter
+calls=1 627
 62 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=_StoreConstAction
@@ -13463,11 +13568,11 @@ fn=<globals>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/ndgriddata.py
 fn=<module>
-6 6
+6 39
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/spatial/__init__.py
 cfn=<module>
 calls=1 85
-6 34
+6 127
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/ndgriddata.py
 cfn=NearestNDInterpolator
 calls=1 22
@@ -13502,11 +13607,11 @@ calls=1 231
 
 fl=/Library/Python/2.7/site-packages/sklearn/preprocessing/imputation.py
 fn=<module>
-4 4
+4 7
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/__init__.py
 cfn=<module>
 calls=1 321
-4 413
+4 857
 cfl=/Library/Python/2.7/site-packages/sklearn/preprocessing/imputation.py
 cfn=Imputer
 calls=1 92
@@ -13518,7 +13623,7 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/_ode.py
 fn=<module>
-39 13
+39 85
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/_ode.py
 cfn=zvode
 calls=1 766
@@ -13584,7 +13689,7 @@ fn=CFunctionType
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/compat/__init__.py
 fn=<module>
-10 4
+10 6
 cfn=<method 'extend' of 'list' objects>
 calls=2 0
 10 0
@@ -13601,13 +13706,22 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=Rectangle
 75 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
-fn=__init__
-47 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserDict.py
-cfn=__init__
-calls=2 4
-47 0
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py
+fn=filterwarnings
+45 0
+cfn=<isinstance>
+calls=20 0
+45 0
+cfn=<method 'insert' of 'list' objects>
+calls=5 0
+45 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py
+cfn=compile
+calls=10 188
+45 1
+cfn=<issubclass>
+calls=5 0
+45 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py
 fn=_set_ident
@@ -13622,6 +13736,14 @@ fn=<cmp>
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/decorators.py
 fn=<module>
 15 0
+
+fl=solveHMM.py
+fn=<genexpr>
+76 0
+cfl=constructProbs.py
+cfn=__hash__
+calls=91 37
+76 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=burr_gen
@@ -13644,7 +13766,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/dia.py
 cfn=swig_import_helper
 calls=1 11
-9 2
+9 13
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/polyint.py
 fn=BarycentricInterpolator
@@ -13720,7 +13842,7 @@ calls=154 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/metrics/pairwise.py
 fn=<module>
-31 35
+31 38
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 fn=TextRepr
@@ -13732,7 +13854,7 @@ fn=StopTokenizing
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 fn=<module>
-24 15
+24 18
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.py
 cfn=normcase
 calls=1 51
@@ -13763,6 +13885,10 @@ calls=1 998
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/atexit.py
 cfn=register
 calls=1 37
+24 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
+cfn=__init__
+calls=1 47
 24 0
 cfn=<method 'lower' of 'str' objects>
 calls=1 0
@@ -13801,10 +13927,6 @@ calls=1 1095
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 cfn=Handler
 calls=1 646
-24 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py
-cfn=__init__
-calls=1 47
 24 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/atexit.py
 cfn=<module>
@@ -13884,10 +14006,10 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numeric.py
 fn=asanyarray
-462 2398
+462 113
 cfn=<numpy.core.multiarray.array>
-calls=2754806 0
-462 5912
+calls=156478 0
+462 264
 
 fl=HMMModel.py
 fn=main
@@ -13896,37 +14018,33 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/token
 cfn=generate_tokens
 calls=2 264
 21 0
+cfl=constructProbs.py
+cfn=updateTransitionProbs
+calls=1 192
+21 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=__init__
 calls=1 1543
 21 1
-cfl=constructProbs.py
-cfn=updateTransitionProbs
-calls=1 185
-21 2
-cfl=constructProbs.py
-cfn=build
-calls=1 209
-21 2
 cfn=<method 'read' of 'file' objects>
 calls=1 0
 21 0
 cfl=solveHMM.py
 cfn=viterbi
-calls=5 13
-21 347133
+calls=7 13
+21 12457
 cfl=HMMModel.py
 cfn=getDirpaths
 calls=1 12
 21 0
 cfl=constructProbs.py
-cfn=getSeparatorAndToken
-calls=28 138
-21 1
+cfn=build
+calls=1 218
+21 3
 cfl=constructProbs.py
 cfn=build
-calls=1 82
-21 2
+calls=1 83
+21 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 cfn=parse_args
 calls=1 1687
@@ -13947,38 +14065,34 @@ calls=2 1250
 21 0
 cfl=constructProbs.py
 cfn=__init__
-calls=1 181
-21 0
-cfl=constructProbs.py
-cfn=__init__
 calls=1 41
 21 0
 cfl=constructProbs.py
 cfn=updateMatchProbsTrainingData
 calls=1 50
-21 130
+21 150
+cfl=constructProbs.py
+cfn=setDirpath
+calls=7 96
+21 0
 cfl=constructProbs.py
 cfn=__repr__
-calls=23 24
+calls=54 24
 21 0
 cfn=<sum>
 calls=1 0
 21 0
 cfl=constructProbs.py
-cfn=setDirpath
-calls=5 94
+cfn=getSeparatorAndToken
+calls=34 145
+21 1
+cfl=constructProbs.py
+cfn=__init__
+calls=1 188
 21 0
 cfn=<method 'seek' of 'file' objects>
 calls=1 0
 21 0
-
-fl=extract_features.py
-fn=getNumSharedNonLetters
-28 702
-cfl=extract_features.py
-cfn=getNumSharedCharClass
-calls=688347 14
-28 14996
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
 fn=parse_known_args
@@ -14015,7 +14129,7 @@ calls=1 231
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/matrixlib/__init__.py
 fn=<module>
-3 6
+3 12
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/matrixlib/defmatrix.py
 cfn=<module>
 calls=1 1
@@ -14028,6 +14142,18 @@ calls=2 140
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/coordinate_descent.py
 fn=MultiTaskElasticNet
 1384 0
+
+fl=constructProbs.py
+fn=getSeparatorAndToken
+145 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
+cfn=generate_tokens
+calls=468 264
+145 2
+cfl=constructProbs.py
+cfn=__init__
+calls=117 14
+145 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/passive_aggressive.py
 fn=PassiveAggressiveClassifier
@@ -14044,21 +14170,9 @@ cfn=_get_precisions
 calls=5 20
 26 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
-fn=<module>
-1 6
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/result.py
-cfn=TestResult
-calls=1 26
-1 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/util.py
-cfn=<module>
-calls=1 1
-1 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/StringIO.py
-cfn=<module>
-calls=1 30
-1 0
+fl=constructProbs.py
+fn=__init__
+188 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/rv.py
 fn=<module>
@@ -14078,11 +14192,11 @@ fn=CustomizablePickler
 
 fl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 fn=atleast2d_or_csr
-157 863
+157 39
 cfl=/Library/Python/2.7/site-packages/sklearn/utils/validation.py
 cfn=_atleast2d_or_sparse
-calls=688193 128
-157 26891
+calls=38611 128
+157 1228
 
 fl=/Library/Python/2.7/site-packages/sklearn/feature_selection/from_model.py
 fn=<module>
@@ -14105,13 +14219,13 @@ calls=1 127
 11 0
 cfn=<imp.load_module>
 calls=1 0
-11 0
+11 3
 cfn=<method 'close' of 'file' objects>
 calls=1 0
 11 0
 cfn=<imp.find_module>
 calls=1 0
-11 3
+11 31
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/polyint.py
 fn=PiecewisePolynomial
@@ -14149,6 +14263,14 @@ fn=<method 'pop' of 'dict' objects>
 0 0
 
 fn=<method 'add' of 'set' objects>
+0 21
+cfl=constructProbs.py
+cfn=__eq__
+calls=39 27
+0 0
+cfl=constructProbs.py
+cfn=__hash__
+calls=84 37
 0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
@@ -14178,11 +14300,11 @@ calls=54 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/laguerre.py
 fn=<module>
-59 4
+59 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/string.py
 cfn=substitute
 calls=1 148
-59 1
+59 0
 cfn=<numpy.core.multiarray.array>
 calls=4 0
 59 0
@@ -14224,17 +14346,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/UserD
 cfn=get
 calls=12 58
 421 0
-
-fl=extract_features.py
-fn=getPercentageSharedLetters
-65 924
-cfn=<len>
-calls=1376693 0
-65 150
-cfl=extract_features.py
-cfn=getNumSharedLetters
-calls=688346 32
-65 23355
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/synchronize.py
 fn=__init__
@@ -14345,11 +14456,11 @@ fn=ZNDArrayWrapper
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 fn=__init__
-438 21080
+438 348
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.py
 cfn=update
-calls=16159684 501
-438 102927
+calls=276248 501
+438 1867
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/distutils/version.py
 fn=LooseVersion
@@ -14388,55 +14499,11 @@ fn=ForkAwareLocal
 340 0
 
 fn=<method 'any' of 'numpy.ndarray' objects>
-0 0
+0 1
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/_methods.py
 cfn=_any
 calls=2028 31
-0 7
-
-fl=extract_features.py
-fn=getFeatureVector
-71 5628
-cfl=extract_features.py
-cfn=getNumSharedCapitals
-calls=688347 24
-71 16201
-cfl=extract_features.py
-cfn=getClosestDistance
-calls=688254 72
-71 670
-cfl=extract_features.py
-cfn=getPercentageSharedConsonants
-calls=688347 62
-71 21644
-cfl=extract_features.py
-cfn=getNumSharedLetters
-calls=688347 32
-71 23490
-cfl=extract_features.py
-cfn=getNumSharedOrderedLetters
-calls=1376694 36
-71 84359
-cfl=extract_features.py
-cfn=getOtherPercentageSharedLetters
-calls=688347 68
-71 23884
-cfl=extract_features.py
-cfn=getPercentageSharedCapitals
-calls=688347 59
-71 17279
-cfl=extract_features.py
-cfn=getNumSharedNonLetters
-calls=688347 28
-71 15698
-cfl=extract_features.py
-cfn=getPercentageSharedLetters
-calls=688347 65
-71 24430
-cfl=extract_features.py
-cfn=getNumSharedConsonants
-calls=688347 20
-71 25361
+0 8
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/linalg/isolve/iterative.py
 fn=combine
@@ -14467,17 +14534,9 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=innernode
 260 0
 
-fl=extract_features.py
-fn=getNumSharedConsonants
-20 1746
-cfl=extract_features.py
-cfn=getNumSharedCharClass
-calls=1376693 14
-20 44170
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/runner.py
 fn=<module>
-1 3
+1 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/signals.py
 cfn=<module>
 calls=1 1
@@ -14504,11 +14563,11 @@ fn=<method 'newbyteorder' of 'numpy.dtype' objects>
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/pool.py
 fn=ThreadPool
-709 1
+709 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/dummy/__init__.py
 cfn=<module>
 calls=1 36
-709 3
+709 19
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/synchronize.py
 fn=__init__
@@ -14562,7 +14621,7 @@ fn=__init__
 
 fl=solveHMM.py
 fn=<lambda>
-56 0
+56 5
 
 fn=<method 'span' of '_sre.SRE_Match' objects>
 0 0
@@ -14594,6 +14653,22 @@ cfn=LabelBinarizer
 calls=1 169
 9 0
 
+fl=constructProbs.py
+fn=getProb
+99 186
+cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
+cfn=predict_proba
+calls=38610 112
+99 3211
+cfl=constructProbs.py
+cfn=getName
+calls=77220 20
+99 16
+cfl=extract_features.py
+cfn=getFeatureVector
+calls=38610 79
+99 8410
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_longdouble
 205 0
@@ -14620,10 +14695,6 @@ cfn=iscode
 calls=215 209
 744 0
 
-fl=constructProbs.py
-fn=MatchProbs
-86 0
-
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 fn=Formatter
 346 0
@@ -14639,16 +14710,16 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakr
 fn=__exit__
 26 0
 cfn=<method 'remove' of 'set' objects>
-calls=16 0
+calls=14 0
 26 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=_commit_removals
-calls=16 52
+calls=14 52
 26 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/base.py
 fn=<module>
-1 60
+1 69
 cfl=/Library/Python/2.7/site-packages/sklearn/base.py
 cfn=TransformerMixin
 calls=1 399
@@ -14656,7 +14727,7 @@ calls=1 399
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/__init__.py
 cfn=<module>
 calls=1 197
-1 170
+1 433
 cfl=/Library/Python/2.7/site-packages/sklearn/base.py
 cfn=RegressorMixin
 calls=1 295
@@ -14668,7 +14739,7 @@ calls=1 267
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/__init__.py
 cfn=<module>
 calls=1 65
-1 30
+1 43
 cfl=/Library/Python/2.7/site-packages/sklearn/externals/__init__.py
 cfn=<module>
 calls=1 5
@@ -14680,11 +14751,11 @@ calls=1 349
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
 cfn=<module>
 calls=1 25
-1 7
+1 9
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/__init__.py
 cfn=<module>
 calls=1 106
-1 721
+1 1318
 cfl=/Library/Python/2.7/site-packages/sklearn/base.py
 cfn=ClusterMixin
 calls=1 328
@@ -14778,15 +14849,15 @@ fn=_any
 31 1
 cfn=<method 'reduce' of 'numpy.ufunc' objects>
 calls=2028 0
-31 5
+31 6
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/matfuncs.py
 fn=<module>
-5 11
+5 12
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/linalg/special_matrices.py
 cfn=<module>
 calls=1 1
-5 40
+5 66
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/utils.py
 cfn=deprecate
 calls=2 152
@@ -14847,37 +14918,13 @@ cfn=__new__
 calls=1 93
 1103 0
 
-fl=HMMModel.py
-fn=<module>
-1 67
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
-cfn=generate_tokens
-calls=1 264
-1 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/io.py
-cfn=<module>
-calls=1 34
-1 5
-cfl=constructProbs.py
-cfn=<module>
-calls=1 1
-1 4232
-cfl=solveHMM.py
-cfn=<module>
-calls=1 12
-1 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/argparse.py
-cfn=<module>
-calls=1 62
-1 24
-cfl=HMMModel.py
-cfn=main
-calls=1 21
-1 347275
-
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/core.py
-fn=_MaskedUnaryOperation
-805 0
+fl=/Library/Python/2.7/site-packages/sklearn/cross_validation.py
+fn=BaseShuffleSplit
+749 0
+cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
+cfn=abstractmethod
+calls=1 15
+749 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/fitpack2.py
 fn=RectBivariateSpline
@@ -14896,7 +14943,7 @@ calls=2028 462
 1762 2
 cfn=<method 'any' of 'numpy.ndarray' objects>
 calls=2028 0
-1762 8
+1762 9
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=rayleigh_gen
@@ -14912,7 +14959,7 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/utils.py
 fn=<module>
-4 4
+4 6
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/utils.py
 cfn=WarningManager
 calls=1 1398
@@ -14947,6 +14994,14 @@ fn=LowRankMatrix
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
 fn=alpha_gen
 2230 0
+
+fl=extract_features.py
+fn=getNumSharedConsonants
+28 65
+cfl=extract_features.py
+cfn=getNumSharedCharClass
+calls=77792 14
+28 1078
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/optimize/nonlin.py
 fn=DiagBroyden
@@ -15007,7 +15062,7 @@ calls=1 188
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 fn=<module>
-35 2
+35 3
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 cfn=ModuleScanner
 calls=1 1940
@@ -15078,11 +15133,11 @@ fn=__contains__
 70 0
 
 fn=<sklearn.svm.liblinear.train_wrap>
-0 1
+0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/misc/doccer.py
 fn=docformat
-12 21
+12 20
 cfn=<method 'splitlines' of 'str' objects>
 calls=5684 0
 12 7
@@ -15144,6 +15199,10 @@ cfn=_check
 calls=1 206
 115 0
 
+fl=constructProbs.py
+fn=MatchProbs
+87 0
+
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py
 fn=__init__
 390 0
@@ -15173,7 +15232,7 @@ fn=<module>
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/coo.py
 cfn=swig_import_helper
 calls=1 11
-9 4
+9 35
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/polyint.py
 fn=PchipInterpolator
@@ -15293,7 +15352,7 @@ fn=SVC
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py
 fn=<module>
-40 5
+40 6
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py
 cfn=WichmannHill
 calls=1 650
@@ -15304,7 +15363,7 @@ calls=1 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py
 cfn=<module>
 calls=1 55
-40 6
+40 16
 cfn=<math.log>
 calls=2 0
 40 0
@@ -15333,15 +15392,15 @@ fn=__iter__
 58 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__enter__
-calls=16 20
+calls=14 20
 58 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__init__
-calls=16 16
+calls=14 16
 58 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py
 cfn=__exit__
-calls=16 26
+calls=14 26
 58 0
 
 fl=/Library/Python/2.7/site-packages/sklearn/svm/base.py
@@ -15359,31 +15418,6 @@ fn=Match
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ctypes/__init__.py
 fn=c_int
 189 0
-
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
-fn=_optimize_charset
-207 2
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
-cfn=_identityfunction
-calls=314 24
-207 0
-cfn=<len>
-calls=259 0
-207 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
-cfn=fixup
-calls=14 51
-207 0
-cfn=<range>
-calls=35 0
-207 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_compile.py
-cfn=_mk_bitmap
-calls=34 258
-207 1
-cfn=<method 'append' of 'list' objects>
-calls=447 0
-207 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/tokenize.py
 fn=group
@@ -15480,15 +15514,15 @@ calls=1 100
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csr.py
 fn=<module>
-1 10
+1 14
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/sparsetools/__init__.py
 cfn=<module>
 calls=1 2
-1 78
+1 224
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/compressed.py
 cfn=<module>
 calls=1 1
-1 4
+1 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/csr.py
 cfn=csr_matrix
 calls=1 22
@@ -15535,7 +15569,7 @@ fn=LeaveOneOut
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/stochastic_gradient.py
 fn=<module>
-5 12
+5 13
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py
 cfn=__new__
 calls=5 86
@@ -15567,7 +15601,7 @@ calls=1 944
 cfl=/Library/Python/2.7/site-packages/sklearn/feature_selection/__init__.py
 cfn=<module>
 calls=1 5
-5 77
+5 75
 cfl=/Library/Python/2.7/site-packages/sklearn/feature_selection/from_model.py
 cfn=<module>
 calls=1 4
@@ -15589,30 +15623,26 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=LSQUnivariateSpline
 460 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/decorator.py
+fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/lib/_util.py
 fn=__init__
-63 0
-cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py
-cfn=getargspec
-calls=9 804
-63 0
-cfn=<getattr>
-calls=9 0
-63 0
+23 0
+cfn=<__import__>
+calls=4 0
+23 0
 
 fn=<_hashlib.openssl_sha512>
 0 0
 
 fn=<method 'get' of 'dict' objects>
-0 6133
+0 127
 cfl=constructProbs.py
 cfn=__eq__
-calls=4606 27
-0 7
+calls=353 27
+0 0
 cfl=constructProbs.py
 cfn=__hash__
-calls=4608 37
-0 4
+calls=355 37
+0 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/polynomial/polyutils.py
 fn=PolyBase
@@ -15671,10 +15701,6 @@ cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/s
 cfn=IndexMixin
 calls=1 160
 2 0
-
-fl=solveHMM.py
-fn=<genexpr>
-56 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/interpolate/interpolate.py
 fn=interp1d
@@ -15737,22 +15763,22 @@ calls=1 578
 
 fl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 fn=_predict_proba_lr
-222 13628
+222 639
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/shape_base.py
 cfn=vstack
-calls=688192 179
-222 14767
+calls=38610 179
+222 687
 cfn=<len>
-calls=688192 0
-222 112
+calls=38610 0
+222 4
 cfl=/Library/Python/2.7/site-packages/sklearn/linear_model/base.py
 cfn=decision_function
-calls=688192 173
-222 40338
+calls=38610 173
+222 1825
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/fft/__init__.py
 fn=<module>
-1 12
+1 27
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/testing/nosetester.py
 cfn=__init__
 calls=2 140
@@ -15768,7 +15794,7 @@ calls=1 4
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/fft/fftpack.py
 cfn=<module>
 calls=1 32
-1 1
+1 10
 
 fn=<method 'mro' of 'type' objects>
 0 0
@@ -15779,7 +15805,7 @@ fn=LinearClassifierMixin
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/integrate/odepack.py
 fn=<module>
-2 4
+2 32
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 fn=__init__
@@ -15821,15 +15847,12 @@ fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/sc
 fn=gaussian_kde
 41 0
 
-fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/stats/distributions.py
-fn=invgauss_gen
-4241 0
+fl=/Library/Python/2.7/site-packages/sklearn/linear_model/logistic.py
+fn=LogisticRegression
+12 0
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 fn=__new__
-93 0
-cfn=<built-in method __new__ of type object at 0x102948598>
-calls=2 0
 93 0
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/numerictypes.py
 cfn=obj2sctype
@@ -15838,8 +15861,11 @@ calls=2 610
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/getlimits.py
 cfn=_init
 calls=2 126
-93 25
+93 27
 cfn=<method 'append' of 'list' objects>
+calls=2 0
+93 0
+cfn=<built-in method __new__ of type object at 0x100a50598>
 calls=2 0
 93 0
 cfn=<issubclass>
@@ -15850,7 +15876,7 @@ calls=24 0
 93 0
 
 fn=<imp.find_module>
-0 18
+0 142
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/scipy/sparse/base.py
 fn=spmatrix
@@ -15890,7 +15916,7 @@ fn=RFECV
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/type_check.py
 fn=<module>
-3 3
+3 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/lib/ufunclike.py
 cfn=<module>
 calls=1 5
@@ -15898,7 +15924,7 @@ calls=1 5
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/core/__init__.py
 cfn=<module>
 calls=1 1
-3 239
+3 483
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/numpy/ma/extras.py
 fn=__init__
@@ -15950,7 +15976,7 @@ fn=__init__
 
 fl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py
 fn=<module>
-5 1
+5 2
 cfl=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py
 cfn=ExecError
 calls=1 38
