@@ -44,8 +44,9 @@ def main():
 		'root', help='the directory to start recursively searching from')
 	parser.add_argument(
 		'percentage', help='percentage of each file (at end) to be used for testing')
-	# add an argument here for --training_error 
-	
+	parser.add_argument(
+		'training_error', type = int, default = 0, help='calculate training error - 1 or not - 0')
+
 	# can make the following option-controlled later if we start looking at other langs
 	def isPythonFile(dirpath):
 		return dirpath[len(dirpath)-3:len(dirpath)] == ".py"
