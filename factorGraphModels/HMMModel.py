@@ -123,7 +123,7 @@ def main():
             startTestLine = int(totalLineCount * (1 - percentage))
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             if training_error_check:
-                runAndTrainingError(g, 'Train', 1, startTestLine, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
+                runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
             runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
 
 if __name__ == "__main__":
