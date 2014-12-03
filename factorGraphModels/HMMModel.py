@@ -111,6 +111,8 @@ def main():
 					print 'compared:', actual_tokens 
 					print observations
 					print correctedLines
+					print correctedLines[0][1]
+					print correctedLines
 				print 'Number of Training Samples:', training_samples
 				print 'Training Correct Ratio:', float(training_correct)/(training_samples)
 				print 'Training Error:', 1 - float(training_correct)/(training_samples)
@@ -127,7 +129,7 @@ def main():
 				# apply the abbreviation functions :) to all of the words in tokens
 				tokens = [token for (separator, token) in sep_tokens] #actual list of words
 				actual_tokens = copy.deepcopy(tokens)
-				observations = [abbrToken(token) for token in tokens]
+				observations = [(token) for token in tokens]
 				separators = [separator for (separator, token) in sep_tokens]
 				matchProb.setDirpath(dirpath)
 				# print len(observations)
@@ -138,6 +140,7 @@ def main():
 				#increment training correct count if your best guess is equal to corrected lines
 				print 'compared:', actual_tokens 
 				print observations
+				print correctedLines[0][1]
 				print correctedLines
 				if correctedLines[0][1] == actual_tokens:
 					test_correct += 1 
