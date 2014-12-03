@@ -37,10 +37,6 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
         V[0][start_state] =  [0 for _ in xrange(numResults-1)] + [trans_p.getStartProb(start_state) * emit_p.getProb(start_state,obs[0])]
         path[start_state] = [[start_state] for _ in xrange(numResults)]
     
-    print 'initializing V: ' + str(V)
-    print 'path', path
-    print 'lenobs', len(obs)
-    
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
         print 'path', path
@@ -78,9 +74,9 @@ def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=Fals
     if len(obs) != 1:
         n = t
 
-    if verbose:
-        print 'viterbi dp table'
-        print(V)
+    # if verbose:
+        # print 'viterbi dp table'
+        # print(V)
 
     if not obs[len(obs)-1].isName:
         end_states = [obs[len(obs)-1]]
