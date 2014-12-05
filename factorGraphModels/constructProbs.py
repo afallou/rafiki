@@ -122,17 +122,20 @@ class TransitionProbs:
     CONSTANT_TRANSITION_PROB = 1.0
     def __init__(self, transProb, lambda_val=0.7):
         self.transProb = deepcopy(transProb)
-        for s0 in transProb:
-            for transition in transProb[s0]:
-                for s1 in transProb[s0][transition]:
-                    self.transProb[s0][transition][s1] = transProb[s0][transition][s1] / float(sum(transProb[s0][transition].values()))
 
         not_name = MaybeName(False, 0)
         self.startProb = {not_name: TransitionProbs.CONSTANT_TRANSITION_PROB}
         for s0 in self.transProb:
             self.startProb[s0] = sum([sum(countsDict.values()) for countsDict in self.transProb[s0].values()])
         for s0 in self.transProb:
-            self.startProb[s0] = self.startProb[s0]/sum(self.startProb.values())
+            self.startProb[s0] = self.startProb[s0] / sum(self.startProb.values())
+
+        for s0 in transProb:
+            for transition in transProb[s0]:
+                normalizer = float(sum(transProb[s0][transition].values()))
+                for s1 in transProb[s0][transition]:
+                    self.transProb[s0][transition][s1] = lambda_val * transProb[s0][transition][s1] / normalizer \
+                                                        + (1 - lambda_val) * self.startProb.get(s0, 0)
 
         self.lambda_val = lambda_val
 
@@ -140,7 +143,7 @@ class TransitionProbs:
         # if not s0.isName or not s0.isName:
         #    return CONSTANT_TRANSITION_PROB
         try:
-            return self.transProb[s0][sep][s1] * self.lambda_val + self.startProb.get(s0, 0) * (1- self.lambda_val)
+            return self.transProb[s0][sep][s1]
         except KeyError:
             return 0
 
