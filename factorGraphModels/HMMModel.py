@@ -51,7 +51,7 @@ def abbrToken(token, abbrType):
         abbrRandomlyRemLetters(token)
         return token
 
-def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath):
+def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn):
     samples_count = 0
     correct_count = 0
     print startLine, endLine
@@ -66,7 +66,7 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         matchProb.setDirpath(dirpath)
         if len(observations) == 0:
             continue
-        correctedLines = legacy_viterbi(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
+        correctedLines = solve_fn(observations, matchProbBuilder.allNames, transProb, matchProb, separators[1:])
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
@@ -104,6 +104,7 @@ def main():
     solve_fn = legacy_viterbi
     if args.solve == 'pfilter':
         print "Using particle_filtering"
+        solve_fn = particle_filtering
     else:
         print "Using Viterbi"
 
@@ -127,7 +128,7 @@ def main():
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             if training_error_check:
                 runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
-            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
+            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn)
 
 if __name__ == "__main__":
     main()
