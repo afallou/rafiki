@@ -7,6 +7,7 @@ import tokenize
 import random
 from solveHMM import legacy_viterbi, particle_filtering
 import copy 
+import pdb
     
 """
     Return a list of filenames 

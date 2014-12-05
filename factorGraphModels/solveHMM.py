@@ -145,7 +145,8 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
             next_state = util.weightedRandomChoice(candidates[k])
             paths[k].append(next_state)
 
-    return paths
+    # To have same return form as viterbi
+    return [(0, path) for path in paths]
 
 def legacy_viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False):
     # if verbose:
