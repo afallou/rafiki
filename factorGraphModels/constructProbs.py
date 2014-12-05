@@ -145,7 +145,7 @@ class TransitionProbs:
         try:
             return self.transProb[s0][sep][s1]
         except KeyError:
-            return 0
+            return (1 - self.lambda_val) * startProb.get(s0, 0)
 
     def getStartProb(self, s0):
             return self.startProb.get(s0, 0)

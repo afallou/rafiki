@@ -1,7 +1,10 @@
+import random
+
 # Function: Weighted Random Choice
 # --------------------------------
 # Given a dictionary of the form element -> weight, selects an element
 # uniformly over the different weights.
+# Taken from the 'car' assignment
 def weightedRandomChoice(weightDict):
     weights = []
     elems = []

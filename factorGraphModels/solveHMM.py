@@ -1,4 +1,6 @@
 import heapq
+import util
+import random
 
 
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
@@ -111,12 +113,12 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
     timesteps = len(obs)
 
     # initialize
-    paths = []
+    paths = [[] for _ in xrange(K)]
     candidates = [{} for _ in xrange(K)]
     for k in xrange(K):
         for _ in xrange(candidates_count):
                 candidate = util.weightedRandomChoice(trans_p.startProb)
-                candidate_weight = emit_p[obs[0]][candidate]
+                candidate_weight = emit_p.getProb(candidate, obs[0])
                 candidates[k][candidate] = candidate_weight
 
     for k in xrange(K):
@@ -127,11 +129,15 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
     for t in range(1, timesteps):
         candidates = [{} for _ in xrange(K)]
         for k in xrange(K):
-            old_state = path[-1]
+            old_state = paths[k][-1]
             # Propose and reweight
             for _ in xrange(candidates_count):
-                candidate = util.weightedRandomChoice(trans_p[old_state][transitions_per_timestep[t-1]])
-                candidate_weight = emit_p[obs[t]][candidate]
+                if old_state in trans_p.transProb and transitions_per_timestep[t-1] in trans_p.transProb[old_state]:
+                    candidate = util.weightedRandomChoice(trans_p.transProb[old_state][transitions_per_timestep[t-1]])
+                # we've never seen that sequence before >> chose uniformly at random
+                else:
+                    candidate = random.sample(states, 1)[0]
+                candidate_weight = emit_p.getProb(candidate, obs[t])
                 candidates[k][candidate] = candidate_weight
 
         # Resample
