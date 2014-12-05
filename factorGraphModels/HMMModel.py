@@ -73,10 +73,10 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         # print 'comparison:', tokens, correctedLines
         if correctedLines[0][1] == actual_tokens:
             correct_count += 1
-        print 'compared:', actual_tokens 
-        print observations
+        print 'original:', actual_tokens 
+        print 'abbreviated:', observations
         #print correctedLines
-        print correctedLines[0][1]
+        print 'corrected:', correctedLines[0][1]
         # print correctedLines
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
