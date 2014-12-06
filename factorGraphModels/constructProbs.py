@@ -9,6 +9,7 @@ import random
 from collections import Counter
 from copy import deepcopy
 from extract_features import getFeatureVector
+import pdb
 
 verbose = False
 
@@ -128,7 +129,7 @@ class TransitionProbs:
         for s0 in self.transProb:
             self.startProb[s0] = sum([sum(countsDict.values()) for countsDict in self.transProb[s0].values()])
         for s0 in self.transProb:
-            self.startProb[s0] = self.startProb[s0] / sum(self.startProb.values())
+            self.startProb[s0] = 1. * self.startProb[s0] / sum(self.startProb.values())
 
         for s0 in transProb:
             for transition in transProb[s0]:

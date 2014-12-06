@@ -1,6 +1,7 @@
 import heapq
 import util
 import random
+import pdb
 
 
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
