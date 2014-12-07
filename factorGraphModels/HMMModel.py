@@ -14,7 +14,7 @@ import pdb
 """
 removalProb = 0.15
 switchProb = 0.15
-random.seed(1989)
+RNG_SEED = 1989
 
 def getDirpaths(root, keep_fn=lambda x: True):
     filepaths = [ [dirpath + '/' + fname for fname in filenames] for dirpath, _, filenames in os.walk(root)]
@@ -22,35 +22,45 @@ def getDirpaths(root, keep_fn=lambda x: True):
     print(flattened)
     return filter(keep_fn, flattened)
 
-def abbrRemoveVowels(token):
-    return ''.join([l for l in token if l not in vowels])
 
-def abbrRemoveVowelsTesting(token):
-    token.setName(''.join([l for l in token.getName() if l not in vowels]))
+# operates on strings 
+class AbbrOperation:
+    def __init__(self, abbr_Type, seed=RNG_SEED):
+        self.rng = random.Random()
+        self.rng.seed(RNG_SEED)
+        self.abbr_Type = abbr_Type
 
-def abbrRandomlyRemLetters(token):
-    token.setName(''.join([l for l in token.getName() if random.random() > removalProb]))
+    def reset(self, seed=RNG_SEED):
+        self.rng.seed(seed)
 
-def abbrRandomShuffleLetters(token):
-    array = [l for l in token.getName()]
-    for i in range(len(array)):
-        if random.random() < switchProb and i+1 < len(array):
-            letter = array[i]
-            array[i] = array[i+1]
-            array[i+1] = letter
-    token.setName(''.join(array))
+    def __call__(self, string):
+        if self.abbr_Type == 0:
+            return string
+        elif self.abbr_Type == 1:
+            res = self.__abbrRandomShuffleLetters(string)
+            return self.__abbrRandomlyRemLetters(res)
+        else:
+            res = self.__abbrRandomShuffleLetters(string)
+            res = self.__abbrRandomlyRemLetters(res)
+            self.__abbrRemoveVowelsTesting(res)
+            return res
 
-def abbrToken(token, abbrType):
-    if token is None or not token.isName:
-        return token
-    if abbrType == 0:
-        return token
-    else:
-        if abbrType == 2: # remove vowels and all, if type is 1 then shuffle and remove
-            abbrRemoveVowelsTesting(token)
-        abbrRandomShuffleLetters(token)
-        abbrRandomlyRemLetters(token)
-        return token
+    # the following all take in a string and return a string 
+    def __abbrRemoveVowelsTesting(self, string):
+        return ''.join([l for l in string if l not in vowels])
+
+    def __abbrRandomlyRemLetters(self, string):
+        return ''.join([l for l in string if self.rng.random() > removalProb])
+
+    def __abbrRandomShuffleLetters(self, string):
+        array = list(string)
+        for i in range(len(array)):
+            if self.rng.random() < switchProb and i+1 < len(array):
+                letter = array[i]
+                array[i] = array[i+1]
+                array[i+1] = letter
+        return ''.join(array)
+
 
 def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn):
     samples_count = 0
@@ -62,7 +72,8 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         # apply the abbreviation functions :) to all of the words in tokens
         tokens = [token for (separator, token) in sep_tokens] #actual list of words
         actual_tokens = copy.deepcopy(tokens)
-        observations = [abbrToken(token, abbrType) for token in tokens]
+        abbrCallable = AbbrOperation(abbrType)
+        observations = [token.apply(abbrCallable) for token in tokens]
         separators = [separator for (separator, token) in sep_tokens]
         matchProb.setDirpath(dirpath)
         if len(observations) == 0:
@@ -112,11 +123,12 @@ def main():
     training_error_check = bool(args.training_error)
     abbrType = int(args.abbr_Type)
 
+    abbrCallable = AbbrOperation(abbrType)
     transProbBuilder = TransitionProbsBuilder(percentage)
-    matchProbBuilder = MatchProbsBuilder(abbrRemoveVowels, percentage)
+    matchProbBuilder = MatchProbsBuilder(abbrCallable, percentage)
     for dirpath in dirpaths:
         transProbBuilder.updateTransitionProbs(dirpath)
-        matchProbBuilder.updateMatchProbsTrainingData(dirpath)
+        matchProbBuilder.updateMatchProbsTrainingData(dirpath) 
 
     transProb = transProbBuilder.build()
     matchProb = matchProbBuilder.build()
@@ -128,7 +140,7 @@ def main():
             startTestLine = int(totalLineCount * (1 - percentage))
             g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
             if training_error_check:
-                runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath)
+                runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn)
             runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn)
 
 if __name__ == "__main__":

@@ -24,9 +24,12 @@ class MaybeName:
         assert(self.isName)
         return self.name
 
-    def setName(self, name):
-        if self.isName:
-            self.name = name
+    def apply(self, str_fn):
+      if not self.isName:
+          return self
+      else: 
+          self.name = str_fn(self.name)
+          return self
 
     def __repr__(self):
         return self.name if self.isName else 'CONSTANT'
