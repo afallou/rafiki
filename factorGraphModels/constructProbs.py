@@ -168,7 +168,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
         else:
             if lineno < testTrainLine:
                 continue
-            elif lineno  == testTrainLine and toknum == token.NEWLINE:
+            elif lineno  >= testTrainLine and toknum == token.NEWLINE:
                 print 'found new line!'
                 return
 
