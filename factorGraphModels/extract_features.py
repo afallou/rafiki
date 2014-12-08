@@ -73,9 +73,6 @@ def getPercentageSharedConsonants(tok1, tok2):
 def getPercentageSharedLetters(tok1, tok2):
     return 1. * getNumSharedLetters(tok1, tok2) / len(tok1) if len(tok1) > 0 else 0
 
-def getOtherPercentageSharedLetters(tok1, tok2):
-    return 1. * getNumSharedLetters(tok1, tok2) / len(tok2) if len(tok2) > 0 else 0
-
 def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
     def getClosestDistance(lineno, linenoList):
         return lineno - max(linenoList)
@@ -85,10 +82,9 @@ def getFeatureVector(name, abbr, abbr_lineno, last_seen_in_file):
             getNumSharedNonLetters(abbr, name),
             getNumSharedLetters(abbr, name),
             getNumSharedOrderedLetters(abbr, name),
-            getNumSharedOrderedLetters(abbr, name),
             getPercentageSharedCapitals(abbr, name),
             getPercentageSharedConsonants(abbr, name),
             getPercentageSharedLetters(abbr, name),
-            getOtherPercentageSharedLetters(abbr, name),
+            getPercentageSharedLetters(name, abbr),
             (1 if name in last_seen_in_file else 0),
             getClosestDistance(abbr_lineno,last_seen_in_file[name]) if name in last_seen_in_file else MAX_NUM_LINES] # TODO
