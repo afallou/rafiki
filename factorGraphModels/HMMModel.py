@@ -19,7 +19,6 @@ RNG_SEED = 1989
 def getDirpaths(root, keep_fn=lambda x: True):
     filepaths = [ [dirpath + '/' + fname for fname in filenames] for dirpath, _, filenames in os.walk(root)]
     flattened = list(itertools.chain(*filepaths))
-    print(flattened)
     return filter(keep_fn, flattened)
 
 
@@ -67,10 +66,8 @@ def parsesCorrectly(last_separator, seps):
     seps = seps + [last_separator]
     def func(probs_and_names_so_far):
         names_so_far = probs_and_names_so_far[1]
-        print seps
         serialized_path = ''.join([str(names_so_far[i])+seps[i+1] for i in xrange(len(names_so_far))])
         try:
-            print serialized_path
             parser.suite(serialized_path)
         except Exception as e:
             if str(e).startswith('unexpected EOF'):
@@ -83,7 +80,6 @@ def parsesCorrectly(last_separator, seps):
 def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn, useParseFilter=True):
     samples_count = 0
     correct_count = 0
-    print startLine, endLine
     for lineno in range(startLine, endLine):
         sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)]
         last_sep = sep_tokens[-1][0]
@@ -104,11 +100,14 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         print correctedLines
         if useParseFilter:
           correctedLines = filter(parsesCorrectly(last_sep, separators), correctedLines)
-        if len(correctedLines)>0 and actual_tokens in correctedLines[0]:
+        comparisons = [line == actual_tokens for (_, line) in correctedLines]
+        if any(comparisons):
             correct_count += 1
         print 'original:', actual_tokens 
         print 'abbreviated:', observations
-        print 'top corrected:', (' no result' if len(correctedLines)==0 else correctedLines[0][1])
+        #print correctedLines
+        print 'corrected:', correctedLines
+        # print correctedLines
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
     print '{} Error:'.format(dataType), 1 - float(correct_count)/(samples_count)
@@ -149,8 +148,8 @@ def main():
         transProbBuilder.updateTransitionProbs(dirpath)
         matchProbBuilder.updateMatchProbsTrainingData(dirpath) 
 
-    transProb = transProbBuilder.build()
     matchProb = matchProbBuilder.build()
+    transProb = transProbBuilder.build(len(matchProbBuilder.allNames))
 
     for dirpath in dirpaths:
         with open(dirpath, 'r') as f:

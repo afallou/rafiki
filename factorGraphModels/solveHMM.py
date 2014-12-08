@@ -2,7 +2,7 @@ import heapq
 import util
 import random
 import pdb
-
+from constructProbs import MaybeName
 
 def viterbi(obs, states, trans_p, emit_p, transitions_per_timestep, verbose=False, numResults=5):
     """
@@ -123,7 +123,7 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
                 candidates[k][candidate] = candidate_weight
 
     for k in xrange(K):
-            next_state = util.weightedRandomChoice(candidates[k])
+            next_state = MaybeName(False, '') if not obs[0].isName else util.weightedRandomChoice(candidates[k])
             paths[k].append(next_state)
 
     # Run for t > 0
@@ -143,7 +143,8 @@ def particle_filtering(obs, states, trans_p, emit_p, transitions_per_timestep, v
 
         # Resample
         for k in xrange(K):
-            next_state = util.weightedRandomChoice(candidates[k])
+            # Ideally we'd want to completely isolate the algo from the implementation
+            next_state = MaybeName(False, '') if not obs[t].isName else util.weightedRandomChoice(candidates[k])
             paths[k].append(next_state)
 
     # To have same return form as viterbi
