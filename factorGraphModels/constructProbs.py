@@ -123,8 +123,9 @@ class MatchProbs:
 
 class TransitionProbs:
     CONSTANT_TRANSITION_PROB = 1.0
-    def __init__(self, transProb, lambda_val=0.7):
+    def __init__(self, transProb, all_names_count, lambda_val=0.7):
         self.transProb = deepcopy(transProb)
+        self.unseen_probability = 1. / all_names_count
 
         not_name = MaybeName(False, 0)
         self.startProb = {not_name: TransitionProbs.CONSTANT_TRANSITION_PROB}
@@ -138,7 +139,7 @@ class TransitionProbs:
                 normalizer = float(sum(transProb[s0][transition].values()))
                 for s1 in transProb[s0][transition]:
                     self.transProb[s0][transition][s1] = lambda_val * transProb[s0][transition][s1] / normalizer \
-                                                        + (1 - lambda_val) * self.startProb.get(s0, 0)
+                                                        + (1 - lambda_val) * self.getStartProb(s0)
 
         self.lambda_val = lambda_val
 
@@ -148,10 +149,10 @@ class TransitionProbs:
         try:
             return self.transProb[s0][sep][s1]
         except KeyError:
-            return (1 - self.lambda_val) * self.startProb.get(s0, 0)
+            return (1 - self.lambda_val) * self.getStartProb(s0)
 
     def getStartProb(self, s0):
-            return self.startProb.get(s0, 0)
+        return self.startProb.get(s0, self.unseen_probability)
 
 SPACE = ' '
 # do not use the same generator for training and testing!!!!
@@ -230,8 +231,8 @@ class TransitionProbsBuilder:
                 
                 prev_non_sep_tok = maybe_name
 
-    def build(self):
-        return TransitionProbs(self.transProb)
+    def build(self, all_names_count):
+        return TransitionProbs(self.transProb, all_names_count)
 
 
 

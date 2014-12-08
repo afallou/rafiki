@@ -82,12 +82,13 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
-        if correctedLines[0][1] == actual_tokens:
+        comparisons = [line == actual_tokens for (_, line) in correctedLines]
+        if any(comparisons):
             correct_count += 1
         print 'original:', actual_tokens 
         print 'abbreviated:', observations
         #print correctedLines
-        print 'corrected:', correctedLines[0][1]
+        print 'corrected:', correctedLines
         # print correctedLines
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
@@ -130,8 +131,8 @@ def main():
         transProbBuilder.updateTransitionProbs(dirpath)
         matchProbBuilder.updateMatchProbsTrainingData(dirpath) 
 
-    transProb = transProbBuilder.build()
     matchProb = matchProbBuilder.build()
+    transProb = transProbBuilder.build(len(matchProbBuilder.allNames))
 
     for dirpath in dirpaths:
         with open(dirpath, 'r') as f:
