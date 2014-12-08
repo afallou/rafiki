@@ -27,12 +27,12 @@ class TestConstructProbs(unittest.TestCase):
 
         transProbBuilder.updateTransitionProbs("test")
         matchProbBuilder.updateMatchProbsTrainingData("test") 
-        transProb = transProbBuilder.build()
+        transProb = transProbBuilder.build(len(matchProbBuilder.allNames))
         matchProb = matchProbBuilder.build()
         matchProb.setDirpath("test")
         g = tokenize.generate_tokens(io.BytesIO(contents).readline)
         for lineno in range(1,5):
-            lst = [pair for pair in getSeparatorAndToken(g, lineno, train=False)]
+            lst = [pair for pair in getSeparatorAndToken(g, lineno, train=False)][:-1]
             seps = [sep for (sep, tok) in lst]
             toks = [tok for (sep, tok) in lst]
             vit = viterbi(toks, matchProbBuilder.allNames, transProb, matchProb, seps[1:], False, 5)
