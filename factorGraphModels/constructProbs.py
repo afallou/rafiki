@@ -84,14 +84,13 @@ class MatchProbsBuilder:
                     self.X.append(feature_vec)
                     self.Y.append(1)
 
-                    randomName = random.sample(self.allNames, 1)[0]
-                    while random == tokval:
-                        randomName = random.sample(self.allNames, 1)[0]
-                    assert(randomName.isName)
-
-                    feature_vec = getFeatureVector(randomName.getName(), abbrToken, lineno, self.last_seen_in_file[dirpath])
-                    self.X.append(feature_vec)
-                    self.Y.append(0)
+                    NUM_WRONG_TO_TRAIN = len(self.allNames) if len(self.allNames) < 3 else 3
+                    randomNames = random.sample(self.allNames, NUM_WRONG_TO_TRAIN)
+                    lst_to_train = filter(lambda x:x.getName()!=tokval, randomNames)
+                    for randomName in randomNames:
+                        feature_vec = getFeatureVector(randomName.getName(), abbrToken, lineno, self.last_seen_in_file[dirpath])
+                        self.X.append(feature_vec)
+                        self.Y.append(0)
 
     def build(self):
         self.logreg.fit(self.X, self.Y)

@@ -5,7 +5,7 @@ from extract_features import vowels
 import itertools
 import tokenize
 import random
-from solveHMM import legacy_viterbi, particle_filtering
+from solveHMM import legacy_viterbi, particle_filtering, viterbi
 import copy 
 import pdb
     
@@ -113,7 +113,7 @@ def main():
     args = parser.parse_args()
     dirpaths = getDirpaths(os.path.expanduser(args.root), isPythonFile)
     percentage = float(args.percentage)
-    solve_fn = legacy_viterbi
+    solve_fn = viterbi
     if args.solve == 'pfilter':
         print "Using particle_filtering"
         solve_fn = particle_filtering
