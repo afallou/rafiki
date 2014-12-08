@@ -5,10 +5,10 @@ from extract_features import vowels
 import itertools
 import tokenize
 import random
-from solveHMM import legacy_viterbi, particle_filtering, viterbi
+from solveHMM import particle_filtering, viterbi
 import copy 
 import pdb
-    
+import parser    
 """
     Return a list of filenames 
 """
@@ -61,14 +61,33 @@ class AbbrOperation:
                 array[i+1] = letter
         return ''.join(array)
 
+def parsesCorrectly(last_separator, seps):
+    if last_separator is None:
+        last_separator = ''
+    seps = seps + [last_separator]
+    def func(probs_and_names_so_far):
+        names_so_far = probs_and_names_so_far[1]
+        print seps
+        serialized_path = ''.join([str(names_so_far[i])+seps[i+1] for i in xrange(len(names_so_far))])
+        try:
+            print serialized_path
+            parser.suite(serialized_path)
+        except Exception as e:
+            if str(e).startswith('unexpected EOF'):
+                return True
+            else:
+                return False
+        return True
+    return func
 
-def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn):
+def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn, useParseFilter=True):
     samples_count = 0
     correct_count = 0
     print startLine, endLine
     for lineno in range(startLine, endLine):
-        print lineno
-        sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)] 
+        sep_tokens = [(separator, token) for (separator, token) in getSeparatorAndToken(g, lineno, train=False)]
+        last_sep = sep_tokens[-1][0]
+        sep_tokens = sep_tokens[:-1]  
         # apply the abbreviation functions :) to all of the words in tokens
         tokens = [token for (separator, token) in sep_tokens] #actual list of words
         actual_tokens = copy.deepcopy(tokens)
@@ -82,13 +101,14 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
-        if correctedLines[0][1] == actual_tokens:
+        print correctedLines
+        if useParseFilter:
+          correctedLines = filter(parsesCorrectly(last_sep, separators), correctedLines)
+        if len(correctedLines)>0 and actual_tokens in correctedLines[0]:
             correct_count += 1
         print 'original:', actual_tokens 
         print 'abbreviated:', observations
-        #print correctedLines
-        print 'corrected:', correctedLines[0][1]
-        # print correctedLines
+        print 'top corrected:', (' no result' if len(correctedLines)==0 else correctedLines[0][1])
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
     print '{} Error:'.format(dataType), 1 - float(correct_count)/(samples_count)
@@ -105,7 +125,6 @@ def main():
         'training_error', type = int, default = 0, help='calculate training error - 1 or not - 0')
     parser.add_argument(
         'abbr_Type', type = int, default = 0, help='what abbr function to apply: 0 - nothing, 1 - switch & remove, 2 - switch, remove, & no vowels')
-
     # can make the following option-controlled later if we start looking at other langs
     def isPythonFile(dirpath):
         return dirpath[len(dirpath)-3:len(dirpath)] == ".py"

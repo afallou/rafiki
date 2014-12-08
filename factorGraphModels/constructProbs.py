@@ -168,7 +168,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
             if lineno < testTrainLine:
                 continue
             elif lineno  >= testTrainLine and toknum == token.NEWLINE:
-                print 'found new line!'
+                yield (prev_sep, None)
                 return
 
         # we see a token that is not a separator
@@ -192,7 +192,7 @@ def getSeparatorAndToken(token_gen, testTrainLine, train=True): # generator, yie
             else:
                 prev_sep = prev_sep + tokval # multiple separators in a row; treat as a special separator 
         at_beginning = False
-
+        
 """
     Return:
         transProb such that transProb[w0][sep][w1] gives you the count
