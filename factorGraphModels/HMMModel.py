@@ -8,13 +8,18 @@ import random
 from solveHMM import particle_filtering, viterbi
 import copy 
 import pdb
-import parser    
+import parser
+import numpy
+import time    
 """
     Return a list of filenames 
 """
-removalProb = 0.15
-switchProb = 0.15
+removalProb = 0.5
+switchProb = 0.5
 RNG_SEED = 1989
+AVERAGE_NUM = 1
+
+verbose = False
 
 def getDirpaths(root, keep_fn=lambda x: True):
     filepaths = [ [dirpath + '/' + fname for fname in filenames] for dirpath, _, filenames in os.walk(root)]
@@ -97,20 +102,20 @@ def runAndTrainingError(g, dataType, startLine, endLine, abbrType, matchProb, tr
         samples_count += 1
         #increment training correct count if your best guess is equal to corrected lines
         # print 'comparison:', tokens, correctedLines
-        print correctedLines
         if useParseFilter:
           correctedLines = filter(parsesCorrectly(last_sep, separators), correctedLines)
         comparisons = [line == actual_tokens for (_, line) in correctedLines]
         if any(comparisons):
             correct_count += 1
-        print 'original:', actual_tokens 
-        print 'abbreviated:', observations
-        #print correctedLines
-        print 'corrected:', correctedLines
-        # print correctedLines
+        if verbose:
+            print 'original:', actual_tokens 
+            print 'abbreviated:', observations
+            print 'corrected:', correctedLines
+    error = 1 - float(correct_count)/(samples_count)
     print 'Number of {} Samples:'.format(dataType), samples_count
     print '{} Correct Ratio:'.format(dataType), float(correct_count)/(samples_count)
-    print '{} Error:'.format(dataType), 1 - float(correct_count)/(samples_count)
+    print '{} Error:'.format(dataType), error
+    return error
 
 def main():
     parser = argparse.ArgumentParser()
@@ -151,15 +156,24 @@ def main():
     matchProb = matchProbBuilder.build()
     transProb = transProbBuilder.build(len(matchProbBuilder.allNames))
 
-    for dirpath in dirpaths:
-        with open(dirpath, 'r') as f:
-            totalLineCount = sum(1 for line in f)
-            f.seek(0)
-            startTestLine = int(totalLineCount * (1 - percentage))
-            g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
-            if training_error_check:
-                runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn)
-            runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn)
+    test_errors = []
+    training_errors = []
+    for _ in xrange(AVERAGE_NUM):
+        for dirpath in dirpaths:
+            with open(dirpath, 'r') as f:
+                totalLineCount = sum(1 for line in f)
+                f.seek(0)
+                startTestLine = int(totalLineCount * (1 - percentage))
+                g = tokenize.generate_tokens(io.BytesIO(f.read()).readline)
+                if training_error_check:
+                    training_errors.append(runAndTrainingError(g, 'Train', 1, startTestLine, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn))
+                t1 = time.clock()
+                test_errors.append(runAndTrainingError(g, 'Test', startTestLine+1, totalLineCount+1, abbrType, matchProb, transProb, matchProbBuilder, dirpath, solve_fn))
+                t2 = time.clock()
+                print "test time:", t2 - t1
+    if training_error_check:
+        print "Average training error:", numpy.mean(training_errors)
+    print "Average test error:", numpy.mean(test_errors)
 
 if __name__ == "__main__":
     main()
