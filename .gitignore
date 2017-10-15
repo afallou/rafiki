@@ -1,5 +1,5 @@
 *.pyc
-*.pdf
+!poster/*.pdf
 *.aux
 *.out
 *.synctex.gz
